@@ -1,0 +1,6 @@
+
+mysqldump -uroot -p --no-data database -r utf8.dump
+
+mysql -uroot -p --default-character-set=utf8 database
+mysql> SET names 'utf8'
+mysql> SOURCE utf8.dump
