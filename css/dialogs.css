@@ -1,0 +1,56 @@
+@CHARSET "UTF-8";
+
+*, *:before, *:after { 
+	-webkit-box-sizing: border-box; 
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;	
+}
+
+a.tableLinkItem { text-decoration:none; color:#000099; }
+a.tableLinkItem:hover { text-decoration:underline; text-shadow: 0px 0px #000000;	}
+
+.outer-table { width:100%;
+ }
+ 
+.inner-table { 
+	height:100%; 
+	width:100%; 
+}
+
+.outer-div { 
+	overflow-y:auto; 
+	overflow-x:hidden 
+}
+
+.inner-div { 
+	border: 1px solid black;
+	width:100%; 
+}
+
+.inner-table tr { 
+	background-color:#EEFFEE;
+ }
+ 
+.wb-dialog { 
+	font-family: verdana, tahoma, arial, sans-serif;
+	background-color:#DDDDDD;
+	border-radius:10px; 
+	border:2px solid #333333; 
+	font-size:10pt; 
+	color: black; 
+	text-shadow: 0px 0px #500303; 
+	box-shadow: 2px 2px 10px #333333;
+	-webkit-font-smoothing: antialiased; 
+	-moz-font-smoothing: antialiased;
+	font-smoothing: antialiased;
+}
+
+.wb-dialog .pagecomponent { width:100%; border:1px solid black; border-radius:7px; -webkit-font-smoothing: antialiased; -moz-font-smoothing: antialiased; font-smoothing: antialiased; }
+.wb-dialog .header { background-color:#666666; border-radius:6px 6px 0px 0px; color:white; padding:0.25em 1em; }
+.wb-dialog input[type=text], select, textarea, table { }
+.wb-dialog table { padding: 0px; }
+.wb-dialog input[type=text], input[type=number], select, textarea { width:100%; padding:4px; }
+#successDialog { position: fixed; display: none; top:12%; z-index:10; }
+#errorDialog { position: fixed; display: none; top:12%; z-index:10; }
+#popupContentMenu { position: fixed; display: none; font-family: verdana, tahoma, arial, sans-serif; padding: 0.5em 2em 0.5em 0em; top:0; left:0; z-index:11; }
+#popupUserMenu { position: fixed; display: none; font-family: verdana, tahoma, arial, sans-serif; padding: 0.5em 1em 0.5em 0em; border-radius:10px; border:2px solid black; font-size:10pt; color: black; top:0; left:0; z-index:11; }

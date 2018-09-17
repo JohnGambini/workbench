@@ -37,7 +37,8 @@ global $dataArrays;
 	<meta name="description" content="<?php echo htmlspecialchars($contentObj->articleDescription)?>">
 	<meta property="og:description" content="<?php echo htmlspecialchars($contentObj->articleDescription) ?>" />
 	<link rel="shortcut icon" href="<?php echo SITE_NAME . SUBSITE_NAME ?>/favicon.ico">
-	<style>	*, *:before, *:after { -webkit-box-sizing: border-box; -moz-box-sizing: border-box;	box-sizing: border-box;	}
+	<link rel="stylesheet" href="<?php echo WORKBENCH_FOLDER ?>/css/dialogs.css" type="text/css" media="screen">
+	<style>
 	a.menuItem { text-decoration:none; color:inherit; }
 	a.menuItem:hover { text-decoration:underline; color:inherit; text-shadow:0px 0px #000000; }
 	a.linkItem { text-decoration:none; color:#000099; }
@@ -46,22 +47,6 @@ global $dataArrays;
 	a.sidebarLinkItem:hover { text-decoration:underline; }
 	a.sidebarHighlightLinkItem { text-decoration:underline; color:inherit; }
 	a.sidebarHighlightLinkItem:hover { text-decoration:underline; }
-	.outer-table { }
-	.inner-table { height:100%; width:100%; }
-	.outer-div { overflow-y:auto; overflow-x:hidden }
-	.outer-table { width:100%; }
-	.inner-div { border: 1px solid black; width:100%; }
-	.inner-table tr { background-color:#EEFFEE }
-	.wb-dialog { font-family: verdana, tahoma, arial, sans-serif; background-color:#DDDDDD; border-radius:10px; border:2px solid #333333; font-size:10pt; color: black; text-shadow: 0px 0px #500303; box-shadow: 2px 2px 10px #333333; -webkit-font-smoothing: antialiased; -moz-font-smoothing: antialiased; font-smoothing: antialiased;	}
-	.wb-dialog .pagecomponent { width:100%; border:1px solid black; border-radius:7px; -webkit-font-smoothing: antialiased; -moz-font-smoothing: antialiased; font-smoothing: antialiased; }
-	.wb-dialog .header { background-color:#666666; border-radius:6px 6px 0px 0px; color:white; padding:0.25em 1em; }
-	.wb-dialog input[type=text], select, textarea, table { }
-	.wb-dialog table { padding: 0px; }
-	.wb-dialog input[type=text], input[type=number], select, textarea { width:100%; padding:4px; }
-	#successDialog { position: fixed; display: none; top:12%; z-index:10; }
-	#errorDialog { position: fixed; display: none; top:12%; z-index:10; }
-	#popupContentMenu { position: fixed; display: none; font-family: verdana, tahoma, arial, sans-serif; padding: 0.5em 2em 0.5em 0em; top:0; left:0; z-index:11; }
-	#popupUserMenu { position: fixed; display: none; font-family: verdana, tahoma, arial, sans-serif; padding: 0.5em 1em 0.5em 0em; border-radius:10px; border:2px solid black; font-size:10pt; color: black; top:0; left:0; z-index:11; }
 	#popupAddContent { position: fixed; display: none; top:14%; z-index:10; }
 	#popupEditContent { position: fixed; display: none; top:18%; z-index:10; }
 	#popupManageTabs { position: fixed; display: none; top:18%; min-width:50%; z-index:10; }
@@ -161,6 +146,8 @@ global $dataArrays;
 	#intro { width:85%; margin:0em auto; }
 	.imageViewer { margin:2% 4%; }
 	.imageViewer hr { border-style:solid; border-color:#AAAAAA;	}
+	a.articleLinkItem { text-decoration:none; color:#000077; }
+	a.articleLinkItem:hover { text-decoration:underline; text-shadow: 0px 0px #000000;	}
 	.webArticle { background-color: inherit; color: inherit; text-shadow: inherit; margin:0em 4%; }
 	.webArticle hr { border-style:solid; border-color:#AAAAAA; }
 	.newspaper { background-color: inherit; color: inherit; text-shadow: inherit; margin: 0em 4%; -webkit-column-count: 2; /* Chrome, Safari, Opera */ -moz-column-count: 2; /* Firefox */ column-count: 2; -webkit-column-width: 18em; /* Chrome, Safari, Opera */ -moz-column-width: 18em; /* Firefox */ column-width: 18em; -webkit-column-gap: 2em; /* Chrome, Safari, Opera */ -moz-column-gap: 2em; /* Firefox */ column-gap: 2em; }
@@ -214,6 +201,5 @@ global $dataArrays;
 	<meta http-equiv="Cache-Control" content="no-store" />
 </head>
 <body id="body">
-<!-- This is so javascript:setImageSrc() has somewhere to grab the content directory from -->
-<input id="contentDir" type="text" hidden="true" value="<?php echo CONTENTDIR ?>"/>
+<!-- This is so javascript:wbAjax has somewhere to grab the web application directory from -->
 <input id="webapp" type="text" hidden="true" value="<?php echo WEBAPP ?>"/>

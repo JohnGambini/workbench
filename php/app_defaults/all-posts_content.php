@@ -46,9 +46,9 @@ global $dbObj;
 	
 		for( $i = 1; $row = mysqli_fetch_array($dbObj->result); $i++ ) {
 			if($row['ownerId'] == $userObj->ID) {
-				$linkSpec = "<a href = '" . SITE_NAME . SUBSITE_NAME . $row['permalink'] . "'>View</a>&nbsp;&nbsp;<a href = '" . SITE_NAME . SUBSITE_NAME . "/" . substr($lang,0,2) . "/edit-post?c=" . $row['permalink'] . "'>Edit</a>";
+				$linkSpec = "<a class='tableLinkItem' href = '" . SITE_NAME . SUBSITE_NAME . $row['permalink'] . "'>View</a>&nbsp;&nbsp;<a href = '" . SITE_NAME . SUBSITE_NAME . "/" . substr($lang,0,2) . "/edit-post?c=" . $row['permalink'] . "'>Edit</a>";
 			} else {
-				$linkSpec = "<a href = '" . SITE_NAME . SUBSITE_NAME . $row['permalink'] . "'>View</a>";
+				$linkSpec = "<a class='tableLinkItem' href = '" . SITE_NAME . SUBSITE_NAME . $row['permalink'] . "'>View</a>";
 			}
 			$dataArray[$i] = array(
 					array('<input type="checkbox" name="checkbox_' . $i . '" value="' . $row['ID'] . '">', 'width:2%'),

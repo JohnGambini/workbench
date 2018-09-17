@@ -34,7 +34,7 @@ if( ! $dbObj->query($sqlObject->sqlUsers)) {
 				array('<input type="checkbox" name="checkbox_' . $i . '" value="' . $row['ID'] . '">', 'width:2%'),
 				array($row['username'], 'width:30%;padding:0em 0em 0em 0.5em'),
 				array('<input style="width:4em" type="number" name="type_' . $i . '" value="' . $row['type'] . '">' . '<input hidden type="number" name="userId_' . $i . '" value="' . $row['ID'] . '">', 'width:5%;padding:0em 0em 0em 0em'),
-				array('<a class="linkItem" href="' . WEBAPP . $row['permalink'] . '">' . $row['fullName'] . '</a>', 'width:63%;padding:0em 0em 0em 0.5em'),
+				array('<a class="tableLinkItem" href="' . WEBAPP . $row['permalink'] . '">' . $row['fullName'] . '</a>', 'width:63%;padding:0em 0em 0em 0.5em'),
 		);
 	}
 
