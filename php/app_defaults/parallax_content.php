@@ -37,7 +37,7 @@ if( ! $dataArrays->get_parallaxItemsArray($dbObj, $sqlObject)) {
 		<a class="menuItem" href="<?php echo WEBAPP . $values['permalink'] ?>"><?php echo $values['title']?></a>
 	</div>
 	<?php if(isset($values['authorName'])) { ?>
-	<div style="position:relative;height:73%">
+	<div style="position:relative; height:73%">
 		<div style="position:absolute;bottom:0;padding:0em 2em;width:95%;text-align:right">
 			<?php if(isset($values['authorLink']) and strlen(trim($values['authorLink']))) {?>
 				<a class="menuItem" href="<?php echo $values['authorLink'] ?>" target="_blank"><em><?php echo $values['authorName'] ?></em></a>
