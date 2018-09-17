@@ -33,7 +33,7 @@ if( ! $dataArrays->get_parallaxItemsArray($dbObj, $sqlObject)) {
 <?php foreach($dataArrays->parallaxItemsArray as $key => $values) { ?>
 <div class="parallax" style="background-image: url(<?php echo replace_wb_variable($values['articleImage'],$dbObj, $sqlObject) ?>)">
 	<div id="<?php echo $values['title']?>"></div>
-	<div style="padding:1.5em 2em;color:white;font-size:22pt;font-weight:400">
+	<div style="padding:1.5em .5em;color:white;font-size:22pt;font-weight:400;width:11em;text-align:center">
 		<a class="menuItem" href="<?php echo WEBAPP . $values['permalink'] ?>"><?php echo $values['title']?></a>
 	</div>
 	<?php if(isset($values['authorName'])) { ?>
