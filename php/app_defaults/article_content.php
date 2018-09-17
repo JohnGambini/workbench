@@ -19,7 +19,7 @@ global $dataArrays;
 <?php get_rightbar($contentObj)?>
 <div id="mainContent" style="padding: 0em 1em 0.03em 1em;border-top: 1px solid grey">
 	<div class="articleTabs fontSpecSmall"><?php $tabName = set_tabsWidget($dbObj, $sqlObject, $dataArrays, $contentObj)?></div>
-	<div class="article">
+	<div id="article" class="article">
 	<div class="articleHeader">
 		<div style="display:flex;align-items:center;margin:1em auto 0em auto">
 			<div style="flex:1 0 12%">&nbsp;</div>

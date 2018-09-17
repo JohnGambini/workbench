@@ -100,6 +100,36 @@ function set_tabsWidget(wbDatabase $dbObj, wbSql $sqlObject, wbDataArrays $dataA
         	if(typeof editor != 'undefined')
             	editor.setValue(articleObj[2]);
         }
+
+       	//update contentMenu width (if it exists) depending on status of vertical scrollbar
+       	scrollbarWidth = 16;
+       	
+    	var sidebarContainer = document.getElementById('sidebarContainer');
+    	var contentMenu = document.getElementById('contentMenu');
+    	var content = document.getElementById('content');
+    	var bodyElement = document.getElementById('body');
+    	var contentContainer = document.getElementById('contentContainer');
+
+      	var bodyRect = null;
+    	var contentRect = null;
+    	
+    	if(bodyElement)
+    		bodyRect = bodyElement.getBoundingClientRect();
+    	if(content)
+    		contentRect = content.getBoundingClientRect();
+    	
+		if(content.scrollHeight > contentContainer.scrollHeight) {
+			if(sidebarContainer)
+				contentMenu.style.width = "" + (parseInt(contentRect.width)-scrollbarWidth) + "px";
+			else
+				contentMenu.style.width = "" + (parseInt(bodyRect.width)-scrollbarWidth) + "px";
+		} else  {
+			if(sidebarContainer)
+				contentMenu.style.width = "" + (parseInt(contentRect.width)) + "px";
+			else
+				contentMenu.style.width = "" + (parseInt(bodyRect.width)) + "px";
+		}
+        
 	});
 
    	//update the article tabs
