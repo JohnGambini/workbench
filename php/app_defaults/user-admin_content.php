@@ -74,7 +74,7 @@ $settingsArrayGroups = array('header' => true, 'height' => '24em');
 
 ?>
 <div id="contentContainer" class="contentContainer">
-<div id="content" class="content" style="padding:1em 1em">
+<div id="content" class="content"">
 <?php get_contentMenu($contentObj)?>
 <div id="mainContent" style="padding: 0em 0em 0.01em 0.01em;height:100%">
 
