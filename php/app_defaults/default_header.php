@@ -139,7 +139,7 @@ global $dataArrays;
 	.articleTab { margin:0em 1%; padding:0em 3%; background-color:#FFFFFF; text-shadow: 0px 0px #000000; height:2em; color:#000000; border-radius:5px 5px 0px 0px; border-bottom:1px solid #CCCCCC }
 	.articleTabHighlight { margin:0em 1%; padding:0em 3%; background-color:#FFFFFF; text-shadow: 0px 0px #000000; height:2em; color:#AA0000; border-radius:5px 5px 0px 0px; border-bottom:1px solid #CCCCCC }
 	.articleTabs { margin: 1em 2em 0em 3em }
-	.firstCharacter:first-letter { color: #903; float: left; font-family:Georgia; font-size: 2.25em; line-height:0.975em; padding-top: 0em; padding-bottom: 0px; padding-right: 0.075em; padding-left: -0.125em; }
+	.firstCharacter:first-letter { color: #B04; float: left; font-family:Georgia; font-size: 2.25em; line-height:0.975em; padding-top: 0em; padding-bottom: 0px; padding-right: 0.075em; padding-left: -0.125em; }
 	#articleText { }
 	ul.articleHeader { diplay:table-row; list-style: none; margin: 0px; padding: 0px; }
 	.articleHeader li { display: table-cell; text-align: left; font-size: 8pt; font-style: italic; vertical-align: bottom; }
