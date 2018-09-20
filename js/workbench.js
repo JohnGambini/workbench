@@ -87,13 +87,6 @@ function prepDoc()
 	//	javascript:showForm('popupAddPage');
 	//});
 
-	//fix up the main menu
-	var mainmenuItem2 = document.getElementById('mainmenuItem2');
-	var rightBar = document.getElementById('rightbarContainer');
-	if(rightBar !== 'undefined' && rightBar != null) {
-		mainmenuItem2.style.display = 'none';
-	}
-
 }
 
 function resizeDoc(resizeCounter)
@@ -231,6 +224,21 @@ function resizeDoc(resizeCounter)
 		//alert("ok");
 	}
 	
+
+	//fix up the main menu
+	var width = window.innerWidth
+	|| document.documentElement.clientWidth
+	|| document.body.clientWidth;
+	var mainmenuItem2 = document.getElementById('mainmenuItem2');
+	var rightBar = document.getElementById('rightbarContainer');
+	if(contentMenu) {
+		if(rightbarContent && width > 760) {
+			if(mainmenuItem2 != null)
+				mainmenuItem2.style.display = 'none';
+		}
+		else if(mainmenuItem2 != null)
+			mainmenuItem2.style.display = 'inline-block';
+	}
 	//alert(typeof pagePreferences);
 
 	if(typeof pagePreferences !== 'undefined') {
