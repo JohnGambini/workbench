@@ -231,7 +231,7 @@ function resizeDoc(resizeCounter)
 	|| document.body.clientWidth;
 	var mainmenuItem2 = document.getElementById('mainmenuItem2');
 	var rightBar = document.getElementById('rightbarContainer');
-	if(contentMenu) {
+	if(contentMenu || transparentContentMenu) {
 		if(rightbarContent && width > 760) {
 			if(mainmenuItem2 != null)
 				mainmenuItem2.style.display = 'none';

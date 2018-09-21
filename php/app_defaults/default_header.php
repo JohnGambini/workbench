@@ -89,21 +89,45 @@ global $dataArrays;
 	.icon-arrow-up2:hover::before { color: #000000; }
 	.mainmenu { display:flex; align-items:center; position:fixed; top: -2.5em; left: 0px; width: 100%; height: 3.50em; z-index:1; background-color:white; box-shadow: 0px 2px 12px #888888; transition: top 0.5s; }
 	#mainmenuItem1 { flex:1 1 19%; }
-	#mainmenuItem2 { flex:1 1 15%; display:none; }
+	#mainmenuItem2 { flex:1 1 15%; }
 	#mainmenuItem3 { flex:1 1 45%; }
 	#mainmenuItem4 { flex:1 1 20%; }
 	.contentContainer { position: relative; top: 0px; float:left; width: 82%; height: inherit; overflow-y: hidden; }
 	.content { display:block; position: relative; width: 100%; height:100%; opacity: 0; overflow-y: auto; transition: opacity 1s; }
-	.contentMenu { position:fixed; top:0; display: flex; display: -ms-flexbox; display: -webkit-flex; width:100%; align-items: center; -ms-flex-align: center; -webkit-align-items: center; -webkit-box-align: center; height:3.0em; z-index: 3; }
-	.transparentContentMenu { position:fixed; top:0; display: flex; display: -ms-flexbox; display: -webkit-flex; width:100%; align-items: center; -ms-flex-align: center; -webkit-align-items: center; -webkit-box-align: center; height:3.0em; z-index: 3; }
+	.contentMenu { 
+		position:fixed; 
+		top:0; 
+		display: flex; 
+		display: -ms-flexbox; 
+		display: -webkit-flex; 
+		width:100%; 
+		align-items: center;
+		-ms-flex-align: center; 
+		-webkit-align-items: center; 
+		-webkit-box-align: center; 
+		height:3.0em; 
+		z-index: 3; 
+	}
+	.transparentContentMenu { 
+		position:fixed; 
+		top:0; 
+		display: flex; 
+		display: -ms-flexbox; 
+		display: -webkit-flex; 
+		width:100%; 
+		align-items: center; 
+		-ms-flex-align: center; 
+		-webkit-align-items: center; 
+		-webkit-box-align: center; 
+		height:3.0em; 
+		z-index: 3; 
+	}
 	.mainContent { display:block; position: relative; width:inherit; height:inherit; top: 0; }
 	.sidebarContainer { position: relative; top:0px; float:left; width: 18%; height: 100%; overflow-y: hidden; border-right: 1px solid #AAAAAA; }
 	.sidebar { display: flex; flex-direction: column; position: relative; top: 0; width: 100%; height: 100%; overflow-y: auto; overflow-x: wrap; }
 	.rightbar { display:block; position: relative; float:right; border-left: 1px solid #AAAAAA; width:18%; height:100%; padding:0.6em; }
-	#contentMenuTrigger { display:none; }
 	@media all and (max-width:760px) { 
 		.sidebarContainer { display:none; } 
-		#contentMenuTrigger { display:block; } 
 		.contentContainer { width:100%; }
 		#mainmenuItem2 {display:inline-block;} 
 		.rightbar { display:none; } 
