@@ -94,11 +94,20 @@ function set_popupContentMenu(wbDatabase $dbObj, wbSql $sqlObject) {
 	<?php
 		if($dataArrays->get_rootContentArray($dbObj, $sqlObject)) {
 		
-		foreach($dataArrays->rootContentArray as $key => $values) {
+			foreach($dataArrays->rootContentArray as $key => $values) {
+				if( $contentObj->permalink == $values['permalink']) { ?>
+						
+				<li style="margin:0em 0em 0.5em 0em"><a class="tableHighlightLinkItem" href="<?php echo SITE_NAME . SUBSITE_NAME . $values['permalink']?>"><?php echo $values['title']?></a></li>
+	<?php 
+				} else {
 	?>
-		<li style="margin:0em 0em 0.5em 0em"><a class="menuItem" href="<?php echo SITE_NAME . SUBSITE_NAME . $values['permalink']?>"><?php echo $values['title']?></a></li> 
-	<?php } } else { $errorMessage = $dbObj->error;
-	 } ?>	
+				<li style="margin:0em 0em 0.5em 0em"><a class="tableLinkItem" href="<?php echo SITE_NAME . SUBSITE_NAME . $values['permalink']?>"><?php echo $values['title']?></a></li>
+	<?php 
+				} 
+	 		} 
+		} else { 
+			$errorMessage = $dbObj->error;
+		} ?>	
 	</ul>
 </div>
 <?php } ?>
