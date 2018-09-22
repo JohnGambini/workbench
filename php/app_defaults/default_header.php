@@ -27,7 +27,6 @@ global $dataArrays;
 	<style type="text/css">
 	.CodeMirror {width:100%;height:37.5em;border-top: 1px solid #888; border-bottom: 1px solid #888;}
 	</style>
-	<script type="text/javascript" async src="/MathJax-2.6/MathJax.js?config=TeX-AMS_SVG"></script>
 	<meta name="author" content="<?php echo $contentObj->authorFullName ?>">
 	<meta property="og:title" content="<?php echo $contentObj->title ?>" />
 	<meta property="og:locale" content="<?php echo $contentObj->lang ?>" />
@@ -47,19 +46,10 @@ global $dataArrays;
 	a.sidebarLinkItem:hover { text-decoration:underline; }
 	a.sidebarHighlightLinkItem { text-decoration:underline; color:inherit; }
 	a.sidebarHighlightLinkItem:hover { text-decoration:underline; }
-	#popupAddContent { position: fixed; display: none; top:14%; z-index:10; }
-	#popupEditContent { position: fixed; display: none; top:18%; z-index:10; }
-	#popupManageTabs { position: fixed; display: none; top:18%; min-width:50%; z-index:10; }
-	#popupManageRightbar { position: fixed; display: none; top:18%; min-width:50%; z-index:10; }
-	#popupMenuGroups { position: fixed; display: none; top:15%; width:70%; z-index:10; }
-	#popupManageMenus { position: fixed; display: none; top:18%; width:75%; z-index:10; }
-	#popupHeadersDlg { position: fixed; display: none; top:18%; min-width:40%; max-width:75%; z-index:10; }
-	#popupChangeThemeDlg { position: fixed; display: none; top:18%; min-width:20%; max-width:40%; z-index:10; }
-	#popupContentDump { position: fixed; display: none; top:12%; width:70%; z-index:10; }
-	#popupUserDump { position: fixed; display: none; top:12%; width:70%; z-index:10; }
-	#debugDialog { position: fixed; display: none; top:12%; z-index:10; }
 	#articleEdit { position: fixed; display: block; margin:0em 1em; width:60%; border-radius:10px; color:white; top:120%; opacity:0; z-index:10; transition: top 1s, opacity 1s; }
 	#articleEditSidebarWidget { position: fixed; display: block; margin:0em 1em; width:18%; color:white; left:-120%; opacity:0; z-index:10; transition: left 1s, opacity 1s; }
+	#popupContentMenu { position: fixed; display: none; font-family: verdana, tahoma, arial, sans-serif; padding: 0.5em 2em 0.5em 0em; top:0; left:0; z-index:11; }
+	#popupUserMenu { position: fixed; display: none; font-family: verdana, tahoma, arial, sans-serif; padding: 0.5em 1em 0.5em 0em; border-radius:10px; border:2px solid black; font-size:10pt; color: black; top:0; left:0; z-index:11; }
 	#popupLanguages { display:none;	}
 	#popupMainMenu { display:none; }
 	#popupHr { display:none; }
@@ -207,7 +197,7 @@ global $dataArrays;
 	.article-dialog { background-color:#FEFEFE; border-radius:10px; border:2px solid #AAAAAA; color: black; text-shadow: 0px 0px #500303; font-smoothing: antialiased; -webkit-font-smoothing: antialiased; -moz-font-smoothing: antialiased; }
 	.article-dialog .pagecomponent { width:100%; border:1px solid black; border-radius:7px;	}
 	.article-dialog .header { background-color:#AAAAAA; border-radius:6px 6px 0px 0px; color:white; padding:0.25em 1em;	}
-	.newspaper table, ul, div { -webkit-column-break-inside:avoid; -moz-column-break-inside:avoid; -o-column-break-inside:avoid; -ms-column-break-inside:avoid; column-break-inside:avoid; }
+	.newspaper table, ul, div, ol { -webkit-column-break-inside:avoid; -moz-column-break-inside:avoid; -o-column-break-inside:avoid; -ms-column-break-inside:avoid; column-break-inside:avoid; }
 	.imageViewer img { width:45%; float:left; margin:0em 2% 2% 0%; border:1px solid #DDDDDD; border-radius:5px; }
 	.newspaper .rightBlock { width:50%; float:right; margin:0em -0.5em 0em 1em; }
 	.newspaper .leftBlock { width:50%; float:left; margin:0em 1em 0em -0.5em; }
@@ -233,6 +223,7 @@ global $dataArrays;
 	<link rel="stylesheet" href="<?php echo WORKBENCH_FOLDER ?>/css/icomoon.css" type="text/css" media="screen"/>
 	<link rel="stylesheet" href="<?php echo $contentObj->themeDir ?>/css/calliopesutra.css" type="text/css" media="screen"/>
 	<script type="text/javascript" src="<?php echo WORKBENCH_FOLDER ?>/js/workbench.js"></script>
+	<script type="text/javascript" async src="/MathJax-2.6/MathJax.js?config=TeX-AMS_SVG"></script>
 	<meta http-equiv="Cache-Control" content="no-store" />
 </head>
 <body id="body">

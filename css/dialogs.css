@@ -7,7 +7,9 @@
 }
 
 a.tableLinkItem { text-decoration:none; color:#000099; }
-a.tableLinkItem:hover { text-decoration:underline; text-shadow: 0px 0px #000000;	}
+a.tableLinkItem:hover { text-decoration:underline; text-shadow: 0px 0px #FFFFFF;	}
+a.tableHighlightLinkItem { text-decoration:none; color:#000099; font-weight:bold; text-shadow: 1px 1px #FFFFFF }
+a.tableHighlightLinkItem:hover { text-decoration:underline; text-shadow: 0px 0px #000000;	}
 
 .outer-table { width:100%;
  }
@@ -52,5 +54,14 @@ a.tableLinkItem:hover { text-decoration:underline; text-shadow: 0px 0px #000000;
 .wb-dialog input[type=text], input[type=number], select, textarea { width:100%; padding:4px; }
 #successDialog { position: fixed; display: none; top:12%; z-index:10; }
 #errorDialog { position: fixed; display: none; top:12%; z-index:10; }
-#popupContentMenu { position: fixed; display: none; font-family: verdana, tahoma, arial, sans-serif; padding: 0.5em 2em 0.5em 0em; top:0; left:0; z-index:11; }
-#popupUserMenu { position: fixed; display: none; font-family: verdana, tahoma, arial, sans-serif; padding: 0.5em 1em 0.5em 0em; border-radius:10px; border:2px solid black; font-size:10pt; color: black; top:0; left:0; z-index:11; }
+#popupAddContent { position: fixed; display: none; top:14%; z-index:10; }
+#popupEditContent { position: fixed; display: none; top:18%; z-index:10; }
+#popupManageTabs { position: fixed; display: none; top:18%; min-width:50%; z-index:10; }
+#popupManageRightbar { position: fixed; display: none; top:18%; min-width:50%; z-index:10; }
+#popupMenuGroups { position: fixed; display: none; top:15%; width:70%; z-index:10; }
+#popupManageMenus { position: fixed; display: none; top:18%; width:75%; z-index:10; }
+#popupHeadersDlg { position: fixed; display: none; top:18%; min-width:40%; max-width:75%; z-index:10; }
+#popupChangeThemeDlg { position: fixed; display: none; top:18%; min-width:20%; max-width:40%; z-index:10; }
+#popupContentDump { position: fixed; display: none; top:12%; width:70%; z-index:10; }
+#popupUserDump { position: fixed; display: none; top:12%; width:70%; z-index:10; }
+#debugDialog { position: fixed; display: none; top:12%; z-index:10; }
