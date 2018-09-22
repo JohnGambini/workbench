@@ -8,8 +8,8 @@
 
 a.tableLinkItem { text-decoration:none; color:#000099; }
 a.tableLinkItem:hover { text-decoration:underline; text-shadow: 0px 0px #FFFFFF;	}
-a.tableHighlightLinkItem { text-decoration:none; color:#000099; font-weight:bold; text-shadow: 1px 1px #FFFFFF }
-a.tableHighlightLinkItem:hover { text-decoration:underline; text-shadow: 0px 0px #000000;	}
+.tableHighlightLinkItem { text-decoration:none; color:#000099; font-weight:bold; text-shadow: 1px 1px #FFFFFF }
+.tableHighlightLinkItem:hover { text-shadow: 0px 0px #000000;	}
 
 .outer-table { width:100%;
  }

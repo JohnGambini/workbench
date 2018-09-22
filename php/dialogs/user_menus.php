@@ -97,7 +97,7 @@ function set_popupContentMenu(wbDatabase $dbObj, wbSql $sqlObject) {
 			foreach($dataArrays->rootContentArray as $key => $values) {
 				if( $contentObj->permalink == $values['permalink']) { ?>
 						
-				<li style="margin:0em 0em 0.5em 0em"><a class="tableHighlightLinkItem" href="<?php echo SITE_NAME . SUBSITE_NAME . $values['permalink']?>"><?php echo $values['title']?></a></li>
+				<li class="tableHighlightLinkItem" style="margin:0em 0em 0.5em 0em"><?php echo $values['title']?></li>
 	<?php 
 				} else {
 	?>
