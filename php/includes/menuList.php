@@ -20,6 +20,9 @@ function set_menuList($dbObj,$contentObj,$sqlObject, $dataArrays, $htmlId = "men
 	
 	$dataArrays->get_sidebarMenusArray($dbObj,$sqlObject);
 	
+	$linkSpec = ($contentObj->parentPageType == 'parallax' ? '#' . $contentObj->title : '');
+	
+	
 ?>
 <div class="fontSpecMenuList" id="<?php echo $htmlId?>">
 <?php foreach($dataArrays->sidebarMenusArray as $menuId => $values ) {
@@ -27,7 +30,7 @@ if($values['menuParentId'] == -1) { ?>
 	<div><?php echo $dataArrays->sidebarMenusArray[$menuId]['menuTitle']; ?></div>
 <?php 
 } else {?>
-	<div><a class="menuItem" href="<?php echo WEBAPP . $dataArrays->sidebarMenusArray[$menuId]['menuPermalink']?>"><?php echo $dataArrays->sidebarMenusArray[$menuId]['menuTitle'] ?></a></div>
+	<div><a class="menuItem" href="<?php echo WEBAPP . $dataArrays->sidebarMenusArray[$menuId]['menuPermalink'] . $linkSpec ?>"><?php echo $dataArrays->sidebarMenusArray[$menuId]['menuTitle'] ?></a></div>
 <?php } ?>
 	<ul>
 	<?php foreach($values['menuItems'] as $contentId => $contentData) {
