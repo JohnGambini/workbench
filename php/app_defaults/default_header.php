@@ -123,7 +123,7 @@ global $dataArrays;
 		.rightbar { display:none; } 
 	}
 	.gallery {}
-	.parallax { width:inherit; height:100%; color:white; text-shadow: 1px 1px #004400; border:1px solid #002200; background-position:center; background-size:cover; background-repeat:no-repeat;background-attachment:fixed}
+	.parallax { width:inherit; height:100%; color:white; text-shadow: 1px 1px #004400; background-position:center; background-size:cover; background-repeat:no-repeat;background-attachment:fixed}
 	.imageContent { background-color:#EEEEEE; border-radius: 8px; border: 1px solid #0000DD; min-height:75%; margin-top: 10px; margin-bottom: 0.5em; font-smoothing: antialiased; -webkit-font-smoothing: antialiased; -moz-font-smoothing: antialiased; }
 	ul.imagefooter { list-style: none; margin: 0em 2em; padding: 0px; }
 	.imagefooter li { display: inline-block; text-align: left; font-style: italic; }
