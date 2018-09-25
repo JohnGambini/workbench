@@ -230,7 +230,6 @@ function resizeDoc(resizeCounter)
 	|| document.documentElement.clientWidth
 	|| document.body.clientWidth;
 	var mainmenuItem2 = document.getElementById('mainmenuItem2');
-	var rightBar = document.getElementById('rightbarContainer');
 	if(contentMenu || transparentContentMenu) {
 		if(rightbarContent && width > 760) {
 			if(mainmenuItem2 != null)
@@ -238,7 +237,16 @@ function resizeDoc(resizeCounter)
 		}
 		else if(mainmenuItem2 != null)
 			mainmenuItem2.style.display = 'inline-block';
+	} else {
+		if( mainmenuItem2 && width < 760 ) { 
+					mainmenuItem2.style.display = 'none';
+		} else if(mainmenuItem2 !=null && rightbarContent) {
+				mainmenuItem2.style.display = 'none';
+			} else if(mainmenuItem2 != null) {
+				mainmenuItem2.style.display = 'inline-block';
+			}
 	}
+	
 	//alert(typeof pagePreferences);
 
 	if(typeof pagePreferences !== 'undefined') {

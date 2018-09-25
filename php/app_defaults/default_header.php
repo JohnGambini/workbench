@@ -154,7 +154,6 @@ global $dataArrays;
 	.listBlocks { display:flex;display:-webkit-flex;flex-direction:row;align-items:center;justify-content:center;align-content:center;-webkit-align-content:center }
 	@media all and (max-width:760px) { .topicBlock { width:49%; } /* #galleryTitle { display:block; } */ }
 	@media all and (max-width:699px) {
-		#mainmenuItem2 { display:none;} 
 		.siteName { display:none; } 
 		#userName { display:none; } 
 		.listBlocks { flex-direction:column }
