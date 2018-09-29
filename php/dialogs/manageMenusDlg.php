@@ -44,7 +44,7 @@ function set_manageMenusDlg(dbUser $userObj, dbContent $contentObj, wbDataArrays
 	for( $i = 1; $row = mysqli_fetch_array($dbObj->result); $i++ ) {
 		$menuListArray[$i] = array(
 				array('<input type="checkbox" name="checkbox_' . $i . '" value="' . $row['ID'] . '"/>', 'width:2%'),
-				array('<a class="linkItem" href="' . SUBSITE_NAME . $row['menuPermalink'] . '">' . $row['menuDescription'] . '</a>', 'width:42%;padding:0em 0em 0em 0.5em'),
+				array('<a class="tableLinkItem" href="' . SUBSITE_NAME . $row['menuPermalink'] . '">' . $row['menuDescription'] . '</a>', 'width:42%;padding:0em 0em 0em 0.5em'),
 				array($row['menuType'], 'width:5%;padding:0em 0.5em 0em 0.5em'),
 				array('<input type="number" name="sequence_' . $i . '" value="' .  $row['sequence'] . '"/><input hidden="true" type="number" name="itemId_' . $i . '" value="' . $row['ID'] . '"/>', 'width:8%;padding:0em 0.5em 0em 0.5em'),
 				array($row['title'], 'width:43%;padding:0em 0em 0em 0.5em'),
