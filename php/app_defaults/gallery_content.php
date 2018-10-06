@@ -42,7 +42,7 @@ if(isset($dataArrays)) {
 <div  id="mainContent" class="gallery" style="padding:0.5em 0.01em 0.5em 0.1em" >
 <div id="galleryTitle"><?php echo $contentObj->title ?></div>
 <?php if(strlen($contentObj->articleDescription)){?>
-	<div class="fontSpecVerySmall" style="max-width:80%;text-align:center;margin:0em auto"><?php echo $contentObj->articleDescription ?></div>
+	<div class="fontSpecVerySmall" style="max-width:80%;text-align:left;margin:0em auto"><?php echo $contentObj->articleDescription ?></div>
 <?php }?>
 
 <?php echo get_galleryWidgetString( $dbObj, $sqlObject, $contentObj, $dataArrays ); ?>
