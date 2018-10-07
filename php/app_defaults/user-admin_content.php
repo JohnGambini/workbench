@@ -74,9 +74,9 @@ $settingsArrayGroups = array('header' => true, 'height' => '24em');
 
 ?>
 <div id="contentContainer" class="contentContainer">
-<div id="content" class="content"">
+<div id="content" class="content">
 <?php get_contentMenu($contentObj)?>
-<div id="mainContent" style="padding: 0em 0em 0.01em 0.01em;height:100%">
+<div id="mainContent" style="padding: 1em 0em 0.01em 0.01em;height:100%">
 
 <table class="wb-dialog" style="width:90%;padding:0.5em;margin:0em auto">
 <tr>
