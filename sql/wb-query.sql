@@ -2,7 +2,7 @@ select * from wb_user;
 select * from vw_user;
 select * from wb_pagetypes;
 select * from wb_content;
-select * from vw_contentList where contentId = 396;
+select * from vw_contentList;
 
 select * from wb_articles where contentId = 89;
 select * from wb_pagetypes;
@@ -21,15 +21,17 @@ select * from wb_grouplists;
 CREATE VIEW `vw_content` AS
 SELECT wb_content.ID, guid, lang, defaultParentId, wb_content.permalink, title, status, target, 
 	shortDescription, creatorId, ownerId, vw_user.type ownerType, vw_user.fullName ownerFullName,
-    vw_user.permalink ownerLink, wb_content.pageType, galleryImage, articleFile, articleImage,
-    articleDescription, ogType, authorFullName, authorLink, dateCreated, dateModified
-    from wb_content left join vw_user on wb_content.ownerId = vw_user.ID;
+    vw_user.permalink ownerLink, wb_content.pageType, wb_pagetypes.canEdit, wb_pageTypes.hasRightbar,
+    galleryImage, pageArgument, articleFile, articleImage, articleDescription, ogType, authorFullName, 
+    authorLink, dateCreated, dateModified
+    from wb_content left join vw_user on wb_content.ownerId = vw_user.ID, wb_pagetypes
+    where wb_content.pageType = wb_pagetypes.pageTypeName;
 
-/*drop view vw_contentlist;*/
+/* drop view vw_contentlist; */
 CREATE VIEW `vw_contentlist` AS
 select wb_menuItems.ID itemId, wb_menuitems.menuId, wb_menuitems.menuType, 
 wb_content.ID contentId, lang, defaultParentId, permalink, title, sequence, status, target, 
-galleryImage, pageType, ownerId, authorFullName, authorLink 
+galleryImage, pageType, ownerId, authorFullName, authorLink, articleImage, articleDescription, ogType 
 from wb_menuitems, wb_content 
 where wb_menuitems.contentId = wb_content.ID 
 
@@ -50,7 +52,7 @@ select `wb_content`.`ID` AS `ID`,
     where (`wb_content`.`pageType` in (select pageTypeName from wb_pagetypes where isMenu = TRUE));
 */
 
-drop view vw_menulist;
+/* drop view vw_menulist; */
 CREATE VIEW `vw_menulist` AS
 select `wb_content`.`ID` AS `menuId`,
 	`wb_content`.`lang` AS `m_lang`,
@@ -87,6 +89,7 @@ create table wb_grouplists (
     PRIMARY KEY (`ID`)
 );
 
+alter table wb_pagetypes add column hasRightbar tinyint after canEdit; 
 
 /*
 alter table wb_menuitems add column menuType tinyint after menuId;
@@ -122,6 +125,9 @@ from vw_contentwhere vw_content.ID = '364' and ( vw_content.ownerId = '2' or vw_
 
 select * from wb_content where title like 'rootContent%'
 
+
+
+
 /*---------------------------------------------------------
  * current query
  */
@@ -151,7 +157,7 @@ order by mgseq, menuId
 select * from wb_menugroups where parentId = '314' and contentId = '419';
 
 
-select * from vw_menulist2 where menuId = '365'
+select * from vw_menulist2 where menuId = '365';
 
 
 select vw_contentlist.title, vw_contentlist.sequence, vw_contentlist.permalink, vw_contentlist.status
