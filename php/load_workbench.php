@@ -89,6 +89,7 @@ require_once( WORKBENCH_DIR . '\php\dialogs\addContentDlg.php');
 require_once( WORKBENCH_DIR . '\php\dialogs\editContentDlg.php');
 require_once( WORKBENCH_DIR . '\php\dialogs\tabsDlg.php');
 require_once( WORKBENCH_DIR . '\php\dialogs\rightbarDlg.php');
+require_once( WORKBENCH_DIR . '\php\dialogs\articlesDlg.php');
 require_once( WORKBENCH_DIR . '\php\dialogs\menuGroupsDlg.php');
 require_once( WORKBENCH_DIR . '\php\dialogs\manageMenusDlg.php');
 require_once( WORKBENCH_DIR . '\php\dialogs\changeThemeDlg.php');
@@ -108,6 +109,7 @@ require_once( WORKBENCH_DIR . '\php\includes\articleEditLink.php');
 require_once( WORKBENCH_DIR . '\php\includes\languages.php');
 require_once( WORKBENCH_DIR . '\php\includes\menuList.php');
 require_once( WORKBENCH_DIR . '\php\includes\galleryWidgetString.php');
+require_once( WORKBENCH_DIR . '\php\includes\articlesWidgetString.php');
 
 /* Widgets */
 require_once( WORKBENCH_DIR . '\php\widgets\tabsWidget.php');
@@ -136,6 +138,11 @@ if($userObj->ID != NULL) {
 require_once( WORKBENCH_DIR . '\php\includes\wb_functions.php');
 
 $dialogsObj = new wbDialogs( $userObj, $contentObj );
+
+//load articles array here so that you know it's always loaded since it's used by
+//the articlesDlg which may or may not be set and by several different page types.
+//It's probably best to find a better place to do this.
+$dataArrays->get_articleItemsArray($dbObj, $sqlObject);
 
 get_header($contentObj);
 get_menu($contentObj);
