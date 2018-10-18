@@ -20,7 +20,7 @@ if(file_exists($filename))
 	$n = count($ini_array);
 
 	$flip = 0;
-	?>
+?>
 <div id="contentContainer" class="contentContainer">
 <div id="content" class="content">
 <?php get_contentMenu($contentObj) ?>
