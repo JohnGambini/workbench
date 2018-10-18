@@ -11,21 +11,15 @@ global $contentObj;
 global $sqlObject;
 global $dataArrays;
 
-$dataArrays->get_tabsArray( $dbObj, $sqlObject, $contentObj->ID);
-reset($dataArrays->tabsArray);
-$tabName = count($dataArrays->tabsArray) ? key($dataArrays->tabsArray) : '';
 ?>
 <div id="contentContainer" class="contentContainer">
 <div id="content" class="content" onscroll="getScrollPos()">
 <?php get_contentMenu($contentObj) ?>
+<?php get_rightbar($contentObj)?>
 <div id="mainContent" style="padding: 0em 1em 0.03em 1em;border-top: 1px solid grey">
 <div class="articleTabs fontSpecSmall"><?php set_tabsWidget($dbObj, $sqlObject, $dataArrays, $contentObj)?></div>
 
-<?php if(strlen($tabName) != 0) {?>	
-<div id="articleText"><?php echo replace_wb_variable($dataArrays->tabsArray[$tabName]['articleText']) ?></div>
-<?php 	} else {?>
 <div id="articleText"></div>
-<?php	 }?>
 
 </div> <!-- close mainContent -->
 <?php set_articleEditorWidget($userObj,$contentObj, '')?>
