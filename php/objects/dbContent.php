@@ -20,6 +20,8 @@
 	public $ownerId = NULL;
 	public $ownerType = NULL;
 	public $pageType = NULL;
+	public $canEdit = NULL;
+	public $hasRightbar = NULL;
 	public $pageArgument = NULL;
 	public $galleryImage = NULL;
 
@@ -73,6 +75,8 @@
 			$this->ownerType = $row['ownerType'];
 			$this->pageArgument = $row['pageArgument'];
 			$this->pageType = $row['pageType'];
+			$this->canEdit = $row['canEdit'];
+			$this->hasRightbar = $row['hasRightbar'];
 			$this->galleryImage = $row['galleryImage'];
 			$this->articleFile = $row['articleFile'];
 			/*
@@ -115,10 +119,13 @@
 		
 		if( isset($_GET['p']) and $_GET['p'] != 0) {
 			$this->sqlSelect = "select vw_content.ID,  vw_content.guid,  vw_content.lang, " .
-			"vw_content.defaultParentId,  vw_content.permalink,  vw_content.title,  vw_content.status, " .
-			"vw_content.target,  vw_content.shortDescription,  vw_content.creatorId,  vw_content.ownerId, " .
-			"vw_content.ownerType,  vw_content.pageType,  vw_content.pageArgument, vw_content.galleryImage, " .
-			"vw_content.articleFile, " /*vw_content.articleURL, */ . " vw_content.articleImage, vw_content.articleDescription, " .
+			"vw_content.defaultParentId,  vw_content.permalink,  vw_content.title, " .
+			"vw_content.status, vw_content.target,  vw_content.shortDescription, " .
+			"vw_content.creatorId,  vw_content.ownerId, vw_content.ownerType, " .
+			"vw_content.pageType,  vw_content.canEdit, vw_content.hasRightbar, " .
+			"vw_content.pageArgument, " .
+			"vw_content.galleryImage, vw_content.articleFile, " /*vw_content.articleURL, */ . 
+			"vw_content.articleImage, vw_content.articleDescription, " .
 			"vw_content.ogType, vw_content.authorFullName,  vw_content.authorLink, vw_content.dateCreated, vw_content.dateModified, " .
 			"wb_content.ID parentId, wb_content.defaultParentId grandParentId, " .
 			"wb_content.permalink parentPermalink, wb_content.title parentTitle, wb_content.pageType parentPageType " .
@@ -129,9 +136,11 @@
 			}
 		else {
 			$this->sqlSelect = "select vw_content.ID,  vw_content.guid,  vw_content.lang, " .
-			"vw_content.defaultParentId,  vw_content.permalink,  vw_content.title,  vw_content.status, " .
-			"vw_content.target,  vw_content.shortDescription,  vw_content.creatorId,  vw_content.ownerId, " .
-			"vw_content.ownerType,  vw_content.pageType, vw_content.pageArgument, vw_content.galleryImage, " .
+			"vw_content.defaultParentId,  vw_content.permalink,  vw_content.title, " .
+			"vw_content.status, vw_content.target,  vw_content.shortDescription, " .
+			"vw_content.creatorId,  vw_content.ownerId, vw_content.ownerType, " .
+			"vw_content.pageType,  vw_content.canEdit, vw_content.hasRightbar, " .
+			"vw_content.pageArgument, vw_content.galleryImage, " .
 			"vw_content.articleFile, " /*vw_content.articleURL, */ . " vw_content.articleImage, vw_content.articleDescription, " .
 			"vw_content.ogType, vw_content.authorFullName,  vw_content.authorLink, vw_content.dateCreated, vw_content.dateModified, " .
 			"wb_content.ID parentId, wb_content.defaultParentId grandParentId, " .
@@ -165,9 +174,11 @@
 	public function get_content_by_id(wbDatabase $db, dbUser $userObj) {
 
 		$this->sqlSelect = "select vw_content.ID,  vw_content.guid,  vw_content.lang, " .
-				"vw_content.defaultParentId,  vw_content.permalink,  vw_content.title,  vw_content.status, " .
-				"vw_content.target,  vw_content.shortDescription,  vw_content.creatorId,  vw_content.ownerId, " .
-				"vw_content.ownerType,  vw_content.pageType, vw_content.pageArgument, vw_content.galleryImage, " .
+				"vw_content.defaultParentId,  vw_content.permalink,  vw_content.title, " .
+				"vw_content.status, vw_content.target,  vw_content.shortDescription, " .
+				"vw_content.creatorId,  vw_content.ownerId, vw_content.ownerType, " .
+				"vw_content.pageType,  vw_content.canEdit, vw_content.hasRightbar, " .
+				"vw_content.pageArgument, vw_content.galleryImage, " .
 				"vw_content.articleFile, " /*vw_content.articleURL, */ . " vw_content.articleImage, vw_content.articleDescription, " .
 				"vw_content.ogType, vw_content.authorFullName,  vw_content.authorLink, vw_content.dateCreated, vw_content.dateModified, " .
 				"wb_content.ID parentId, wb_content.defaultParentId grandParentId, " .
@@ -362,6 +373,8 @@
 				"ownerId:" . $this->ownerId . "<br/>" .
 				"ownerType: " . $this->ownerType . "<br/>" .
 				"pageType:" . $this->pageType . "<br/>" .
+				"canEdit:" . $this->canEdit . "<br/>" .
+				"hasRightbar:" . $this->hasRightbar . "<br/>" .
 				"pageArgument:" . $this->pageArgument . "<br/>" .
 				"galleryImage: " . $this->galleryImage . "<br/>" .
 				"articleFile: " . $this->articleFile . "<br/>" .
