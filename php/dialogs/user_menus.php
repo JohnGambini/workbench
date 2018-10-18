@@ -36,6 +36,11 @@ function set_popupUserMenu(dbUser $userObj, dbContent $contentObj, wbDialogs $di
 		href="javascript:void(0)"><?php echo 'Manage Rightbar'?></a>
 		</li>
 	<?php }?>
+	<?php if(isset($dialogsObj->functions['manage-articles'])) { ?>
+		<li><a class="menuItem" onclick="showForm('popupManageArticles','content')" 
+		href="javascript:void(0)"><?php echo 'Manage Articles'?></a>
+		</li>
+	<?php }?>
 	<?php if(isset($dialogsObj->functions['sidebar-menus'])) { ?>
 		<li><a class="menuItem" onclick="showForm('popupMenuGroups','content')" 
 		href="javascript:void(0)"><?php echo 'Sidebar Menus'?></a>

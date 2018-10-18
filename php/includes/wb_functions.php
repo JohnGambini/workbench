@@ -354,7 +354,8 @@ function replace_wb_variable($subject, wbDatabase $dbObj, wbSql $sqlObject = NUL
 			'#(\[\[)\s*(article-description)\s*(\]\])#',
 			'#(\[\[)\s*(article-title)\s*(\]\])#',
 			'#(\[\[)\s*(article-file)\s*(\]\])#',
-			'#(\[\[)\s*(gallery-widget)\s*(\]\])#'
+			'#(\[\[)\s*(gallery-widget)\s*(\]\])#',
+			'#(\[\[)\s*(articles-widget)\s*(\]\])#'
 	);
 	
 	$replaceArray = array(
@@ -366,7 +367,8 @@ function replace_wb_variable($subject, wbDatabase $dbObj, wbSql $sqlObject = NUL
 			isset($contentObj) ? replace_wb_variable($contentObj->articleDescription, $dbObj, $sqlObject) : "<span style='color:red'>no content object</span>",
 			isset($contentObj) ? replace_wb_variable($contentObj->title, $dbObj, $sqlObject) : "<span style='color:red'>no content object</span>",
 			isset($contentObj) ? replace_wb_variable($contentObj->articleFile,$dbObj) : "<span style='color:red'>no content object</span>",
-			isset($dataArrays) ? get_galleryWidgetString($dbObj, $sqlObject, $contentObj,$dataArrays) : "<span style='color:red'>no data array object</span>"
+			isset($dataArrays) ? get_galleryWidgetString($dbObj, $sqlObject, $contentObj, $dataArrays) : "<span style='color:red'>no data array object</span>",
+			isset($dataArrays) ? get_articlesWidgetString($dbObj, $sqlObject, $contentObj, $dataArrays) : "<span style='color:red'>no data array object</span>"
 	);
 	
 	return preg_replace($patternArray,$replaceArray,$subject);
@@ -381,7 +383,7 @@ function can_user_edit( dbUser $userObj, dbContent $contentObj )
 {
 	/* for now this is only for profile, image, gallery and article pages */
 	/* this is only for the article edit link, for edit attributes see can_user_edit_attribute */
-	if($contentObj->pageType != 'profile' and $contentObj->pageType != 'article' and $contentObj->pageType != 'image' and $contentObj->pageType != 'gallery' )
+	if($contentObj->canEdit < 1 )
 		return false;
 	
 	if($contentObj->ownerId <> $userObj->ID) {

@@ -12,6 +12,7 @@ class wbSql
 	public $sqlMenuGroups = NULL;
 	public $sqlSideBarMenuList = NULL;
 	public $sqlGalleryList = NULL;
+	public $sqlArticlesList = NULL;
 	public $sqlListPosts = NULL;
 	public $sqlUsers = NULL;
 	public $sqluserGroups = NULL;
@@ -99,10 +100,22 @@ class wbSql
 		 * This lists one menu, and the content associated with the
 		 * menu's items. Used by the gallery page
 		 */
-		$this->sqlGalleryList = "select contentId, itemId, permalink, title, sequence, galleryImage, pageType " .
+		$this->sqlGalleryList = "select contentId, itemId, permalink, title, sequence, " .
+				"galleryImage, pageType, articleDescription, ogType " .
 				"from vw_contentlist " .
 				"where menuId = '" . $contentObj->ID . "' " .
 				"and menuType = '1' " .
+				"and (( ownerId = '" . $userObj->ID . "' and (status = 'Private' or status = 'Draft')) or status in (" . $userObj->groups() . ") or status = 'Public' ) order by sequence";
+
+		/*---------------------------------------------------------------------------------------
+		 * This lists one menu, and the content associated with the
+		 * menu's items. Used by the articles page
+		 */
+		$this->sqlArticlesList = "select contentId, itemId, permalink, title, sequence, " .
+				"galleryImage, pageType, articleDescription, ogType " .
+				"from vw_contentlist " .
+				"where menuId = '" . $contentObj->ID . "' " .
+				"and menuType = '3' " .
 				"and (( ownerId = '" . $userObj->ID . "' and (status = 'Private' or status = 'Draft')) or status in (" . $userObj->groups() . ") or status = 'Public' ) order by sequence";
 
 		/*-------------------------------------------------------------------------
@@ -151,7 +164,8 @@ class wbSql
 		/*----------------------------------------------------------------------------------
 		 * Here's the select for the page types table
 		 */
-		$this->sqlPageTypes = "select ID, pageTypeName from wb_pagetypes where userSelect <='" . $userObj->type . "'";
+		$this->sqlPageTypes = "select ID, pageTypeName from wb_pagetypes " .
+			"where seq > 0 and userSelect <='" . $userObj->type . "' order by seq";
 		
 		/*----------------------------------------------------------------------------------
 		 * This is the sql for the parents list

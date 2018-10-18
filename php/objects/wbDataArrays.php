@@ -15,6 +15,7 @@ class wbDataArrays
 	public $userGroupsArray = NULL;
 	public $pageTypesArray = NULL;
 	public $galleryItemsArray = NULL;
+	public $articleItemsArray = NULL;
 	public $parallaxItemsArray = NULL;
 	public $sidebarMenusArray = NULL;
 	public $rootContentArray = NULL;
@@ -62,6 +63,15 @@ class wbDataArrays
 	function get_galleryItemsArray($dbObj, $sqlObject) {
 		if($this->galleryItemsArray == NULL)
 			return $this->load_galleryItems($dbObj, $sqlObject);
+		return true;
+	}
+	
+	/*------------------------------------------------------------------------
+	 *
+	 */
+	function get_articleItemsArray($dbObj, $sqlObject) {
+		if($this->articleItemsArray == NULL)
+			return $this->load_articleItems($dbObj, $sqlObject);
 		return true;
 	}
 	
@@ -143,11 +153,38 @@ class wbDataArrays
 		$this->galleryItemsArray = array();
 		
 		for($i = 0; $row = mysqli_fetch_array($dbObj->result); $i++ ) {
-			$this->galleryItemsArray[$i] = array('ID' => $row['contentId'], 'itemId' => $row['itemId'], 'permalink' => $row['permalink'], 'title' => $row['title'],
-					'sequence' => $row['sequence'], 'galleryImage' => $row['galleryImage'], 'pageType' => $row['pageType']
+			$this->galleryItemsArray[$i] = array('ID' => $row['contentId'], 
+					'itemId' => $row['itemId'], 'permalink' => $row['permalink'], 
+					'title' => $row['title'], 'sequence' => $row['sequence'], 
+					'galleryImage' => $row['galleryImage'], 'pageType' => $row['pageType'],
+					'articleDescription' => $row['articleDescription'], 'type' => $row['ogType']
 			);
 		}
 		
+		return true;
+	}
+	
+	/*-----------------------------------------------------------------------------
+	 * load_articleItems
+	 */
+	function load_articleItems($dbObj, $sqlObject) {
+		if( ! $dbObj->query($sqlObject->sqlArticlesList)) {
+			$dbObj->error = "wbDataArrays: load_articleItems: An sql error occured<br><br>" . $dbObj->error . "<br><br>" .
+					$sqlObject->sqlArticlesList;
+					return false;
+		}
+	
+		$this->articleItemsArray = array();
+	
+		for($i = 0; $row = mysqli_fetch_array($dbObj->result); $i++ ) {
+			$this->articleItemsArray[$i] = array('ID' => $row['contentId'],
+					'itemId' => $row['itemId'], 'permalink' => $row['permalink'],
+					'title' => $row['title'], 'sequence' => $row['sequence'],
+					'galleryImage' => $row['galleryImage'], 'pageType' => $row['pageType'],
+					'articleDescription' => $row['articleDescription'], 'type' => $row['ogType']
+			);
+		}
+	
 		return true;
 	}
 	

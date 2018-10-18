@@ -156,6 +156,12 @@ if( isset($_POST['updateRightbar'])) {
 	}
 }
 
+if( isset($_POST['updateArticles'])) {
+	if(!update_articles($dbObj, $userObj)) {
+		mysqli_rollback($dbObj->dbh);
+		return false;
+	}
+}
 
 if( isset($_POST['changeTheme'])) {
 	if(!change_theme($dbObj, $userObj)) {
@@ -1110,6 +1116,71 @@ function update_rightbar(wbDatabase $dbObject, dbUser $userObj )
 	return true;
 }
 
+/*------------------------------------------------------------------------------------------
+ * update_articles
+ *
+ *
+ -------------------------------------------------------------------------------------------*/
+function update_articles(wbDatabase $dbObject, dbUser $userObj )
+{
+	global $debugMessage;
+
+	$debugMessage = $debugMessage . " update_articles was called.<br>";
+
+	$contentId = isset($_POST['contentId']) ?  $_POST['contentId'] : 0;
+	$debugMessage = $debugMessage . " contentId = " . $contentId . "<br>";
+
+
+	if( ! isset($_POST['recordCount'])) {
+		$dbObject->error = "update_articles: one or more neccessary fields were not set in post data.<br>";
+		return false;
+	}
+
+	for( $i = 1; $i <= $_POST['recordCount']; $i++) {
+
+		$checkboxId = isset($_POST['checkbox_' . $i]) ? $_POST['checkbox_' . $i] : NULL;
+		$menuID = isset($_POST['menuID_' . $i]) ? $_POST['menuID_' . $i] : NULL;
+		$sequence = isset($_POST['seq_' . $i]) ? $_POST['seq_' . $i ] : NULL;
+
+		$debugMessage = $debugMessage . " &nbsp;checkboxId = " . $checkboxId . "<br>";
+		$debugMessage = $debugMessage . " &nbsp;menuID = " . $menuID . "<br>";
+		$debugMessage = $debugMessage . " &nbsp;sequence = " . $sequence . "<br>";
+
+		/* update wb_articles */
+		$sqlQuery = "update wb_menuitems set sequence = '" . $sequence . "' " .
+				"where ID = '" . $menuID . "'";
+
+		if(!$dbObject->query($sqlQuery)) {
+			$dbObject->error = "update_articles: an error occurred during mysqli_query<br><br>" .
+					$dbObject->error . "<br><br>" . $sqlQuery;
+					return false;
+		}
+
+		if( isset($checkboxId) ) {
+			$sqlQuery = "delete from wb_menuitems where ID = '" . $checkboxId . "'";
+			
+			$debugMessage = $debugMessage . " &nbsp;deleting</br>";
+			$debugMessage = $debugMessage . " &nbsp;checkboxId = " . $checkboxId . "<br>";
+			$debugMessage = $debugMessage . " &nbsp;menuID = " . $menuID . "<br>";
+			$debugMessage = $debugMessage . " &nbsp;sequence = " . $sequence . "<br>";
+				
+			if(!$dbObject->query($sqlQuery)) {
+				$dbObject->error = "update_articles: an error occurred during mysqli_query<br><br>" .
+						$dbObject->error . "<br><br>" . $sqlQuery;
+						return false;
+			}
+		}
+
+	}
+
+	if( isset($_POST['addArticle'])) {
+		if( ! add_menu_item($dbObject,$contentId)) {
+			return false;
+		}
+	}
+
+	return true;
+}
 
 /*------------------------------------------------------------------------------------------
  * delete_page

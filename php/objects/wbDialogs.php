@@ -19,12 +19,15 @@
 		if(can_user_edit_attributes($userObj,$contentObj))
 			$this->functions['edit-content'] = 'set_editContentDlg';
 
-		if(can_user_edit_attributes($userObj,$contentObj) and ($contentObj->pageType == 'gallery' or $contentObj->pageType == 'profile' or $contentObj->pageType == 'article'))
+		if(can_user_edit_attributes($userObj,$contentObj) and ($contentObj->hasRightbar > 0 ))
 			$this->functions['manage-rightbar'] = 'set_rightbarDlg';
 
-		if(can_user_edit_attributes($userObj,$contentObj) and ($contentObj->pageType == 'gallery' or $contentObj->pageType == 'profile' or $contentObj->pageType == 'article' or $contentObj->pageType == 'image'))
+		if(can_user_edit_attributes($userObj,$contentObj) and ($contentObj->canEdit > 0 ))
 			$this->functions['manage-tabs'] = 'set_tabsDlg';
 			
+		if(can_user_edit_attributes($userObj,$contentObj) and ($contentObj->canEdit > 0 ))
+			$this->functions['manage-articles'] = 'set_articlesDlg';
+					
 		if(can_user_edit_attributes($userObj,$contentObj))
 			$this->functions['sidebar-menus'] = 'set_addMenuGroupsDlg';
 		
@@ -60,7 +63,10 @@
 				call_user_func($this->functions['manage-rightbar'], $userObj, $contentObj, $dataArrays);
 			else
 				$this->functions['manage-rightbar'] = NULL;
-			
+			if(isset($this->functions['manage-articles']))
+				call_user_func($this->functions['manage-articles'], $userObj, $contentObj, $dataArrays);
+			else
+				$this->functions['manage-articles'] = NULL;
 			if(isset($this->functions['sidebar-menus']))
 				call_user_func($this->functions['sidebar-menus'], $userObj, $contentObj, $dataArrays);
 			if(isset($this->functions['manage-menus']))
