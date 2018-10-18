@@ -58,6 +58,7 @@ a.tableLinkItem:hover { text-decoration:underline; text-shadow: 0px 0px #000000;
 #popupEditContent { position: fixed; display: none; top:18%; z-index:10; }
 #popupManageTabs { position: fixed; display: none; top:18%; min-width:50%; z-index:10; }
 #popupManageRightbar { position: fixed; display: none; top:18%; min-width:50%; z-index:10; }
+#popupManageArticles { position: fixed; display: none; top:18%; min-width:50%; z-index:10; }
 #popupMenuGroups { position: fixed; display: none; top:15%; width:70%; z-index:10; }
 #popupManageMenus { position: fixed; display: none; top:18%; width:75%; z-index:10; }
 #popupHeadersDlg { position: fixed; display: none; top:18%; min-width:40%; max-width:75%; z-index:10; }
