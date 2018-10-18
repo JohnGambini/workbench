@@ -26,7 +26,7 @@ function get_galleryWidgetString(wbDatabase $dbObj, wbSql $sqlObject, dbContent 
 		if($imageLink == 'http') {
 			$imageLink = $value['galleryImage'];
 		} else {
-			$imageLink = $contentObj->contentDir . $value['galleryImage'];
+			$imageLink = CONTENTDIR . $value['galleryImage'];
 		}
 		
 		$retString = $retString . '<div class="topicBlock fontSpecSmall">';
