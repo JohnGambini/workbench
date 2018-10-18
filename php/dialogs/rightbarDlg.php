@@ -5,9 +5,6 @@
  * Copyright 2015 2016 2017 2018 by John Gambini
  *
  ---------------------------------------------------------------------------------------------*/
- /*------------------------------------------------------------------
- * set_rightbarDlg()
-*/
 function set_rightbarDlg(dbUser $userObj, dbContent $contentObj, wbDataArrays $dataArrays ) {
 	global $contentFieldNames;
 
