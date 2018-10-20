@@ -10,6 +10,7 @@ select * from wb_headers;
 select * from wb_menugroups;
 select * from vw_menulist;
 select * from vw_menulist2;
+select * from vw_contentList;
 select * from wb_menuitems;
 select * from vw_content;
 select * from wb_user;
