@@ -116,7 +116,7 @@ global $dataArrays;
 	.sidebarContainer { position: relative; top:0px; float:left; width: 18%; height: 100%; overflow-y: hidden; border-right: 1px solid #AAAAAA; }
 	.sidebar { display: flex; flex-direction: column; position: relative; top: 0; width: 100%; height: 100%; overflow-y: auto; overflow-x: wrap; }
 	.rightbar { display:block; position: relative; float:right; border-left: 1px solid #AAAAAA; width:18%; height:100%; padding:0.6em; }
-	.leftMargin { margin:0em 0.5em 0em 25% }
+	.leftMargin { margin:0em 0.5em 0em 21% }
 	.leftBar { width:20%;float:left;margin:0em 0em 1em 0em }
 	.leftBarImage {width:80%;margin:0em auto; float:none }
 	@media all and (max-width:760px) { 
@@ -133,18 +133,18 @@ global $dataArrays;
 	.imageContent { background-color:#EEEEEE; border-radius: 8px; border: 1px solid #0000DD; min-height:75%; margin-top: 10px; margin-bottom: 0.5em; font-smoothing: antialiased; -webkit-font-smoothing: antialiased; -moz-font-smoothing: antialiased; }
 	ul.imagefooter { list-style: none; margin: 0em 2em; padding: 0px; }
 	.imagefooter li { display: inline-block; text-align: left; font-style: italic; }
-	.featuredItemMain { display:inline-block;vertical-align:top;margin:1em 1%;padding:1em;border:1px solid #AAAADD; border-radius:5px; box-shadow: 2px 2px 10px #333355 }
-	.featuredItem { display:inline-block; width:48%; vertical-align:top;margin:1em 1%;padding:1em;border:1px solid #AAAADD; border-radius:5px; box-shadow: 2px 2px 10px #333355 }
+	.featuredItemMain { display:inline-block; width:97%; text-shadow:2px 2px black; vertical-align:top;margin:0em 0em 1% 1%;padding:1em;border:1px solid #AAAADD; border-radius:5px; box-shadow: 2px 2px 10px #333355 }
+	.featuredItem { display:inline-block; width:48%; text-shadow:2px 2px black; vertical-align:top;margin:0em 0em 1% 1%;padding:1em;border:1px solid #AAAADD; border-radius:5px; box-shadow: 2px 2px 10px #333355 }
 	.featuredItem img { outline:1px solid #333399; color:inherit; border-radius:5px }
-	.featuredItem img:hover { outline:1px solid #F0000F; color:inherit; }
+	.featuredItem img:hover { outline:1px solid #F0000F; color:inherit; border-radius:5px }
 	.featuredItemMain img { outline:1px solid #333399; color:inherit; border-radius:5px }
-	.featuredItemMain img:hover { outline:1px solid #F0000F; color:inherit; }
+	.featuredItemMain img:hover { outline:1px solid #F0000F; color:inherit; border-radius:5px }
 	.featuredItemMain .MainImage { width:50%; float:left; margin:0em 2em 1em 0em; }
 	.featuredItem .LeftImage { width:25%; float:left; margin:0em 2em 1em 0em;	}
 	.featuredItem .RightImage { width:25%; float:right; margin:0em 0em 1em 2em; }
 	@media all and (max-width:760px) { 
 		.imageViewer img { float:none; width:100%; margin:0 auto; }
-		.featuredItem {width:95%} 
+		.featuredItem {width:98%} 
 		.featuredItem .MainImage { float:none; width:100%; margin:1em auto; } 
 		.featuredItem .LeftImage { float:none; width:100%; margin:1em auto; } 
 		.featuredItem .RightImage { float:none; width:100%; margin:1em auto; } 
@@ -206,6 +206,9 @@ global $dataArrays;
 	.newspaper h2 { font-size: 140%; font-weight: bold; margin: 0px 0em 10px 0em; }
 	.webArticle h3 { font-size:105%; font-weight: bold; margin: 0px 0em 0.25em 0em; }
 	.newspaper h3 { font-size:105%; font-weight: bold; margin: 0px 0em 0.25em 0em; }
+	h1 { font-size: 160%; font-weight: bold; margin: 0em 0em 10px 0em; }
+	h2 { font-size: 140%; font-weight: bold; margin: 0px 0em 10px 0em; }
+	h3 { font-size:105%; font-weight: bold; margin: 0px 0em 0.25em 0em; }
 	.underline { text-decoration: underline; }
 	.indent { text-indent: 2em; }
 	.center { text-align: center; }
