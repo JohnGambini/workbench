@@ -22,9 +22,9 @@ global $dataArrays;
 	<div id="article" class="article">
 	<div class="articleHeader">
 		<div style="display:flex;align-items:center;margin:1em auto 0em auto">
-			<div style="flex:1 0 12%">&nbsp;</div>
+			<div style="flex:1 0 11%">&nbsp;</div>
 			<div style="flex:1 0 76%"><h1><?php echo $contentObj->title ?></h1></div>
-			<div class="fontSpecVerySmall" style="flex:1 0 11%">
+			<div class="fontSpecVerySmall" style="flex:1 0 12%">
 				<?php if($contentObj->ownerId == $userObj->ID or (in_array($contentObj->status,$userObj->groupsArray))) { echo $contentObj->status; } ?>
 			</div>
 		</div>
