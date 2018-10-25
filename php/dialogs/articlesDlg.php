@@ -5,9 +5,11 @@
 * Copyright 2015 2016 2017 2018 by John Gambini
 *
 ---------------------------------------------------------------------------------------------*/
-function set_articlesDlg(dbUser $userObj, dbContent $contentObj, wbDataArrays $dataArrays ) {
+function set_articlesDlg(wbDatabase $dbObj, dbUser $userObj, dbContent $contentObj, wbSql $sqlObject, wbDataArrays $dataArrays ) {
 	global $contentFieldNames;
 
+	$dataArrays->get_articleItemsArray($dbObj, $sqlObject);
+	
 	$articlesArray = array(
 			array(
 					array('<div class="icon icon-bin"></div>', 'width:4%;text-align:right;padding:0.5em 0.5em'),
