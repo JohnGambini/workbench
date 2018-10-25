@@ -24,47 +24,48 @@ if(file_exists($filename))
 <div id="contentContainer" class="contentContainer">
 <div id="content" class="content">
 <?php get_contentMenu($contentObj) ?>
-<div id="mainContent" style="padding:0.01em 2.02em 1.98em 1.99em">
+<div id="mainContent" style="padding:0.01em 0.01em 0.02em 0.09em">
 <?php foreach( $ini_array as $key => $value) {
 	$flip = $flip + 1;
 	
 	if($flip == 1 ) {
 ?>
-<div class="featuredItem">
+<div style="margin:1em 0em 0em 0em">
+<div class="featuredItemMain">
 	<h2><?php echo $ini_array[$key]['title']?></h2>
 	<a class="menuItem" href="<?php echo $ini_array[$key]['url'] . '?p=' . $contentObj->ID ?>">
 	<img  class="MainImage" src="<?php echo $ini_array[$key]['image']?>"/>
 	</a>
 		<?php echo $ini_array[$key]['description']?>
 	<p/>
-	<a class="menuItem" href="<?php echo $ini_array[$key]['url'] . '?p=' . $contentObj->ID ?>" >
+	<a class="linkItem" href="<?php echo $ini_array[$key]['url'] . '?p=' . $contentObj->ID ?>" >
 	<span style="color:#BBBBFF"><?php if($ini_array[$key]['type'] == 'video'){ echo "Watch the video"; } else { echo "Read the article";}?> ...</span></a>
 </div>
 <?php } else if( $flip % 2) {?>
-	<div class="featuredItem">
-	<h2><?php echo $ini_array[$key]['title']?></h2>
-		<a class="menuItem" href="<?php echo $ini_array[$key]['url'] . '?p=' . $contentObj->ID?>">
-		<img class="LeftImage" src="<?php echo $ini_array[$key]['image']?>"/>
-		</a>
-			<?php echo $ini_array[$key]['description']?>
-		<p/>
-		<a class="menuItem" href="<?php echo $ini_array[$key]['url'] . '?p=' . $contentObj->ID?>" >
-		<span style="color:#BBBBFF"><?php if($ini_array[$key]['type'] == 'video'){ echo "Watch the video"; } else { echo "Read the article";}?> ...</span></a>
-	</div>
+<div class="featuredItem">
+<h2><?php echo $ini_array[$key]['title']?></h2>
+	<a class="menuItem" href="<?php echo $ini_array[$key]['url'] . '?p=' . $contentObj->ID?>">
+	<img class="LeftImage" src="<?php echo $ini_array[$key]['image']?>"/>
+	</a>
+		<?php echo $ini_array[$key]['description']?>
+	<p/>
+	<a class="linkItem" href="<?php echo $ini_array[$key]['url'] . '?p=' . $contentObj->ID?>" >
+	<span style="color:#BBBBFF"><?php if($ini_array[$key]['type'] == 'video'){ echo "Watch the video"; } else { echo "Read the article";}?> ...</span></a>
+</div>
 <?php } else { ?>
-	<div class="featuredItem">
-		<h2><?php echo $ini_array[$key]['title']?></h2>
-		<a class="menuItem" href="<?php echo $ini_array[$key]['url'] . '?p=' . $contentObj->ID?>" >
-		<img  class="RightImage" src="<?php echo $ini_array[$key]['image']?>"/>
-		</a>
-			<?php echo $ini_array[$key]['description']?>
-		<p/>
-		<a class="menuItem" href="<?php echo $ini_array[$key]['url'] . '?p=' . $contentObj->ID?>" >
-		<span style="color:#BBBBFF"><?php if($ini_array[$key]['type'] == 'video'){ echo "Watch the video"; } else { echo "Read the article";}?> ...</span></a>
-	</div>
+<div class="featuredItem">
+	<h2><?php echo $ini_array[$key]['title']?></h2>
+	<a class="menuItem" href="<?php echo $ini_array[$key]['url'] . '?p=' . $contentObj->ID?>" >
+	<img  class="RightImage" src="<?php echo $ini_array[$key]['image']?>"/>
+	</a>
+		<?php echo $ini_array[$key]['description']?>
+	<p/>
+	<a class="linkItem" href="<?php echo $ini_array[$key]['url'] . '?p=' . $contentObj->ID?>" >
+	<span style="color:#BBBBFF"><?php if($ini_array[$key]['type'] == 'video'){ echo "Watch the video"; } else { echo "Read the article";}?> ...</span></a>
+</div>
 <?php } ?>
-	<hr style="margin:1em 0em">
 <?php }?>
+</div>
 </div> <!-- close mainContent -->
 </div> <!-- close content -->
 </div> <!-- close content container -->
