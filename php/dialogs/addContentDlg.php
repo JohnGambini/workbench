@@ -24,7 +24,7 @@ function set_addContentDlg( dbUser $userObj, dbContent $contentObj, wbDataArrays
 <div class="pagecomponent">
 	<?php set_dlgHeader('Add Content',"popupAddContent") ?>
 	<form id="newPageForm" method="post" onsubmit="fixUpSubmit('<?php echo WEBAPP ?>')" action="<?php echo WEBAPP . htmlspecialchars($contentObj->permalink)?>">
-		<?php set_addContentWidget( $userObj, $contentObj, $dataArrays, $contentFieldNames,false) ?>
+		<?php set_addContentWidget( $userObj, $contentObj, $dataArrays, $contentFieldNames,true) ?>
 		<input style="margin:0em 0em 1em 1em" type="submit" name="addContent" value="Add Content"/>
 	</form>
 </div> <!-- close page component -->
