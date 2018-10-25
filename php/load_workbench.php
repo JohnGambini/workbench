@@ -139,11 +139,6 @@ require_once( WORKBENCH_DIR . '\php\includes\wb_functions.php');
 
 $dialogsObj = new wbDialogs( $userObj, $contentObj );
 
-//load articles array here so that you know it's always loaded since it's used by
-//the articlesDlg which may or may not be set and by several different page types.
-//It's probably best to find a better place to do this.
-$dataArrays->get_articleItemsArray($dbObj, $sqlObject);
-
 get_header($contentObj);
 get_menu($contentObj);
 get_sidebar($contentObj);
@@ -152,7 +147,7 @@ get_content($contentObj);
 set_popUpContentMenu($dbObj, $sqlObject);
 set_popUpUserMenu($userObj, $contentObj,$dialogsObj);
 
-$dialogsObj->set_dialogs($userObj, $contentObj, $dataArrays);
+$dialogsObj->set_dialogs($dbObj, $userObj, $contentObj, $sqlObject, $dataArrays);
 //$errorMessage = $dbObj->error;
 
 set_errorDlg();
