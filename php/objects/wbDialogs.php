@@ -47,7 +47,7 @@
 			$this->functions['debug-dump'] = 'set_debugDlg';
 	}
 	
-	function set_dialogs(dbUser $userObj, dbContent $contentObj, wbDataArrays $dataArrays)
+	function set_dialogs(wbDatabase $dbObj,  dbUser $userObj, dbContent $contentObj, wbSql $sqlObject, wbDataArrays $dataArrays)
 	{
 		global $contentFieldNames;
 		global $isRightbarSet;
@@ -64,7 +64,7 @@
 			else
 				$this->functions['manage-rightbar'] = NULL;
 			if(isset($this->functions['manage-articles']))
-				call_user_func($this->functions['manage-articles'], $userObj, $contentObj, $dataArrays);
+				call_user_func($this->functions['manage-articles'], $dbObj, $userObj, $contentObj, $sqlObject, $dataArrays);
 			else
 				$this->functions['manage-articles'] = NULL;
 			if(isset($this->functions['sidebar-menus']))
