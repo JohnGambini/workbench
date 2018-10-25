@@ -116,8 +116,8 @@ global $dataArrays;
 	.sidebarContainer { position: relative; top:0px; float:left; width: 18%; height: 100%; overflow-y: hidden; border-right: 1px solid #AAAAAA; }
 	.sidebar { display: flex; flex-direction: column; position: relative; top: 0; width: 100%; height: 100%; overflow-y: auto; overflow-x: wrap; }
 	.rightbar { display:block; position: relative; float:right; border-left: 1px solid #AAAAAA; width:18%; height:100%; padding:0.6em; }
-	.leftMargin { margin:0em 0.5em 0em 21% }
-	.leftBar { width:20%;float:left;margin:0em 0em 1em 0em }
+	.leftMargin { margin:0em 0.5em 0em 17% }
+	.leftBar { width:16%;float:left;margin:0em 0em 1em 0em }
 	.leftBarImage {width:80%;margin:0em auto; float:none }
 	@media all and (max-width:760px) { 
 		.sidebarContainer { display:none; } 
@@ -133,15 +133,15 @@ global $dataArrays;
 	.imageContent { background-color:#EEEEEE; border-radius: 8px; border: 1px solid #0000DD; min-height:75%; margin-top: 10px; margin-bottom: 0.5em; font-smoothing: antialiased; -webkit-font-smoothing: antialiased; -moz-font-smoothing: antialiased; }
 	ul.imagefooter { list-style: none; margin: 0em 2em; padding: 0px; }
 	.imagefooter li { display: inline-block; text-align: left; font-style: italic; }
-	.featuredItemMain { display:inline-block; width:97%; vertical-align:top;margin:0em 0em 1% 1%;padding:1em;border:1px solid #AAAADD; border-radius:5px; box-shadow: 2px 2px 10px #333355 }
+	.featuredItemMain { display:inline-block; width:97.5%; vertical-align:top;margin:0em 0em 1% 1%;padding:1em;border:1px solid #AAAADD; border-radius:5px; box-shadow: 2px 2px 10px #333355 }
 	.featuredItem { display:inline-block; width:48%; vertical-align:top;margin:0em 0em 1% 1%;padding:1em;border:1px solid #AAAADD; border-radius:5px; box-shadow: 2px 2px 10px #333355 }
 	.featuredItem img { outline:1px solid #333399; color:inherit; border-radius:5px }
 	.featuredItem img:hover { outline:1px solid #F0000F; color:inherit; border-radius:5px }
 	.featuredItemMain img { outline:1px solid #333399; color:inherit; border-radius:5px }
 	.featuredItemMain img:hover { outline:1px solid #F0000F; color:inherit; border-radius:5px }
 	.featuredItemMain .MainImage { width:50%; float:left; margin:0em 2em 1em 0em; }
-	.featuredItem .LeftImage { width:25%; float:left; margin:0em 2em 1em 0em;	}
-	.featuredItem .RightImage { width:25%; float:right; margin:0em 0em 1em 2em; }
+	.featuredItem .LeftImage { width:25%; float:left; margin:0em 2em 1em 0em; border-radius:5px	}
+	.featuredItem .RightImage { width:25%; float:right; margin:0em 0em 1em 2em; border-radius:5px }
 	@media all and (max-width:760px) { 
 		.imageViewer img { float:none; width:100%; margin:0 auto; }
 		.featuredItem {width:98%} 
@@ -168,7 +168,7 @@ global $dataArrays;
 	.langElement a img:hover { width: 26px; margin:2px 0px; border: 2px solid #0000FF; }
 	.langElementHighlight { vertical-align:middle; }
 	.langElementHighlight a img { width: 28px; outline: 2px solid #AAAAFF; }
-	.listBlocks { display:flex;display:-webkit-flex;flex-direction:row;align-items:center;justify-content:center;align-content:center;-webkit-align-content:center }
+	.listBlocks { display:flex;display:-webkit-flex;flex-direction:row;align-items:center;justify-content:left;align-content:center;-webkit-align-content:center }
 	@media all and (max-width:760px) { .topicBlock { width:49%; } /* #galleryTitle { display:block; } */ }
 	@media all and (max-width:699px) {
 		.siteName { display:none; } 
@@ -218,17 +218,17 @@ global $dataArrays;
 	.article-dialog .header { background-color:#AAAAAA; border-radius:6px 6px 0px 0px; color:white; padding:0.25em 1em;	}
 	.newspaper table, ul, div, ol { -webkit-column-break-inside:avoid; -moz-column-break-inside:avoid; -o-column-break-inside:avoid; -ms-column-break-inside:avoid; column-break-inside:avoid; }
 	.imageViewer img { width:45%; float:left; margin:0em 2% 2% 0%; border:1px solid #DDDDDD; border-radius:5px; }
-	.newspaper .rightBlock { width:50%; float:right; margin:0em -0.5em 0em 1em; }
-	.newspaper .leftBlock { width:50%; float:left; margin:0em 1em 0em -0.5em; }
-	.webArticle .rightBlock { width:35%; float:right; margin:0em -0.5em 0em 1em; }
-	.webArticle .leftBlock { width:35%; float:left; margin:0em 1em 0em -0.5em; }
+	.rightBlock { width:50%; float:right; margin:0em -0.5em 0em 1em; }
+	.leftBlock { width:50%; float:left; margin:0em 1em 0em -0.5em; }
+	.rightBlockSmall { width:25%; float:right; margin:1em -0.5em 0em 1em; }
+	.leftBlockSmall { width:25%; float:left; margin:1em 1em 0em -0.5em; }
 	@media all and (max-width:760px) { 
 		.article .articleImage { width:89%; } 
 		.imageViewer img { float:none; width:100%; margin:0 auto; } 
-		.newspaper .rightBlock { width:95%; float:none; margin:1em auto; } 
-		.newspaper .leftBlock { width:95%; float:none; margin:1em auto; } 
-		.webArticle .rightBlock { width:95%; float:none; margin:1em auto; } 
-		.webArticle .leftBlock { width:95%; float:none; margin:1em auto; } 
+		.rightBlock { width:95%; float:none; margin:1em auto; } 
+		.leftBlock { width:95%; float:none; margin:1em auto; } 
+		.rightBlockSmall { width:50%; float:right; margin:1em -0.5em 0em 1em; }
+		.leftBlockSmall { width:50%; float:left; margin:1em 1em 0em -0.5em; }
 		.featuredItem{} .MainImage { float:none; width:100%; margin:1em auto; } 
 		.featuredItem .LeftImage { float:none; width:100%; margin:1em auto; } 
 		.featuredItem .RightImage { float:none; width:100%; margin:1em auto; } 
