@@ -1,4 +1,6 @@
 select * from wb_user;
+select * from wb_userbios;
+select * from wb_usergroups;
 select * from vw_user;
 select * from wb_pagetypes;
 select * from wb_content;
@@ -15,7 +17,7 @@ select * from wb_menuitems;
 select * from vw_content;
 select * from wb_user;
 select * from vw_user;
-select * from wb_usergroups;
+
 select * from wb_grouplists;
 
 /*DROP view IF EXISTS `vw_content`;*/
@@ -68,7 +70,7 @@ select `wb_content`.`ID` AS `menuId`,
     where `wb_content`.`pageType` in (select pageTypeName from wb_pagetypes where isMenu = TRUE);
 
 
-/*drop view vw_user;*/
+drop view vw_user;
 create view vw_user as
 select wb_user.ID, userBlob, username, password, permalink, fullName, theme, type, pageType
 from wb_user left join wb_content on wb_user.profileId = wb_content.ID;
@@ -231,9 +233,23 @@ from wb_menugroups, vw_menulist left join vw_contentlist on vw_menulist.menuId =
 	and vw_menulist.m_lang = 'en_US' 
     and wb_menugroups.parentId = '4' 
     and wb_menugroups.contentId = '21' 
-order by mgseq, menuId, sequence
- 
+order by mgseq, menuId, sequence;
+
+/* 
 insert into calliope_sutra.wb_user
 select * from workbench_1.wb_user where username = "jgambini";
+*/
 
+create table wb_userbios (
+	ID integer NOT NULL AUTO_INCREMENT,
+    userId integer,
+    lang varchar(6),
+    bio text,
+    PRIMARY KEY (`ID`)
+);
 
+create unique index idx_bios on wb_userbios(userId,lang);
+alter table wb_userbios add column profileImage varchar(127) after  lang;
+
+alter table wb_user drop column profileImage;
+alter table wb_user drop column bio;
