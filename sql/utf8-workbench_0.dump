@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.7.14, for Win64 (x86_64)
 --
--- Host: localhost    Database: workbench_1
+-- Host: localhost    Database: workbench_0
 -- ------------------------------------------------------
 -- Server version	5.7.14
 
@@ -357,7 +357,7 @@ CREATE TABLE `wb_user` (
 
 LOCK TABLES `wb_user` WRITE;
 /*!40000 ALTER TABLE `wb_user` DISABLE KEYS */;
-INSERT INTO `wb_user` VALUES (1,'*\ZÃÂÃÂ',4,'ntorvez','ntorvez',4,'Ninja Torvez','blank.png','calliopesutra-1.0',0,1,'2017-01-29 20:12:24','2018-10-07 23:41:14');
+INSERT INTO `wb_user` VALUES (1,'*\ZÃÂÃÂ',1,'ntorvez','ntorvez',4,'Ninja Torvez','blank.png','calliopesutra-1.0',0,1,'2017-01-29 20:12:24','2018-10-07 23:41:14');
 /*!40000 ALTER TABLE `wb_user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;

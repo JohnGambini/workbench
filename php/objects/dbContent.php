@@ -39,6 +39,10 @@
 	public $parentTitle = NULL;
 	public $parentPermalink = NULL;
 	public $parentPageType = NULL;
+	//owner query
+	public $ownerName = NULL;
+	public $ownerImage = NULL;
+	public $ownerBio = NULL;
 	//directories
 	public $sourceDir = NULL;
 	public $themeDir = NULL;
@@ -164,6 +168,22 @@
 		if(isset($_GET['gp']) and $_GET['gp'] != 0) $this->grandParentId = $_GET['gp'];
 
 		return $ret;
+	}
+
+	/*-------------------------------------------------------------------------------------------
+	 * get_owner_info:
+	 *
+	 -----------------------------------------------------------------------------------------*/
+	public function get_owner_info(wbDatabase $db) {
+		
+		$contentOwner = new dbUser();
+		$contentOwner->ID = $this->ownerId;
+		$contentOwner->get_user_bio($db, $this->lang);
+		
+		$this->ownerName = $contentOwner->fullName;
+		$this->ownerImage = $contentOwner->profileImage;
+		$this->ownerBio = $contentOwner->bio;
+	
 	}
 	
 	/*-------------------------------------------------------------------------------------------
@@ -393,6 +413,12 @@
 				"parentPermalink: " . $this->parentPermalink . "<br/>" .
 				"parentTitle: " . $this->parentTitle . "<br/>" .
 				"parentPageType: " . $this->parentPageType . "<br/>" .
+				
+				"<br/>/owner query ****** <br/><br/>" .
+				
+				"ownerName: " . $this->ownerName . "<br/>" .
+				"ownerImage: " . $this->ownerImage . "<br/>" .
+				"ownerBio: " . $this->ownerBio . "<br/>" .
 				
 				"<br/>/directories ****** <br/><br/>" .
 

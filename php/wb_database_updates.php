@@ -978,10 +978,10 @@ function add_tab_item($dbObject, $userObj )
 		$_POST['sequence'] : NULL;
 	
 	$sqlQuery = "insert into wb_articles ( contentId, tabTitle, sequence, byteCount ) " .
-		"values('" . 
-		$contentId . "', '" . 
-		$tabTitle . "', '" .
-		$sequence . "', '0')";
+		'values("' . 
+		$contentId . '", "' . 
+		$tabTitle . '", "' .
+		$sequence . '", "0")';
 	
 	if( ! $dbObject->query($sqlQuery)) {	
 		$dbObject->error = "add_tab_item: an error occurred during mysqli_query<br><br>" .
@@ -1025,7 +1025,7 @@ function update_tabs(wbDatabase $dbObject, dbUser $userObj )
 		
 		/* update wb_articles */
 		$sqlQuery = "update wb_articles set sequence = '" . $sequence . "', " .
-		"tabTitle = '" . $tabTitle . "' " .
+		'tabTitle = "' . $tabTitle . '" ' .
 		"where ID = '" . $articleId . "'";
 		
 		if(!$dbObject->query($sqlQuery)) {
@@ -1295,8 +1295,10 @@ function save_post($dbObject,$userObj)
 	//die($saveString);
 	/* build the insert on duplicate update statement */
 	$sqlQuery = "insert into wb_articles (contentId, tabTitle, sequence, articleText, byteCount) " .
-	"values('" . $_POST['Id'] . "', '" . $tabTitle . "', '1', '" .   
-		$saveString . "', '" . strlen($saveString) . "') " .
+	'values("' . $_POST['Id'] . '", "' .
+	$tabTitle . '", "1", "' .
+	$saveString . '", "' . 
+	strlen($saveString) . '") ' .
 	"on duplicate key update articleText = '" . $saveString . "', " .
 	" byteCount = '" . strlen($saveString) . "'";  
 	

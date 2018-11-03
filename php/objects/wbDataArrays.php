@@ -154,10 +154,15 @@ class wbDataArrays
 		
 		for($i = 0; $row = mysqli_fetch_array($dbObj->result); $i++ ) {
 			$this->galleryItemsArray[$i] = array('ID' => $row['contentId'], 
-					'itemId' => $row['itemId'], 'permalink' => $row['permalink'], 
-					'title' => $row['title'], 'sequence' => $row['sequence'], 
-					'galleryImage' => $row['galleryImage'], 'pageType' => $row['pageType'],
-					'articleDescription' => $row['articleDescription'], 'type' => $row['ogType']
+					'itemId' => $row['itemId'],
+					'permalink' => $row['permalink'], 
+					'title' => $row['title'], 
+					'sequence' => $row['sequence'], 
+					'galleryImage' => $row['galleryImage'], 
+					'pageType' => $row['pageType'],
+					'articleDescription' => $row['articleDescription'],
+					'articleImage' => $row['articleImage'],
+					'type' => $row['ogType']
 			);
 		}
 		

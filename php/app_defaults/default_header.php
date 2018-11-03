@@ -6,13 +6,16 @@
  *
  ---------------------------------------------------------------------------------------------*/
 global $dbObj;
-global $sqlObject;
+global $userObj;
 global $contentObj;
+global $sqlObject;
 global $dataArrays;
 ?>
+<?php header('Content-Type: charset=utf-8'); ?>
 <!DOCTYPE html>
 <html lang="<?php echo $contentObj->lang ?>">
 <head>
+	<meta charset="UTF-8">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <?php if( strlen($contentObj->title) == 0 ) { ?>
     <title><?php echo APP_NAME ?></title>
@@ -32,7 +35,7 @@ global $dataArrays;
 	<meta property="og:locale" content="<?php echo $contentObj->lang ?>" />
 	<meta property="og:type" content="<?php echo $contentObj->ogType ?>" />
 	<meta property="og:url" content="<?php echo SITE_NAME . SUBSITE_NAME . $contentObj->permalink ?>" />
-	<meta property="og:image" content="<?php echo replace_wb_variable($contentObj->articleImage,$dbObj, $sqlObject) ?>" />
+	<meta property="og:image" content="<?php echo replace_wb_variable($contentObj->articleImage, $dbObj, $userObj, $contentObj) ?>" />
 	<meta name="description" content="<?php echo htmlspecialchars($contentObj->articleDescription)?>">
 	<meta property="og:description" content="<?php echo htmlspecialchars($contentObj->articleDescription) ?>" />
 	<link rel="shortcut icon" href="<?php echo SITE_NAME . SUBSITE_NAME ?>/favicon.ico">
@@ -117,6 +120,7 @@ global $dataArrays;
 	.sidebar { display: flex; flex-direction: column; position: relative; top: 0; width: 100%; height: 100%; overflow-y: auto; overflow-x: wrap; }
 	.rightbar { display:block; position: relative; float:right; border-left: 1px solid #AAAAAA; width:18%; height:100%; padding:0.6em; }
 	.leftMargin { margin:0em 0.5em 0em 17% }
+	.forMobileOnly { display: none }
 	.leftBar { width:16%;float:left;margin:0em 0em 1em 0em }
 	.leftBarImage {width:80%;margin:0em auto; float:none }
 	@media all and (max-width:760px) { 
@@ -125,6 +129,7 @@ global $dataArrays;
 		#mainmenuItem2 {display:inline-block;} 
 		.rightbar { display:none; } 
 		.leftMargin { margin:0em 0.5em }
+		.forMobileOnly { display: block }
 		.leftBar { width:100%;float:none }
 		.leftBarImage {width:20%; float:left; margin:0em 1em 0em 0em }
 	}
@@ -140,8 +145,8 @@ global $dataArrays;
 	.featuredItemMain img { outline:1px solid #333399; color:inherit; border-radius:5px }
 	.featuredItemMain img:hover { outline:1px solid #F0000F; color:inherit; border-radius:5px }
 	.featuredItemMain .MainImage { width:50%; float:left; margin:0em 2em 1em 0em; }
-	.featuredItem .LeftImage { width:25%; float:left; margin:0em 2em 1em 0em; border-radius:5px	}
-	.featuredItem .RightImage { width:25%; float:right; margin:0em 0em 1em 2em; border-radius:5px }
+	.featuredItem .LeftImage { width:33%; float:left; margin:0em 2em 1em 0em; border-radius:5px	}
+	.featuredItem .RightImage { width:33%; float:right; margin:0em 0em 1em 2em; border-radius:5px }
 	@media all and (max-width:760px) { 
 		.imageViewer img { float:none; width:100%; margin:0 auto; }
 		.featuredItem {width:98%} 
@@ -187,7 +192,7 @@ global $dataArrays;
 	#intro { width:85%; margin:0em auto; }
 	.imageViewer { margin:2% 4%; }
 	.imageViewer hr { border-style:solid; border-color:#AAAAAA;	}
-	a.articleLinkItem { text-decoration:none; color:#000077; }
+	a.articleLinkItem { text-decoration:none; color:#2222BB; }
 	a.articleLinkItem:hover { text-decoration:underline; text-shadow: 0px 0px #000000;	}
 	.webArticle { background-color: inherit; color: inherit; text-shadow: inherit; margin:0em 4%; }
 	.webArticle hr { border-style:solid; border-color:#AAAAAA; }
@@ -200,12 +205,6 @@ global $dataArrays;
 	.webArticle li { padding:0.25em 0em; }
 	.newspaper li { padding:0.25em 0em; }
 	.articleHeader h1 { font-size: 22pt; font-weight: bold; margin: 10px 0em 10px 0em; text-align:center; width:100% }
-	.webArticle h1 { font-size: 160%; font-weight: bold; margin: 0em 0em 10px 0em; }
-	.newspaper h1 { font-size: 160%; font-weight: bold; margin: 0em 0em 10px 0em; }
-	.webArticle h2 { font-size: 140%; font-weight: bold; margin: 0px 0em 10px 0em; }
-	.newspaper h2 { font-size: 140%; font-weight: bold; margin: 0px 0em 10px 0em; }
-	.webArticle h3 { font-size:105%; font-weight: bold; margin: 0px 0em 0.25em 0em; }
-	.newspaper h3 { font-size:105%; font-weight: bold; margin: 0px 0em 0.25em 0em; }
 	h1 { font-size: 160%; font-weight: bold; margin: 0em 0em 10px 0em; }
 	h2 { font-size: 140%; font-weight: bold; margin: 0px 0em 10px 0em; }
 	h3 { font-size:105%; font-weight: bold; margin: 0px 0em 0.25em 0em; }
@@ -218,8 +217,9 @@ global $dataArrays;
 	.article-dialog .header { background-color:#AAAAAA; border-radius:6px 6px 0px 0px; color:white; padding:0.25em 1em;	}
 	.newspaper table, ul, div, ol { -webkit-column-break-inside:avoid; -moz-column-break-inside:avoid; -o-column-break-inside:avoid; -ms-column-break-inside:avoid; column-break-inside:avoid; }
 	.imageViewer img { width:45%; float:left; margin:0em 2% 2% 0%; border:1px solid #DDDDDD; border-radius:5px; }
-	.rightBlock { width:50%; float:right; margin:0em -0.5em 0em 1em; }
-	.leftBlock { width:50%; float:left; margin:0em 1em 0em -0.5em; }
+	.codeBlock { margin:0.5em 0em 0.5em 0.5em; padding:0em 0em 0em 0.5em; border-left:3px solid green; font-family:courier; }
+	.rightBlock { width:50%; float:right; margin:0.75em -0.5em 0.75em 1em; }
+	.leftBlock { width:50%; float:left; margin:0.75em 1em 0.75em -0.5em; }
 	.rightBlockSmall { width:25%; float:right; margin:1em -0.5em 0em 1em; }
 	.leftBlockSmall { width:25%; float:left; margin:1em 1em 0em -0.5em; }
 	@media all and (max-width:760px) { 

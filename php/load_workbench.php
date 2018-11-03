@@ -60,6 +60,9 @@ if($userObj->ID != NULL) {
 $contentObj = new dbContent();
 $contentObj->set_permalink($_SERVER['REQUEST_URI'], SUBSITE_NAME);
 
+/* This has to come before the content query */
+$userObj->get_user_groups($dbObj);
+
 if( ! $contentObj->get_content($dbObj,$userObj)){
 	//default the ownerId to this user so that you can add content
 }
@@ -107,6 +110,7 @@ require_once( WORKBENCH_DIR . '\php\includes\pageTitle.php');
 require_once( WORKBENCH_DIR . '\php\includes\siteUserMenu.php');
 require_once( WORKBENCH_DIR . '\php\includes\articleEditLink.php');
 require_once( WORKBENCH_DIR . '\php\includes\languages.php');
+require_once( WORKBENCH_DIR . '\php\includes\languagesString.php');
 require_once( WORKBENCH_DIR . '\php\includes\menuList.php');
 require_once( WORKBENCH_DIR . '\php\includes\galleryWidgetString.php');
 require_once( WORKBENCH_DIR . '\php\includes\articlesWidgetString.php');
@@ -139,6 +143,11 @@ require_once( WORKBENCH_DIR . '\php\includes\wb_functions.php');
 
 $dialogsObj = new wbDialogs( $userObj, $contentObj );
 
+/* This can go anywhere after the content is loaded and before the page is built */
+$userObj->get_user_bio($dbObj, $contentObj->lang);
+$contentObj->get_owner_info($dbObj);
+
+/*OK build the page */
 get_header($contentObj);
 get_menu($contentObj);
 get_sidebar($contentObj);

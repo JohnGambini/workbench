@@ -10,7 +10,12 @@ global $userObj;
 global $contentObj;
 global $sqlObject;
 global $dataArrays;
-	
+
+if($userObj->type > 1 ){
+	$dialogsObj->functions['add-content'] = 'set_galleryAddContentDlg';
+	$dialogsObj->functions['edit-content'] = 'set_galleryEditContentDlg';
+}
+
 if( ! $dataArrays->get_galleryItemsArray($dbObj, $sqlObject)) {
 	$dbObj->error =  "parallex_content.php: an error occurred during a mysqli_query.<br/><br/>" .
 			$dbObj->error . "<br/><br/>" . $sqlObject->sqlParallaxList;
@@ -25,33 +30,18 @@ if( ! $dataArrays->get_galleryItemsArray($dbObj, $sqlObject)) {
 
 <div id="<?php $contentObj->title ?>"></div>
 <div class="parallax" style="background-image: url(<?php echo replace_wb_variable($contentObj->articleImage,$dbObj, $userObj, $contentObj) ?>)">
+	<div style="padding:1.5em .5em;color:white;font-size:22pt;font-weight:400;width:11em;text-align:center">
+		<a class="menuItem" href="<?php echo WEBAPP . $contentObj->permalink ?>"><?php echo $contentObj->title ?></a>
+	</div>
 	<div style="position:absolute;bottom:0;padding:2%;width:90%;text-align:right">
 		<a class="menuItem" style="color:#EEEEEE" href="<?php echo $contentObj->authorLink?>" target="_blank"><em><?php echo $contentObj->authorFullName?></em></a>
 	</div>
 </div>
-
-<?php foreach($dataArrays->galleryItemsArray as $key => $values) { ?>
-<div class="parallax" style="background-image: url(<?php echo replace_wb_variable($values['articleImage'],$dbObj, $userObj, $contentObj) ?>)">
-	<div id="<?php echo $values['title']?>"></div>
-	<div style="padding:1.5em .5em;color:white;font-size:22pt;font-weight:400;width:11em;text-align:center">
-		<a class="menuItem" href="<?php echo WEBAPP . $values['permalink'] ?>"><?php echo $values['title']?></a>
-	</div>
-	<?php if(isset($values['authorName'])) { ?>
-	<div style="position:relative; height:73%">
-		<div style="position:absolute;bottom:0;padding:0em 2em;width:95%;text-align:right">
-			<?php if(isset($values['authorLink']) and strlen(trim($values['authorLink']))) {?>
-				<a class="menuItem" href="<?php echo $values['authorLink'] ?>" target="_blank"><em><?php echo $values['authorName'] ?></em></a>
-			<?php } else { ?>
-				<em><?php echo $values['authorName'] ?></em>
-			<?php } ?>	
-		</div>
-	</div>
-	<?php } ?>
-</div>
-<section>
-	<?php //echo serialize($parallaxArray[$parent]) ?>
+<section style="min-height:97%">
+<div id="galleryTitle" style="width:98.5%"><?php echo $contentObj->title ?></div>
+<?php echo get_galleryWidgetString( $dbObj, $sqlObject, $contentObj, $dataArrays ); ?>
 </section>
-<?php } ?>
+
 </div> <!-- close mainContent -->
 </div> <!-- close content -->
 </div> <!-- close content container -->

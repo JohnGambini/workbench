@@ -14,6 +14,8 @@ class dbUser extends dbObject
 	public $password = NULL;
 	public $type = 0;
 	public $fullName = NULL;
+	public $profileImage = NULL;
+	public $bio = NULL;
 	public $theme = NULL;
 	public $disabled = 0;
 	public $addedBy = -1;
@@ -80,7 +82,7 @@ class dbUser extends dbObject
 		if($db->query_all($this->sqlSelect)) {
 			
 			if($this->selectHandler($db)) {
-				return $this->get_user_groups($db);
+				return true;
 			}
 			
 			return false;
@@ -105,9 +107,9 @@ class dbUser extends dbObject
 		return false;
 	}
 
-	/*-------------------------------------------------------------------------------------------------
-	 * 
-	 */
+/*-------------------------------------------------------------------------------------------------
+ * 
+ */
 	public function get_user_groups(wbDatabase $db, $lang = "all" ) {
 
 		$sqlquery = "";
@@ -128,6 +130,29 @@ class dbUser extends dbObject
 		return false;
 	}
 	
+/*-------------------------------------------------------------------------------------------------
+ *
+ */
+	public function get_user_bio(wbDatabase $db, $lang ) {
+	
+		$sqlquery = "";
+	
+		$sqlQuery = "select fullName, profileImage, bio from wb_user, wb_userbios " .
+		"where wb_user.ID = wb_userbios.userId and wb_user.ID = $this->ID and wb_userbios.lang = '" . $lang . "'";
+	
+		if($db->query_all($sqlQuery)) {
+			foreach($db->result as $row) {
+				$this->fullName = $row['fullName'];
+				$this->profileImage = $row['profileImage'];
+				$this->bio = $row['bio'];
+			}
+			
+			return true;
+		}
+		
+		return false;
+	}
+
 	/*-------------------------------------------------------------------------------------------------
 	 * 
 	 */
@@ -152,6 +177,8 @@ class dbUser extends dbObject
 		echo	"ID:" . $this->ID . "<br>" .
 				"permalink:" . $this->permalink . "<br>" .
 				"fullName: " . $this->fullName . "<br>" .
+				"profileImage: " . $this->profileImage . "<br/>" .
+				"bio: " . $this->bio . "<br/>" .
 				"theme: " . $this->theme . "<br>" .
 				"type: " . $this->type . "<br>";
 		echo	"groups: ";

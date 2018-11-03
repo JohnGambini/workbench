@@ -7,8 +7,8 @@
  ---------------------------------------------------------------------------------------------*/
 global $dbObj;
 global $userObj;
-global $contentObj;
 global $sqlObject;
+global $contentObj;
 global $dataArrays;
 global $dialogsObj;
 global $errorMessage;
@@ -49,7 +49,7 @@ if(isset($dataArrays)) {
 
 <div class="articleTabs fontSpecSmall"><?php $tabName = set_tabsWidget($dbObj, $sqlObject, $dataArrays, $contentObj)?></div>
 <?php if(strlen($tabName) != 0) {?>	
-<div id="articleText"><?php echo replace_wb_variable($dataArrays->tabsArray[$tabName]['articleText'],$dbObj, $sqlObject, $contentObj,$dataArrays) ?></div>
+<div id="articleText"><?php echo replace_wb_variable($dataArrays->tabsArray[$tabName]['articleText'], $dbObj, $userObj, $contentObj, $sqlObject, $dataArrays) ?></div>
 <?php 	} else {?>
 <div id="articleText"></div>
 <?php	 }?>

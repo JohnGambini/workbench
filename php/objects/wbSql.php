@@ -101,7 +101,7 @@ class wbSql
 		 * menu's items. Used by the gallery page
 		 */
 		$this->sqlGalleryList = "select contentId, itemId, permalink, title, sequence, " .
-				"galleryImage, pageType, articleDescription, ogType " .
+				"galleryImage, pageType, articleDescription, articleImage, ogType " .
 				"from vw_contentlist " .
 				"where menuId = '" . $contentObj->ID . "' " .
 				"and menuType = '1' " .

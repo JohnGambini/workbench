@@ -343,7 +343,7 @@ function replace_wb_variable($subject)
 			
 }
 */			
-function replace_wb_variable($subject, wbDatabase $dbObj, wbSql $sqlObject = NULL, dbContent $contentObj = NULL, wbDataArrays $dataArrays = NULL)
+function replace_wb_variable($subject, wbDatabase $dbObj, dbUser $userObj, dbContent $contentObj = NULL, wbSql $sqlObject = NULL, wbDataArrays $dataArrays = NULL)
 {
 	$patternArray = array(
 			'#(\[\[)\s*(web-app)\s*(\]\])#',
@@ -355,7 +355,10 @@ function replace_wb_variable($subject, wbDatabase $dbObj, wbSql $sqlObject = NUL
 			'#(\[\[)\s*(article-title)\s*(\]\])#',
 			'#(\[\[)\s*(article-file)\s*(\]\])#',
 			'#(\[\[)\s*(gallery-widget)\s*(\]\])#',
-			'#(\[\[)\s*(articles-widget)\s*(\]\])#'
+			'#(\[\[)\s*(articles-widget)\s*(\]\])#',
+			'#(\[\[)\s*(languages-widget)\s*(\]\])#',
+			'#(\[\[)\s*(profile-image)\s*(\]\])#',
+			'#(\[\[)\s*(profile-bio)\s*(\]\])#'
 	);
 	
 	$replaceArray = array(
@@ -363,12 +366,15 @@ function replace_wb_variable($subject, wbDatabase $dbObj, wbSql $sqlObject = NUL
 			CONTENTDIR,
 			PDFDIR,
 			WORKBENCH_FOLDER,
-			isset($contentObj) ? replace_wb_variable($contentObj->articleImage, $dbObj, $sqlObject ) : "<span style='color:red'>no content object</span>",
-			isset($contentObj) ? replace_wb_variable($contentObj->articleDescription, $dbObj, $sqlObject) : "<span style='color:red'>no content object</span>",
-			isset($contentObj) ? replace_wb_variable($contentObj->title, $dbObj, $sqlObject) : "<span style='color:red'>no content object</span>",
-			isset($contentObj) ? replace_wb_variable($contentObj->articleFile,$dbObj) : "<span style='color:red'>no content object</span>",
+			isset($contentObj) ? $contentObj->articleImage : "<span style='color:red'>no content object</span>",
+			isset($contentObj) ? $contentObj->articleDescription : "<span style='color:red'>no content object</span>",
+			isset($contentObj) ? $contentObj->title : "<span style='color:red'>no content object</span>",
+			isset($contentObj) ? $contentObj->articleFile : "<span style='color:red'>no content object</span>",
 			isset($dataArrays) ? get_galleryWidgetString($dbObj, $sqlObject, $contentObj, $dataArrays) : "<span style='color:red'>no data array object</span>",
-			isset($dataArrays) ? get_articlesWidgetString($dbObj, $sqlObject, $contentObj, $dataArrays) : "<span style='color:red'>no data array object</span>"
+			isset($dataArrays) ? get_articlesWidgetString($dbObj, $sqlObject, $contentObj, $dataArrays) : "<span style='color:red'>no data array object</span>",
+			isset($dataArrays) ? get_languagesString( $contentObj, $dataArrays) : "<span style='color:red'>no data array object</span>",
+			isset($contentObj) ? CONTENTDIR . $contentObj->ownerImage : "<span style='color:red'>no content object</span>",
+			isset($contentObj) ? $contentObj->ownerBio : "<span style='color:red'>no content object</span>"
 	);
 	
 	return preg_replace($patternArray,$replaceArray,$subject);
