@@ -69,7 +69,7 @@ if( ! $contentObj->get_content($dbObj,$userObj)){
 //This needs to come after the database updates in case changeTheme() was called
 $contentObj->set_directories($userObj);
 
-//die($contentObj->permalink);
+//die($contentObj->dump());
 
 // gettext setup
 //require_once('../php-gettext/gettext.inc');
@@ -144,7 +144,7 @@ require_once( WORKBENCH_DIR . '\php\includes\wb_functions.php');
 $dialogsObj = new wbDialogs( $userObj, $contentObj );
 
 /* This can go anywhere after the content is loaded and before the page is built */
-$userObj->get_user_bio($dbObj, $contentObj->lang);
+//$userObj->get_user_bio($dbObj, $contentObj->lang);
 $contentObj->get_owner_info($dbObj);
 
 /*OK build the page */
@@ -157,10 +157,11 @@ set_popUpContentMenu($dbObj, $sqlObject);
 set_popUpUserMenu($userObj, $contentObj,$dialogsObj);
 
 $dialogsObj->set_dialogs($dbObj, $userObj, $contentObj, $sqlObject, $dataArrays);
-//$errorMessage = $dbObj->error;
+$errorMessage = $dbObj->error;
 
 set_errorDlg();
 set_successDlg();
+
 get_footer($contentObj);
 
 $dbObj->close();
