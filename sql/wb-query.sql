@@ -1,4 +1,4 @@
-select * from wb_user;
+wb_userbioswb_usergroupsselect * from wb_user;
 select * from wb_userbios;
 select * from wb_usergroups;
 select * from vw_user;
@@ -18,7 +18,7 @@ select * from vw_content;
 select * from wb_user;
 select * from vw_user;
 
-select * from wb_grouplists;
+select * from wb_groupvw_contentlists;
 
 /*DROP view IF EXISTS `vw_content`;*/
 CREATE VIEW `vw_content` AS
@@ -70,7 +70,7 @@ select `wb_content`.`ID` AS `menuId`,
     where `wb_content`.`pageType` in (select pageTypeName from wb_pagetypes where isMenu = TRUE);
 
 
-drop view vw_user;
+/*drop view vw_user;*/
 create view vw_user as
 select wb_user.ID, userBlob, username, password, permalink, fullName, theme, type, pageType
 from wb_user left join wb_content on wb_user.profileId = wb_content.ID;
