@@ -97,9 +97,9 @@ function set_popupContentMenu(wbDatabase $dbObj, wbSql $sqlObject) {
 	<hr  id="popupHr" style="margin:0em 1em;width:100%"/>
 	<ul>
 	<?php
-		if($dataArrays->get_rootContentArray($dbObj, $sqlObject)) {
+		if($dataArrays->get_galleryItemsArray($dbObj, $sqlObject)) {
 		
-			foreach($dataArrays->rootContentArray as $key => $values) {
+			foreach($dataArrays->galleryItemsArray as $key => $values) {
 				if( $contentObj->permalink == $values['permalink']) { ?>
 						
 				<li class="tableHighlightLinkItem" style="margin:0em 0em 0.5em 0em"><?php echo $values['title']?></li>
