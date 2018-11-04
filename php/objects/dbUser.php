@@ -138,7 +138,7 @@ class dbUser extends dbObject
 		$sqlquery = "";
 	
 		$sqlQuery = "select fullName, profileImage, bio from wb_user, wb_userbios " .
-		"where wb_user.ID = wb_userbios.userId and wb_user.ID = $this->ID and wb_userbios.lang = '" . $lang . "'";
+		"where wb_user.ID = wb_userbios.userId and wb_user.ID = '" . $this->ID . "' and wb_userbios.lang = '" . $lang . "'";
 	
 		if($db->query_all($sqlQuery)) {
 			foreach($db->result as $row) {
@@ -149,6 +149,9 @@ class dbUser extends dbObject
 			
 			return true;
 		}
+		
+		$db->error = "dbUser::get_user_bio(): " . $db->error .
+		"<p/>" . $sqlQuery; 
 		
 		return false;
 	}
