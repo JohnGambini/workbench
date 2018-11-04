@@ -34,8 +34,8 @@ class wbSql
 			"vw_contentList.articleImage, vw_contentList.authorFullName authorName, vw_contentList.authorLink " .
 			"from wb_content, vw_contentList " .
 			"where wb_content.ID = vw_contentList.menuId " .
-			"and vw_contentList.menuType = '1'" .
-			"and wb_content.lang like '" . $contentObj->lang . "%' and wb_content.title like 'rootContentMenu%' " . 
+			"and vw_contentList.menuType = '1' " .
+			"and wb_content.lang like '" . $contentObj->lang . "%' and wb_content.permalink = '/" . substr($contentObj->lang,0,2) . "' " . 
 			"and ((vw_contentList.ownerId = '" . $userObj->ID . "' and (vw_contentList.status = 'Private' or vw_contentList.status = 'Draft')) or vw_contentList.status in (". $userObj->groups()  .  ") or vw_contentList.status = 'Public') " .
 			"order by sequence";
 		
