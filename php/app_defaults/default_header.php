@@ -11,11 +11,9 @@ global $contentObj;
 global $sqlObject;
 global $dataArrays;
 ?>
-<?php header('Content-Type: charset=utf-8'); ?>
 <!DOCTYPE html>
 <html lang="<?php echo $contentObj->lang ?>">
 <head>
-	<meta charset="UTF-8">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <?php if( strlen($contentObj->title) == 0 ) { ?>
     <title><?php echo APP_NAME ?></title>
