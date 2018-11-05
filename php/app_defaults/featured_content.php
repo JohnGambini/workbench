@@ -34,7 +34,7 @@ if(file_exists($filename))
 <div class="featuredItemMain">
 	<h2><?php echo $ini_array[$key]['title']?></h2>
 	<a class="menuItem" href="<?php echo $ini_array[$key]['url'] . '?p=' . $contentObj->ID ?>">
-	<img  class="MainImage" src="<?php echo $ini_array[$key]['image']?>"/>
+	<img  class="mainImage" src="<?php echo $ini_array[$key]['image']?>"/>
 	</a>
 		<?php echo $ini_array[$key]['description']?>
 	<p/>
@@ -45,7 +45,7 @@ if(file_exists($filename))
 <div class="featuredItem">
 <h2><?php echo $ini_array[$key]['title']?></h2>
 	<a class="menuItem" href="<?php echo $ini_array[$key]['url'] . '?p=' . $contentObj->ID?>">
-	<img class="LeftImage" src="<?php echo $ini_array[$key]['image']?>"/>
+	<img class="leftImage" src="<?php echo $ini_array[$key]['image']?>"/>
 	</a>
 		<?php echo $ini_array[$key]['description']?>
 	<p/>
@@ -56,7 +56,7 @@ if(file_exists($filename))
 <div class="featuredItem">
 	<h2><?php echo $ini_array[$key]['title']?></h2>
 	<a class="menuItem" href="<?php echo $ini_array[$key]['url'] . '?p=' . $contentObj->ID?>" >
-	<img  class="RightImage" src="<?php echo $ini_array[$key]['image']?>"/>
+	<img  class="rightImage" src="<?php echo $ini_array[$key]['image']?>"/>
 	</a>
 		<?php echo $ini_array[$key]['description']?>
 	<p/>
