@@ -38,10 +38,31 @@ if( ! $dataArrays->get_galleryItemsArray($dbObj, $sqlObject)) {
 	</div>
 </div>
 <section style="min-height:97%">
-<div id="galleryTitle" style="width:98.5%"><?php echo $contentObj->title ?></div>
-<?php echo get_galleryWidgetString( $dbObj, $sqlObject, $contentObj, $dataArrays ); ?>
+	<div class="articleTabs fontSpecSmall"><?php $tabName = set_tabsWidget($dbObj, $sqlObject, $dataArrays, $contentObj)?></div>
+	<?php if(strlen($tabName) != 0) {?>	
+	<div id="articleText"><?php echo replace_wb_variable($dataArrays->tabsArray[$tabName]['articleText'], $dbObj, $userObj, $contentObj, $sqlObject, $dataArrays) ?></div>
+	<?php 	} else {?>
+	<div id="articleText"></div>
+	<?php	 }?>
 </section>
-
-</div> <!-- close mainContent -->
+</div> <!-- close main content -->
+<?php set_articleEditorWidget($userObj,$contentObj, '')?>
 </div> <!-- close content -->
 </div> <!-- close content container -->
+<script>
+window.onhashchange = function() {
+
+	getArticle();
+	
+}
+
+function getScrollPos() {
+	var scrollPos = document.getElementById('content').scrollTop;
+	sessionStorage.setItem('scrollPos',scrollPos);
+}
+
+function pagePreferences()
+{
+	window.onhashchange();
+}
+</script>
