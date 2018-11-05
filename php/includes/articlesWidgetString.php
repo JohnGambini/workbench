@@ -37,7 +37,7 @@ function get_articlesWidgetString(wbDatabase $dbObj, wbSql $sqlObject, dbContent
 			$retString = $retString . '<div class="featuredItemMain">';
 			$retString = $retString . '<h2>' . $value['title'] . '</h2>';
 			$retString = $retString . '<a class="menuItem" href="' . $linkSpec . '">';
-			$retString = $retString . '<img  class="MainImage" src="' . CONTENTDIR . $value['galleryImage'] . '"/>';
+			$retString = $retString . '<img  class="mainImage" src="' . CONTENTDIR . $value['galleryImage'] . '"/>';
 			$retString = $retString . '</a>';
 			$retString = $retString . $value['articleDescription'];
 			$retString = $retString . '<p/>';
@@ -56,7 +56,7 @@ function get_articlesWidgetString(wbDatabase $dbObj, wbSql $sqlObject, dbContent
 			$retString = $retString . '<div class="featuredItem">';
 			$retString = $retString . '<h2>' . $value['title'] . '</h2>';
 			$retString = $retString . '<a class="menuItem" href="' . $linkSpec . '">';
-			$retString = $retString . '<img  style="float:right; width:50%" src="' . CONTENTDIR . $value['galleryImage'] . '"/>';
+			$retString = $retString . '<img  class="rightImage" src="' . CONTENTDIR . $value['galleryImage'] . '"/>';
 			$retString = $retString . '</a>';
 			$retString = $retString . $value['articleDescription'];
 			$retString = $retString . '<p/>';
@@ -75,7 +75,7 @@ function get_articlesWidgetString(wbDatabase $dbObj, wbSql $sqlObject, dbContent
 			$retString = $retString . '<div class="featuredItem">';
 			$retString = $retString . '<h2>' . $value['title'] . '</h2>';
 			$retString = $retString . '<a class="menuItem" href="' . $linkSpec . '">';
-			$retString = $retString . '<img  style="float:left; width:50%;margin:0em 1em 0em 0em" src="' . CONTENTDIR . $value['galleryImage'] . '"/>';
+			$retString = $retString . '<img  class="leftImage" src="' . CONTENTDIR . $value['galleryImage'] . '"/>';
 			$retString = $retString . '</a>';
 			$retString = $retString . $value['articleDescription'];
 			$retString = $retString . '<p/>';

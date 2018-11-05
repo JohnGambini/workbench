@@ -138,13 +138,13 @@ global $dataArrays;
 	.imagefooter li { display: inline-block; text-align: left; font-style: italic; }
 	.featuredItemMain { display:inline-block; width:97.5%; vertical-align:top;margin:0em 0em 1% 1%;padding:1em;border:1px solid #AAAADD; border-radius:5px; box-shadow: 2px 2px 10px #333355 }
 	.featuredItem { display:inline-block; width:48%; vertical-align:top;margin:0em 0em 1% 1%;padding:1em;border:1px solid #AAAADD; border-radius:5px; box-shadow: 2px 2px 10px #333355 }
-	.featuredItem img { outline:1px solid #333399; color:inherit; border-radius:5px }
-	.featuredItem img:hover { outline:1px solid #F0000F; color:inherit; border-radius:5px }
-	.featuredItemMain img { outline:1px solid #333399; color:inherit; border-radius:5px }
-	.featuredItemMain img:hover { outline:1px solid #F0000F; color:inherit; border-radius:5px }
-	.featuredItemMain .MainImage { width:50%; float:left; margin:0em 2em 1em 0em; }
-	.featuredItem .LeftImage { width:33%; float:left; margin:0em 2em 1em 0em; border-radius:5px	}
-	.featuredItem .RightImage { width:33%; float:right; margin:0em 0em 1em 2em; border-radius:5px }
+	.featuredItem img { border:1px solid #333399; color:inherit; border-radius:5px }
+	.featuredItem img:hover { border:1px solid #F0000F; color:inherit; border-radius:5px }
+	.featuredItemMain img { border:1px solid #333399; color:inherit; border-radius:5px }
+	.featuredItemMain img:hover { border:1px solid #F0000F; color:inherit; border-radius:5px }
+	.featuredItemMain .mainImage { width:50%; float:left; margin:0em 2em 1em 0em; }
+	.featuredItem .leftImage { width:43%; float:left; margin:0em 2em 1em 0em	}
+	.featuredItem .rightImage { width:43%; float:right; margin:0em 0em 1em 2em }
 	@media all and (max-width:760px) { 
 		.imageViewer img { float:none; width:100%; margin:0 auto; }
 		.featuredItem {width:98%} 
@@ -216,6 +216,8 @@ global $dataArrays;
 	.newspaper table, ul, div, ol { -webkit-column-break-inside:avoid; -moz-column-break-inside:avoid; -o-column-break-inside:avoid; -ms-column-break-inside:avoid; column-break-inside:avoid; }
 	.imageViewer img { width:45%; float:left; margin:0em 2% 2% 0%; border:1px solid #DDDDDD; border-radius:5px; }
 	.codeBlock { margin:0.5em 0em 0.5em 0.5em; padding:0em 0em 0em 0.5em; border-left:3px solid green; font-family:courier; }
+	.rightBlockLarge { width:70%; float:right; margin:1em -0.5em 0em 1em; }
+	.leftBlockLarge { width:70%; float:left; margin:1em 1em 0em -0.5em; }
 	.rightBlock { width:50%; float:right; margin:0.75em -0.5em 0.75em 1em; }
 	.leftBlock { width:50%; float:left; margin:0.75em 1em 0.75em -0.5em; }
 	.rightBlockSmall { width:25%; float:right; margin:1em -0.5em 0em 1em; }
