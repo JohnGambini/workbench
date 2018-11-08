@@ -40,5 +40,16 @@ function getScrollPos() {
 function pagePreferences()
 {
 	getArticle();
+
+	//lose the page title
+	var pageTitle = document.getElementById("pageTitle");
+	if(pageTitle){
+		pageTitle.hidden= "true";
+	}
+
+	//overide the display:none setting for mobile
+	var siteName = document.getElementById('siteName');
+	if(siteName)
+		siteName.style.display = 'inline-block';
 }
 </script>

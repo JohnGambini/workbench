@@ -41,6 +41,10 @@ function pagePreferences() {
 	if(pageTitle){
 		pageTitle.hidden= "true";
 	}
+
+	var siteName = document.getElementById('siteName');
+	if(siteName)
+		siteName.style.display = 'inline-block';
 	
 }
 </script>
