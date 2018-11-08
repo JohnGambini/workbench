@@ -154,7 +154,7 @@ global $dataArrays;
 	}
 	@media all and (max-width:760px) { .parallax { background-position:center center; }	}
 	#pageTitle:hover { color: #AAAAAA; }
-	.siteName { font-family: times-new-roman; font-size: 20pt; }
+	.siteName { font-family: times-new-roman; font-size: 20pt }
 	.siteName:hover { color: #777777; }
 	#userMenu { font-size: 14pt; }
 	#userMenu:hover { color: #AAAAAA; }
