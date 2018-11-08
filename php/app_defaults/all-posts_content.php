@@ -17,10 +17,10 @@ global $dbObj;
 			array(' ',' '),
 			array('Author','Auter'),
 			array('Bytes','Bytes'),
-			array('Last Modified','DerniÃ¨re mise Ã  jour')
+			array('Last Modified','Derniére mise é jour')
 	);
 	
-	$langIdx = $contentObj->lang == 'en' ? 0 : 1; 
+	$langIdx = $contentObj->lang == 'en_US' ? 0 : 1; 
 	
 	//die("<br/><br/><br/>" . $sqlObject->sqlListPosts);
 	
@@ -52,7 +52,7 @@ global $dbObj;
 			}
 			$dataArray[$i] = array(
 					array('<input type="checkbox" name="checkbox_' . $i . '" value="' . $row['ID'] . '">', 'width:2%'),
-					array($row['defaultParentId'] . ": " . $row['title'], 'width:33%;padding:0em 0em 0em 0.5em'),
+					array($row['defaultParentId'] . ": " . $row['shortDescription'], 'width:33%;padding:0em 0em 0em 0.5em'),
 					array($row['status'], 'width:20%;padding:0em 0em 0em 0.5em'),
 					array($linkSpec, 'width:9%;text-align:center'),
 					array($row['ownerFullName'], 'width:14%;padding:0em 0em 0em 0.5em'),

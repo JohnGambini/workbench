@@ -136,7 +136,7 @@ class wbSql
 		/*------------------------------------------------------------------------------------
 		 * List of posts
 		 */
-		$this->sqlListPosts = "select vw_content.ID, defaultParentId, title, status, permalink, ownerId, ownerFullName, vw_content.dateModified, SUM(byteCount) byteCount " .
+		$this->sqlListPosts = "select vw_content.ID, defaultParentId, title, status, shortDescription, permalink, ownerId, ownerFullName, vw_content.dateModified, SUM(byteCount) byteCount " .
 			"from vw_content, wb_articles " .
 			"where vw_content.ID = wb_articles.contentId and pageType in ('article','profile','image') " .
 			"and lang = '" . $contentObj->lang . "' and (( ownerId = '" . $userObj->ID . "' and (status = 'Private' or status = 'Draft')) or status in (" . $userObj->groups() . ") or status = 'Public' ) " .
