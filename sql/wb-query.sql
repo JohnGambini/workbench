@@ -1,4 +1,4 @@
-wb_userbioswb_usergroupsselect * from wb_user;
+select * from wb_user;
 select * from wb_userbios;
 select * from wb_usergroups;
 select * from vw_user;
@@ -248,7 +248,8 @@ create table wb_userbios (
     PRIMARY KEY (`ID`)
 );
 
-create unique index idx_bios on wb_userbios(userId,lang);
+create unique index idx_ugroups on wb_usergroups(lang,name);
+
 alter table wb_userbios add column profileImage varchar(127) after  lang;
 
 alter table wb_user drop column profileImage;
