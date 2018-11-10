@@ -10,6 +10,26 @@ global $userObj;
 global $contentObj;
 global $sqlObject;
 global $dataArrays;
+global $dialogsObj;
+
+if($userObj->type > 1 ){
+	$dialogsObj->functions['edit-content'] = 'set_galleryEditContentDlg';
+}
+
+if(isset($dataArrays)) {
+	if( ! $dataArrays->get_galleryItemsArray($dbObj, $sqlObject)) {
+		$errorMessage = "gallery_content.php: " . $dbObj->error;
+		$contentObj->error = "";
+		$contentObj->pageType = 'error';
+		require_once( WORKBENCH_DIR . '\\php\\app_defaults\\' . 'error_content.php');
+		return;
+	}
+} else {
+	$contentObj->error = "gallery_content.php: The dataArrays object is not set.";
+	$contentObj->pageType = 'error';
+	require_once( WORKBENCH_DIR . '\\php\\app_defaults\\' . 'error_content.php');
+	return;
+}
 
 ?>
 <div id="contentContainer" class="contentContainer">
