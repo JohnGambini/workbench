@@ -10,9 +10,9 @@ global $userObj;
 global $contentObj;
 global $sqlObject;
 global $dataArrays;
+global $dialogsObj;
 
 if($userObj->type > 1 ){
-	$dialogsObj->functions['add-content'] = 'set_galleryAddContentDlg';
 	$dialogsObj->functions['edit-content'] = 'set_galleryEditContentDlg';
 }
 
@@ -24,7 +24,7 @@ if( ! $dataArrays->get_galleryItemsArray($dbObj, $sqlObject)) {
 	
 ?>
 <div id="contentContainer" class="contentContainer">
-<div id="content" class="content">
+<div id="content" class="content" onscroll="getScrollPos()">
 <?php get_contentMenu($contentObj) ?>
 <div id="mainContent" style="padding: 0em 0em 0.01em 0em">
 
