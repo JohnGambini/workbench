@@ -51,7 +51,7 @@ if(file_exists($filename))
 		<?php echo $ini_array[$key]['description']?>
 	<p/>
 	<a class="linkItem" href="<?php echo $ini_array[$key]['url'] . '?p=' . $contentObj->ID?>" >
-	<span style="color:#BBBBFF"><?php if($ini_array[$key]['type'] == 'video'){ echo "Watch the video"; } else { echo "Read the article";}?> ...</span></a>
+	<span style="color:#BBBBFF"><?php if($ini_array[$key]['type'] == 'video'){ echo _("Watch the video ..."); } else { echo _("Read the article ...");}?></span></a>
 </div>
 <?php } else { ?>
 <div class="featuredItem">
@@ -62,7 +62,7 @@ if(file_exists($filename))
 		<?php echo $ini_array[$key]['description']?>
 	<p/>
 	<a class="linkItem" href="<?php echo $ini_array[$key]['url'] . '?p=' . $contentObj->ID?>" >
-	<span style="color:#BBBBFF"><?php if($ini_array[$key]['type'] == 'video'){ echo "Watch the video"; } else { echo "Read the article";}?> ...</span></a>
+	<span style="color:#BBBBFF"><?php if($ini_array[$key]['type'] == 'video'){ echo _("Watch the video ..."); } else { echo _("Read the article ...");}?></span></a>
 </div>
 <?php } ?>
 <?php }?>

@@ -96,7 +96,9 @@ function get_articlesWidgetString(wbDatabase $dbObj, wbSql $sqlObject, dbContent
 		if($count % 2)
 			$flip == 'left' ? $flip = 'right' : $flip = 'left';
 	}
+	
+	$retString = $retString . '</div>';
 
-	return $retString . '</div>';
+	return $retString;
 }
 ?>

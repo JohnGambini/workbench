@@ -101,6 +101,10 @@ function set_tabsWidget(wbDatabase $dbObj, wbSql $sqlObject, wbDataArrays $dataA
         	//and finally, make sure the editor is up to date (if it exists)
         	if(typeof editor != 'undefined')
             	editor.setValue(articleObj[2]);
+        	//
+			//document.getElementById("errorMessage").innerHTML = "" + articleObj[0] + "";
+            //javascript:showForm('errorDialog','content');
+        	//
         }
 
        	//update contentMenu width (if it exists) depending on status of vertical scrollbar
