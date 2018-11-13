@@ -50,6 +50,7 @@ function get_articlesWidgetString(wbDatabase $dbObj, wbSql $sqlObject, dbContent
 			$retString = $retString . '....</span></a>';
 			$retString = $retString . '</div>';
 			$retString = $retString . '</a>';
+			$retString = $retString . '<div class="articleList">';
 				
 		} else if($flip == 'right') {
 			$retString = $retString . '<a class="menuItem" href="' . $linkSpec . '">';
@@ -96,6 +97,6 @@ function get_articlesWidgetString(wbDatabase $dbObj, wbSql $sqlObject, dbContent
 			$flip == 'left' ? $flip = 'right' : $flip = 'left';
 	}
 
-	return $retString;
+	return $retString . '</div>';
 }
 ?>

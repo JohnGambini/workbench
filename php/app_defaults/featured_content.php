@@ -30,7 +30,7 @@ if(file_exists($filename))
 	
 	if($flip == 1 ) {
 ?>
-<div style="margin:1em 0em 0em 0em">
+<div style="margin:1em">
 <div class="featuredItemMain">
 	<h2><?php echo $ini_array[$key]['title']?></h2>
 	<a class="menuItem" href="<?php echo $ini_array[$key]['url'] . '?p=' . $contentObj->ID ?>">
@@ -39,8 +39,9 @@ if(file_exists($filename))
 		<?php echo $ini_array[$key]['description']?>
 	<p/>
 	<a class="linkItem" href="<?php echo $ini_array[$key]['url'] . '?p=' . $contentObj->ID ?>" >
-	<span style="color:#BBBBFF"><?php if($ini_array[$key]['type'] == 'video'){ echo "Watch the video"; } else { echo "Read the article";}?> ...</span></a>
+	<span style="color:#BBBBFF"><?php if($ini_array[$key]['type'] == 'video'){  echo gettext("Watch the video ..."); } else { echo  gettext("Read the article ..."); }?></span></a>
 </div>
+<div class="articleList">
 <?php } else if( $flip % 2) {?>
 <div class="featuredItem">
 <h2><?php echo $ini_array[$key]['title']?></h2>
@@ -65,6 +66,7 @@ if(file_exists($filename))
 </div>
 <?php } ?>
 <?php }?>
+</div>
 </div>
 </div> <!-- close mainContent -->
 </div> <!-- close content -->
