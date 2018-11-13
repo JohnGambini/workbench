@@ -78,11 +78,26 @@ $encoding = 'UTF-8';
 $domain = 'messages';
 $locale = $contentObj->lang;
 
-//setlocale(LC_MESSAGES, $locale);
 // Set the text domain as 'messages'
-//bindtextdomain($domain, LOCALE_DIR);
-//bind_textdomain_codeset($domain, $encoding);
-//textdomain($domain);
+putenv("LC_ALL=$locale");
+setlocale(LC_ALL, $locale);
+bindtextdomain("messages", LOCALE_DIR);
+bind_textdomain_codeset('messages', 'UTF-8');
+textdomain("messages");
+
+/*
+echo $locale . "\n";
+echo LOCALE_DIR . "\n";
+
+if (!function_exists("gettext")){
+	echo "gettext is not installed\n";
+}
+else{
+	echo "gettext is supported\n";
+}
+
+die(gettext("Read the article ..."));
+*/
 
 /* load the rest of workbench */
 require_once( WORKBENCH_DIR . '\php\dialogs\errorDlg.php');
