@@ -36,6 +36,7 @@ global $dataArrays;
 	<meta property="og:image" content="<?php echo replace_wb_variable($contentObj->articleImage, $dbObj, $userObj, $contentObj) ?>" />
 	<meta name="description" content="<?php echo htmlspecialchars($contentObj->articleDescription)?>">
 	<meta property="og:description" content="<?php echo htmlspecialchars($contentObj->articleDescription) ?>" />
+	<meta property="og:site_name" content="<?php echo APP_NAME  ?>" />
 	<link rel="shortcut icon" href="<?php echo SITE_NAME . SUBSITE_NAME ?>/favicon.ico">
 	<link rel="stylesheet" href="<?php echo WORKBENCH_FOLDER ?>/css/dialogs.css" type="text/css" media="screen">
 	<style>
@@ -78,7 +79,7 @@ global $dataArrays;
 	.icon-point-up:hover::before { color: #000000; }
 	.icon-arrow-up2::before { color: #888888; font-size: 14pt; vertical-align: -2px; }
 	.icon-arrow-up2:hover::before { color: #000000; }
-	.mainmenu { display:flex; align-items:center; position:fixed; top: -2.5em; left: 0px; width: 100%; height: 3.50em; z-index:1; background-color:white; box-shadow: 0px 2px 12px #888888; transition: top 0.5s; }
+	.mainmenu { display:flex; align-items:center; position:fixed; top: -2.5em; left: 0px; width: 100%; height: 3.50em; z-index:2; background-color:white; box-shadow: 0px 2px 12px #888888; transition: top 0.5s; }
 	#mainmenuItem1 { flex:1 1 19%; }
 	#mainmenuItem2 { flex:1 1 15%; }
 	#mainmenuItem3 { flex:1 1 45%; }
@@ -136,8 +137,8 @@ global $dataArrays;
 	.imageContent { background-color:#EEEEEE; border-radius: 8px; border: 1px solid #0000DD; min-height:75%; margin-top: 10px; margin-bottom: 0.5em; font-smoothing: antialiased; -webkit-font-smoothing: antialiased; -moz-font-smoothing: antialiased; }
 	ul.imagefooter { list-style: none; margin: 0em 2em; padding: 0px; }
 	.imagefooter li { display: inline-block; text-align: left; font-style: italic; }
-	.articleList { background-color: inherit; color: inherit; text-shadow: inherit; margin: 0em 1%; -webkit-column-count: 2; /* Chrome, Safari, Opera */ -moz-column-count: 2; /* Firefox */ column-count: 2; -webkit-column-width: 18em; /* Chrome, Safari, Opera */ -moz-column-width: 18em; /* Firefox */ column-width: 18em; -webkit-column-gap: 0.5em; /* Chrome, Safari, Opera */ -moz-column-gap: 0.5em; /* Firefox */ column-gap: 0.5em; }
-	.featuredItemMain { display:inline-block; width:97.25%; vertical-align:top;margin:0em 1% 1% 1%;padding:1em;border:1px solid #AAAADD; border-radius:5px; box-shadow: 2px 2px 10px #333355 }
+	.articleList { background-color: inherit; color: inherit; text-shadow: inherit; margin: 0em 0em; -webkit-column-count: 2; /* Chrome, Safari, Opera */ -moz-column-count: 2; /* Firefox */ column-count: 2; -webkit-column-width: 18em; /* Chrome, Safari, Opera */ -moz-column-width: 18em; /* Firefox */ column-width: 18em; -webkit-column-gap: 0.25em; /* Chrome, Safari, Opera */ -moz-column-gap: 0.25em; /* Firefox */ column-gap: 0.25em; }
+	.featuredItemMain { display:inline-block; width:99%; vertical-align:top;margin:0em 0em 1em 0em;padding:1em;border:1px solid #AAAADD; border-radius:5px; box-shadow: 2px 2px 10px #333355 }
 	.featuredItem { display:inline-block; background-color: inherit; width:98.5%; vertical-align:top;margin:0em 0em 1em 0em;padding:1em;border:1px solid #AAAADD; border-radius:5px; box-shadow: 2px 2px 10px #333355 }
 	.featuredItem img { border:1px solid #333399; color:inherit; border-radius:5px }
 	.featuredItem img:hover { border:1px solid #F0000F; color:inherit; border-radius:5px }
@@ -145,13 +146,15 @@ global $dataArrays;
 	.featuredItemMain img:hover { border:1px solid #F0000F; color:inherit; border-radius:5px }
 	.featuredItemMain .mainImage { width:50%; float:left; margin:0em 2em 1em 0em; }
 	.featuredItem .leftImage { width:43%; float:left; margin:0em 2em 1em 0em	}
-	.featuredItem .rightImage { width:43%; float:right; margin:0em 0em 1em 2em }
+	.featuredItem .rightImage { width:42%; float:right; margin:0em 0em 1em 2em }
+	#urlInput { position:fixed; width:76%; opacity:0.75; top:-5em; margin:0em 1% 1% 1%; padding:1em; transition:all 0.5s ease}
+	#urlInput:hover { top: 3em; opacity:1 }
 	@media all and (max-width:760px) { 
 		.imageViewer img { float:none; width:100%; margin:0 auto; }
-		.featuredItem {width:98%} 
 		.featuredItem .MainImage { float:none; width:100%; margin:1em auto; } 
 		.featuredItem .LeftImage { float:none; width:100%; margin:1em auto; } 
-		.featuredItem .RightImage { float:none; width:100%; margin:1em auto; } 
+		.featuredItem .RightImage { float:none; width:100%; margin:1em auto; }
+		#urlInput { width:89%;} 
 	}
 	@media all and (max-width:760px) { .parallax { background-position:center center; }	}
 	#pageTitle:hover { color: #AAAAAA; }
