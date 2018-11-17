@@ -5,19 +5,17 @@
  * Copyright 2015 2016 2017 2018 by John Gambini
  *
  ---------------------------------------------------------------------------------------------*/
-global $contentObj;
 global $dbObj;
+global $userObj;
+global $contentObj;
+global $dataArrays;
 global $dialogsObj;
 
 //$dialogsObj->functions['add-content'] = 'set_linkAddContentDlg';
 
-$ini_array = array();
-$filename = ABSDIR . "\\featured." . substr($contentObj->lang,0,2) . ".ini";
-//die($filename);
-if(file_exists($filename))
-	$ini_array = parse_ini_file($filename,TRUE);
+	$dataArrays->load_featuredArticles($contentObj);
 
-	$n = count($ini_array);
+	$n = count($dataArrays->featuredArticlesArray);
 
 	$flip = 0;
 ?>
@@ -25,44 +23,46 @@ if(file_exists($filename))
 <div id="content" class="content">
 <?php get_contentMenu($contentObj) ?>
 <div id="mainContent" style="padding:0.01em 0.01em 0.02em 0.09em">
-<?php foreach( $ini_array as $key => $value) {
+<?php foreach( $dataArrays->featuredArticlesArray as $key => $value) {
 	$flip = $flip + 1;
 	
 	if($flip == 1 ) {
 ?>
 <div style="margin:1em">
+<?php if( can_user_edit($userObj,$contentObj,1)) { set_urlInputDlg(); } ?>
+<p/>
 <div class="featuredItemMain">
-	<h2><?php echo $ini_array[$key]['title']?></h2>
-	<a class="menuItem" href="<?php echo $ini_array[$key]['url'] . '?p=' . $contentObj->ID ?>">
-	<img  class="mainImage" src="<?php echo $ini_array[$key]['image']?>"/>
+	<h2><?php echo $value['title']?></h2>
+	<a class="menuItem" href="<?php echo $value['url'] . '?p=' . $contentObj->ID ?>">
+	<img  class="mainImage" src="<?php echo $value['image']?>"/>
 	</a>
-		<?php echo $ini_array[$key]['description']?>
+		<?php echo $value['description']?>
 	<p/>
-	<a class="linkItem" href="<?php echo $ini_array[$key]['url'] . '?p=' . $contentObj->ID ?>" >
-	<span style="color:#BBBBFF"><?php if($ini_array[$key]['type'] == 'video'){  echo gettext("Watch the video ..."); } else { echo  gettext("Read the article ..."); }?></span></a>
+	<a class="linkItem" href="<?php echo $value['url'] . '?p=' . $contentObj->ID ?>" >
+	<span style="color:#BBBBFF"><?php if($value['type'] == 'video'){  echo gettext("Watch the video ..."); } else { echo  gettext("Read the article ..."); }?></span></a>
 </div>
 <div class="articleList">
 <?php } else if( $flip % 2) {?>
 <div class="featuredItem">
-<h2><?php echo $ini_array[$key]['title']?></h2>
-	<a class="menuItem" href="<?php echo $ini_array[$key]['url'] . '?p=' . $contentObj->ID?>">
-	<img class="leftImage" src="<?php echo $ini_array[$key]['image']?>"/>
+<h2><?php echo $value['title']?></h2>
+	<a class="menuItem" href="<?php echo $value['url'] . '?p=' . $contentObj->ID?>">
+	<img class="leftImage" src="<?php echo $value['image']?>"/>
 	</a>
-		<?php echo $ini_array[$key]['description']?>
+		<?php echo $value['description']?>
 	<p/>
-	<a class="linkItem" href="<?php echo $ini_array[$key]['url'] . '?p=' . $contentObj->ID?>" >
-	<span style="color:#BBBBFF"><?php if($ini_array[$key]['type'] == 'video'){ echo _("Watch the video ..."); } else { echo _("Read the article ...");}?></span></a>
+	<a class="linkItem" href="<?php echo $value['url'] . '?p=' . $contentObj->ID?>" >
+	<span style="color:#BBBBFF"><?php if($value['type'] == 'video'){ echo _("Watch the video ..."); } else { echo _("Read the article ...");}?></span></a>
 </div>
 <?php } else { ?>
 <div class="featuredItem">
-	<h2><?php echo $ini_array[$key]['title']?></h2>
-	<a class="menuItem" href="<?php echo $ini_array[$key]['url'] . '?p=' . $contentObj->ID?>" >
-	<img  class="rightImage" src="<?php echo $ini_array[$key]['image']?>"/>
+	<h2><?php echo $value['title']?></h2>
+	<a class="menuItem" href="<?php echo $value['url'] . '?p=' . $contentObj->ID?>" >
+	<img  class="rightImage" src="<?php echo $value['image']?>"/>
 	</a>
-		<?php echo $ini_array[$key]['description']?>
+		<?php echo $value['description']?>
 	<p/>
-	<a class="linkItem" href="<?php echo $ini_array[$key]['url'] . '?p=' . $contentObj->ID?>" >
-	<span style="color:#BBBBFF"><?php if($ini_array[$key]['type'] == 'video'){ echo _("Watch the video ..."); } else { echo _("Read the article ...");}?></span></a>
+	<a class="linkItem" href="<?php echo $value['url'] . '?p=' . $contentObj->ID?>" >
+	<span style="color:#BBBBFF"><?php if($value['type'] == 'video'){ echo _("Watch the video ..."); } else { echo _("Read the article ...");}?></span></a>
 </div>
 <?php } ?>
 <?php }?>

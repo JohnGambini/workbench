@@ -114,6 +114,7 @@ require_once( WORKBENCH_DIR . '\php\dialogs\changeThemeDlg.php');
 require_once( WORKBENCH_DIR . '\php\dialogs\contentDumpDlg.php');
 require_once( WORKBENCH_DIR . '\php\dialogs\userDumpDlg.php');
 require_once( WORKBENCH_DIR . '\php\dialogs\debugDialog.php');
+require_once( WORKBENCH_DIR . '\php\dialogs\urlInputDlg.php');
 
 /* more objects */
 require_once( WORKBENCH_DIR . '\php\objects\wbDialogs.php');
