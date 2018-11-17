@@ -11,8 +11,9 @@ class wbSql
 	public $sqlMenuList = NULL;
 	public $sqlMenuGroups = NULL;
 	public $sqlSideBarMenuList = NULL;
-	public $sqlGalleryList = NULL;
-	public $sqlArticlesList = NULL;
+	public $sqlGalleryItems = NULL;
+	public $sqlArticleItems = NULL;
+	public $sqlRightbarItems = NULL;
 	public $sqlListPosts = NULL;
 	public $sqlUsers = NULL;
 	public $sqluserGroups = NULL;
@@ -20,7 +21,6 @@ class wbSql
 	public $sqlPageTypes = NULL;
 	public $sqlContent = NULL;
 	public $sqlTabItems = NULL;
-	public $sqlRightbarItems = NULL;
 	public $sqlStatusList = NULL;
 	public $sqlArrays = NULL;
 	
@@ -100,19 +100,29 @@ class wbSql
 		 * This lists one menu, and the content associated with the
 		 * menu's items. Used by the gallery page
 		 */
-		$this->sqlGalleryList = "select contentId, itemId, permalink, title, sequence, " .
+		$this->sqlGalleryItems = "select contentId, itemId, permalink, title, sequence, target, " .
 				"galleryImage, pageType, articleDescription, articleImage, ogType " .
 				"from vw_contentlist " .
 				"where menuId = '" . $contentObj->ID . "' " .
 				"and menuType = '1' " .
 				"and (( ownerId = '" . $userObj->ID . "' and (status = 'Private' or status = 'Draft')) or status in (" . $userObj->groups() . ") or status = 'Public' ) order by sequence";
 
+		/*------------------------------------------------------------------------------------
+		 * select the rightbar items
+		 */
+		$this->sqlRightbarItems = "select contentId, itemId, permalink, title, sequence, target, " .
+				"galleryImage, pageType, articleDescription, articleImage, ogType " .
+				"from vw_contentlist " .
+				"where menuId = '" . $contentObj->ID . "' " .
+				"and menuType = '2' " .
+				"and (( ownerId = '" . $userObj->ID . "' and (status = 'Private' or status = 'Draft')) or status in (" . $userObj->groups() . ") or status = 'Public' ) order by sequence";
+		
 		/*---------------------------------------------------------------------------------------
 		 * This lists one menu, and the content associated with the
 		 * menu's items. Used by the articles page
 		 */
-		$this->sqlArticlesList = "select contentId, itemId, permalink, title, sequence, " .
-				"galleryImage, pageType, articleDescription, ogType " .
+		$this->sqlArticlesList = "select contentId, itemId, permalink, title, sequence, target, " .
+				"galleryImage, pageType, articleDescription, articleImage, ogType " .
 				"from vw_contentlist " .
 				"where menuId = '" . $contentObj->ID . "' " .
 				"and menuType = '3' " .
@@ -196,18 +206,6 @@ class wbSql
 		"from wb_articles, wb_content " .
 		"where contentId = wb_content.ID " .
 		"and (( ownerId = '" . $userObj->ID . "' and (wb_content.status = 'Private' or wb_content.status = 'Draft')) or status in (" . $userObj->groups() . ") or status = 'Public' ) ";
-		
-		/*------------------------------------------------------------------------------------
-		 * select the rightbar items
-		 */
-		$this->sqlRightbarItems = "select wb_menuItems.ID, title, " .
-				"galleryImage, permalink, sequence, target " .
-				"from wb_menuitems, wb_content " .
-				"where wb_menuitems.menuId = '" . $contentObj->ID . "' " .
-				"and wb_menuitems.contentId = wb_content.ID " .
-				"and wb_menuitems.menuType = '2' " . 
-				"and (( ownerId = '" . $userObj->ID . "' and (wb_content.status = 'Private' or wb_content.status = 'Draft')) or status in (" . $userObj->groups() . ") or status = 'Public' ) " .
-				"order by sequence";
 		
 		/*------------------------------------------------------------------------------------
 		 * Load the user groups to be used for status array

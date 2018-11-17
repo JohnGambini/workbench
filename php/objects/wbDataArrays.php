@@ -15,7 +15,9 @@ class wbDataArrays
 	public $userGroupsArray = NULL;
 	public $pageTypesArray = NULL;
 	public $galleryItemsArray = NULL;
+	public $rightbarArray = NULL;
 	public $articleItemsArray = NULL;
+	public $featuredArticlesArray = NULL;
 	public $parallaxItemsArray = NULL;
 	public $sidebarMenusArray = NULL;
 	public $rootContentArray = NULL;
@@ -24,7 +26,6 @@ class wbDataArrays
 	public $contentArray = NULL;
 	public $targetArray = NULL;
 	public $tabsArray = NULL;
-	public $rightbarArray = NULL;
 	public $themesArray = NULL;
 	public $imageArray = NULL;	//background image for front-page_content.php
 	
@@ -69,10 +70,10 @@ class wbDataArrays
 	/*------------------------------------------------------------------------
 	 *
 	 */
-	function get_articleItemsArray($dbObj, $sqlObject) {
+	function & get_articleItemsArray($dbObj, $sqlObject) {
 		if($this->articleItemsArray == NULL)
-			return $this->load_articleItems($dbObj, $sqlObject);
-		return true;
+			$this->load_articleItems($dbObj, $sqlObject);
+		return $this->articleItemsArray;
 	}
 	
 	/*------------------------------------------------------------------------
@@ -144,9 +145,9 @@ class wbDataArrays
 	 * load_galleryItems
 	 */
 	function load_galleryItems($dbObj, $sqlObject) {
-		if( ! $dbObj->query($sqlObject->sqlGalleryList)) {
+		if( ! $dbObj->query($sqlObject->sqlGalleryItems)) {
 			$dbObj->error = "wbDataArrays: load_galleryItems: An sql error occured<br><br>" . $dbObj->error . "<br><br>" .
-					$sqlObject->sqlGalleryList;
+					$sqlObject->sqlGalleryItems;
 			return false;
 		}
 
@@ -158,6 +159,7 @@ class wbDataArrays
 					'permalink' => $row['permalink'], 
 					'title' => $row['title'], 
 					'sequence' => $row['sequence'], 
+					'target' => $row['target'],
 					'galleryImage' => $row['galleryImage'], 
 					'pageType' => $row['pageType'],
 					'articleDescription' => $row['articleDescription'],
@@ -166,6 +168,35 @@ class wbDataArrays
 			);
 		}
 		
+		return true;
+	}
+	
+	/*-------------------------------------------------------------------------------------
+	 * load_rightbarItems
+	 */
+	function load_rightbarItems($dbObj, $sqlObject, $contentId) {
+	
+		if( ! $dbObj->query($sqlObject->sqlRightbarItems )) {
+			$dbObj->error = "wbDataArrays: load_rightbarItems: An sql error occured<br><br>" . $dbObj->error . "<br><br>" .
+					$sqlObject->sqlRightbarItems;
+					return false;
+		}
+	
+		for( $i=0; $row = mysqli_fetch_array($dbObj->result); $i++) {
+			$this->rightbarArray[$i] = array('ID' => $row['contentId'],
+					'itemId' => $row['itemId'],
+					'permalink' => $row['permalink'],
+					'title' => $row['title'],
+					'sequence' => $row['sequence'],
+					'target' => $row['target'],
+					'galleryImage' => $row['galleryImage'],
+					'pageType' => $row['pageType'],
+					'articleDescription' => $row['articleDescription'],
+					'articleImage' => $row['articleImage'],
+					'type' => $row['ogType']
+			);
+		}
+	
 		return true;
 	}
 	
@@ -183,14 +214,34 @@ class wbDataArrays
 	
 		for($i = 0; $row = mysqli_fetch_array($dbObj->result); $i++ ) {
 			$this->articleItemsArray[$i] = array('ID' => $row['contentId'],
-					'itemId' => $row['itemId'], 'permalink' => $row['permalink'],
-					'title' => $row['title'], 'sequence' => $row['sequence'],
-					'galleryImage' => $row['galleryImage'], 'pageType' => $row['pageType'],
-					'articleDescription' => $row['articleDescription'], 'type' => $row['ogType']
+					'itemId' => $row['itemId'], 
+					'permalink' => $row['permalink'],
+					'title' => $row['title'],
+					'sequence' => $row['sequence'],
+					'target' => $row['target'],
+					'galleryImage' => $row['galleryImage'],
+					'pageType' => $row['pageType'],
+					'articleDescription' => $row['articleDescription'],
+					'articleImage' => $row['articleImage'],
+					'type' => $row['ogType']
 			);
 		}
 	
 		return true;
+	}
+	
+	/*-----------------------------------------------------------------------------
+	 * load_featuredArticles
+	 */
+	function load_featuredArticles(dbContent $contentObj) {
+
+		$this->featuredArticlesArray = array();
+		$filename = ABSDIR . "\\featured." . substr($contentObj->lang,0,2) . ".ini";
+		//die($filename);
+		if(file_exists($filename))
+			$this->featuredArticlesArray = parse_ini_file($filename,TRUE);
+		
+		
 	}
 	
 	/*-----------------------------------------------------------------------------
@@ -321,31 +372,6 @@ class wbDataArrays
 		return true;
 	}
 
-	/*-------------------------------------------------------------------------------------
-	 * load_rightbarItems
-	 */
-	function load_rightbarItems($dbObj, $sqlObject, $contentId) {
-	
-			if( ! $dbObj->query($sqlObject->sqlRightbarItems )) {
-				$dbObj->error = "wbDataArrays: load_rightbarItems: An sql error occured<br><br>" . $dbObj->error . "<br><br>" .
-						$sqlObject->sqlRightbarItems;
-						return false;
-			}
-	
-			for( $i=0; $row = mysqli_fetch_array($dbObj->result); $i++) {
-				$this->rightbarArray[$i] =
-				array(
-						'ID' => $row['ID'],
-						'title' => $row['title'],
-						'sequence' => $row['sequence'],
-						'target' => $row['target'],
-						'galleryImage' => $row['galleryImage'],
-						'permalink' => $row['permalink'],
-				);
-			}
-	
-			return true;
-	}
 	
 	/*------------------------------------------------------------------------------------
 	 *
