@@ -7,15 +7,15 @@
 ---------------------------------------------------------------------------------------------*//*---------------------------------------------------------------------
 * get_articlesWidgetString()
 */
-function get_articlesWidgetString(wbDatabase $dbObj, wbSql $sqlObject, dbContent $contentObj, wbDataArrays $dataArrays ) {
+function get_articlesWidgetString(wbDatabase $dbObj, wbSql $sqlObject, dbContent $contentObj, $itemsList ) {
 
 	$retString = '';
 	$flip = 'right';
 	$count = 0;
 	
-	$dataArrays->get_articleItemsArray($dbObj, $sqlObject);
+	//$dataArrays->get_articleItemsArray($dbObj, $sqlObject);
 	
-	foreach( $dataArrays->articleItemsArray as $key => $value) {
+	foreach( $itemsList as $key => $value) {
 		$linkSpec = substr($value['permalink'],0,4);
 		$target = '_self';
 		if($linkSpec == 'http') {
