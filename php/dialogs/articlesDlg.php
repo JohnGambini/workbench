@@ -5,10 +5,10 @@
 * Copyright 2015 2016 2017 2018 by John Gambini
 *
 ---------------------------------------------------------------------------------------------*/
-function set_articlesDlg(wbDatabase $dbObj, dbUser $userObj, dbContent $contentObj, wbSql $sqlObject, wbDataArrays $dataArrays ) {
+function set_articlesDlg(wbDatabase $dbObj, dbUser $userObj, dbContent $contentObj, wbSql $sqlObject, wbDataArrays & $dataArrays ) {
 	global $contentFieldNames;
-
-	$dataArrays->get_articleItemsArray($dbObj, $sqlObject);
+	global $debugMessage;
+	$debugMessage = $debugMessage . "set_articlesDlg() was called.<br/>";
 	
 	$articlesArray = array(
 			array(
@@ -18,16 +18,16 @@ function set_articlesDlg(wbDatabase $dbObj, dbUser $userObj, dbContent $contentO
 			)
 	);
 
-	$i = 1;
-	foreach ( $dataArrays->articleItemsArray as $key => $value ) {
+	$count = 1;
+	foreach ( $dataArrays->get_articleItemsArray($dbObj, $sqlObject) as $key => $value ) {
 
-		$articlesArray[$i] = array(
-				array('<input type="checkbox" name="checkbox_' . $i . '" value="' . $value['itemId'] . '"/>', 'width:4%'),
-				array('<input type="number" name="seq_' . $i . '" value="' . $value['sequence'] . '"/><input hidden="true type="number" name="menuID_' . $i . '" value="' . $value['ID'] . '"/>', 'width:6%'),
+		$articlesArray[$count] = array(
+				array('<input type="checkbox" name="checkbox_' . $count . '" value="' . $value['itemId'] . '"/>', 'width:4%'),
+				array('<input type="number" name="seq_' . $count . '" value="' . $value['sequence'] . '"/><input hidden="true type="number" name="menuID_' . $count . '" value="' . $value['ID'] . '"/>', 'width:6%'),
 				array($value['title'], 'width:90%;padding:0em 0em 0em 0.5em')
 		);
 
-		$i++;
+		$count++;
 	}
 
 
@@ -49,7 +49,7 @@ function set_articlesDlg(wbDatabase $dbObj, dbUser $userObj, dbContent $contentO
 </tr>
 <tr>
 	<td style="width:4%"><input type="checkbox" name="addArticle"/></td>
-	<td style="width:6%"><input type="number" name="sequence" value="<?php echo count($dataArrays->articleItemsArray)+1?>"/></td>
+	<td style="width:6%"><input type="number" name="sequence" value="<?php echo $count?>"/></td>
 	<td style="width:90%"><?php set_selectWidget($dataArrays->contentArray, $contentFieldNames['content-id'])?>
 </td>
 </tr>

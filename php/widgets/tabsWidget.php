@@ -62,7 +62,7 @@ function set_tabsWidget(wbDatabase $dbObj, wbSql $sqlObject, wbDataArrays $dataA
 	;
 
    	//alert(document.getElementById('webapp').value + '/dbSelects.php');
-    	
+ 
 	wbAjax(dbParams, document.getElementById('webapp').value + '/dbSelects.php', function(responseText) {
 
 		//document.getElementById("errorMessage").innerHTML = responseText;
@@ -86,12 +86,12 @@ function set_tabsWidget(wbDatabase $dbObj, wbSql $sqlObject, wbDataArrays $dataA
         //if(debugString.length < 2 ) {
         //	document.getElementById("debugMessage").innerHTML = "" + myObj[2] + "";
         //}
-        if(myObj[0].length) {
-            javascript:showForm('errorDialog','content');
-        } else if (myObj[1].length){
-            javascript:showForm('successDialog','content');
-        } else {
-        	var articleObj = myObj[3];
+    	if(myObj[0].length) {
+    		javascript:showForm('errorDialog','content');
+    	} else if (myObj[1].length){
+    		javascript:showForm('successDialog','content');
+    	} else {
+    	   	var articleObj = myObj[3];
         	//requires <div id='articleText'></div> in page
         	if(document.getElementById("articleText"))
             	document.getElementById("articleText").innerHTML = "" + articleObj[0] + "";
@@ -105,10 +105,10 @@ function set_tabsWidget(wbDatabase $dbObj, wbSql $sqlObject, wbDataArrays $dataA
 			//document.getElementById("errorMessage").innerHTML = "" + articleObj[0] + "";
             //javascript:showForm('errorDialog','content');
         	//
-        }
+    	}
 
        	//update contentMenu width (if it exists) depending on status of vertical scrollbar
-       	scrollbarWidth = 16;
+   	scrollbarWidth = 16;
        	
     	var sidebarContainer = document.getElementById('sidebarContainer');
     	var contentMenu = document.getElementById('contentMenu');
@@ -116,7 +116,7 @@ function set_tabsWidget(wbDatabase $dbObj, wbSql $sqlObject, wbDataArrays $dataA
     	var bodyElement = document.getElementById('body');
     	var contentContainer = document.getElementById('contentContainer');
 
-      	var bodyRect = null;
+     	var bodyRect = null;
     	var contentRect = null;
     	
     	if(bodyElement)

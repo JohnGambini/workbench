@@ -11,9 +11,10 @@ class wbSql
 	public $sqlMenuList = NULL;
 	public $sqlMenuGroups = NULL;
 	public $sqlSideBarMenuList = NULL;
-	public $sqlGalleryItems = NULL;
-	public $sqlArticleItems = NULL;
-	public $sqlRightbarItems = NULL;
+	public $sqlPageItems = NULL;
+	//public $sqlGalleryItems = NULL;
+	//public $sqlRightbarItems = NULL;
+	//public $sqlArticleItems = NULL;
 	public $sqlListPosts = NULL;
 	public $sqlUsers = NULL;
 	public $sqluserGroups = NULL;
@@ -96,6 +97,18 @@ class wbSql
 				"and ( ownerId = '" . $userObj->ID . "' or status = 'published' ) " .
 				"order by mgseq, menuId, sequence"; 
 	            */	
+
+		/*---------------------------------------------------------------------------------------
+		 * This lists one menu, and the content associated with the menu's items. 
+		 * This is used by the load_pageItems function. The load_pageItems function is the
+		 * combined load_galleryItems, load_rightbarItems, and load_articles functions. 
+		 */
+		$this->sqlPageItems = "select menuType, contentId, itemId, permalink, title, sequence, target, " .
+				"galleryImage, pageType, articleDescription, articleImage, ogType " .
+				"from vw_contentlist " .
+				"where menuId = '" . $contentObj->ID . "' " .
+				"and (( ownerId = '" . $userObj->ID . "' and (status = 'Private' or status = 'Draft')) or status in (" . $userObj->groups() . ") or status = 'Public' ) order by sequence";
+		
 		/*---------------------------------------------------------------------------------------
 		 * This lists one menu, and the content associated with the
 		 * menu's items. Used by the gallery page
@@ -106,7 +119,6 @@ class wbSql
 				"where menuId = '" . $contentObj->ID . "' " .
 				"and menuType = '1' " .
 				"and (( ownerId = '" . $userObj->ID . "' and (status = 'Private' or status = 'Draft')) or status in (" . $userObj->groups() . ") or status = 'Public' ) order by sequence";
-
 		/*------------------------------------------------------------------------------------
 		 * select the rightbar items
 		 */
@@ -116,7 +128,6 @@ class wbSql
 				"where menuId = '" . $contentObj->ID . "' " .
 				"and menuType = '2' " .
 				"and (( ownerId = '" . $userObj->ID . "' and (status = 'Private' or status = 'Draft')) or status in (" . $userObj->groups() . ") or status = 'Public' ) order by sequence";
-		
 		/*---------------------------------------------------------------------------------------
 		 * This lists one menu, and the content associated with the
 		 * menu's items. Used by the articles page
@@ -127,7 +138,6 @@ class wbSql
 				"where menuId = '" . $contentObj->ID . "' " .
 				"and menuType = '3' " .
 				"and (( ownerId = '" . $userObj->ID . "' and (status = 'Private' or status = 'Draft')) or status in (" . $userObj->groups() . ") or status = 'Public' ) order by sequence";
-
 		/*-------------------------------------------------------------------------
 		 * Here's the sql for the parallax view, joined with menu_items for item sequence
 		 */

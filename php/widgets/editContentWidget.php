@@ -8,7 +8,7 @@
  /*---------------------------------------------------------------------
  * set_editContentWidget()
  */
-function set_editContentWidget( dbContent $contentObj, wbDataArrays $dataArrays, array $contentFieldNames, $userUpdate = false) {
+function set_editContentWidget( dbContent $contentObj, wbDataArrays & $dataArrays, array $contentFieldNames, $userUpdate = false) {
 	
 ?>
 <table style="max-width:55em;padding:1em">

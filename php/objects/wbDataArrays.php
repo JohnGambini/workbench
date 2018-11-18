@@ -14,9 +14,10 @@ class wbDataArrays
 	public $usersArray = NULL;
 	public $userGroupsArray = NULL;
 	public $pageTypesArray = NULL;
-	public $galleryItemsArray = NULL;
-	public $rightbarArray = NULL;
-	public $articleItemsArray = NULL;
+	private $galleryItemsArray = NULL;
+	private $rightbarItemsArray = NULL;
+	private $articleItemsArray = NULL;
+	private $pageItemsArray_4 = NULL;
 	public $featuredArticlesArray = NULL;
 	public $parallaxItemsArray = NULL;
 	public $sidebarMenusArray = NULL;
@@ -32,8 +33,6 @@ class wbDataArrays
 	function wbDataArrays() {
 		
 		$this->targetArray = array('_self' => '_self', '_blank' => '_blank');
-		$this->tabsArray = array();
-		$this->rightbarArray = array();
 		$this->langArray = array('en','fr'/*, 'de', 'it'*/);
 		
 		$this->themesArray = array('default' => 'default');
@@ -61,19 +60,37 @@ class wbDataArrays
 	/*------------------------------------------------------------------------
 	 * 
 	 */
-	function get_galleryItemsArray($dbObj, $sqlObject) {
+	function & get_galleryItemsArray(wbDatabase $dbObj, wbSql $sqlObject) {
+		global $debugMessage;
+		$debugMessage = $debugMessage . "get_galleryItemsArray() was called<br/>";
 		if($this->galleryItemsArray == NULL)
-			return $this->load_galleryItems($dbObj, $sqlObject);
-		return true;
+			$this->load_pageItems($dbObj, $sqlObject);
+		$debugMessage = $debugMessage . "there are " . count($this->galleryItemsArray) . " gallery items.<br/>";
+		return $this->galleryItemsArray;
 	}
 	
+	/*---------------------------------------------------------------------------
+	 *
+	 */
+	function & get_rightbarArray(wbDatabase $dbObj, wbSql $sqlObject) {
+		global $debugMessage;
+		$debugMessage = $debugMessage . "get_rightbarArray() was called<br/>";
+		if($this->rightbarItemsArray == NULL)
+			$this->load_pageItems($dbObj, $sqlObject);
+		$debugMessage = $debugMessage . "there are " . count($this->rightbarItemsArray) . " rightbar items.<br/>";
+		return $this->rightbarItemsArray;
+	}
+
 	/*------------------------------------------------------------------------
 	 *
 	 */
-	function & get_articleItemsArray($dbObj, $sqlObject) {
-		if($this->articleItemsArray == NULL)
-			$this->load_articleItems($dbObj, $sqlObject);
-		return $this->articleItemsArray;
+	function & get_articleItemsArray(wbDatabase $dbObj, wbSql $sqlObject) {
+	global $debugMessage;
+	$debugMessage = $debugMessage . "get_articleItemsArray() was called<br/>";
+	if($this->articleItemsArray == NULL)
+		$this->load_pageItems($dbObj, $sqlObject);
+	$debugMessage = $debugMessage . "there are " . count($this->articleItemsArray) . " article items.<br/>";
+	return $this->articleItemsArray;
 	}
 	
 	/*------------------------------------------------------------------------
@@ -112,15 +129,6 @@ class wbDataArrays
 			return $this->load_tabItems($dbObj, $sqlObject, $contentId);
 		return true;
 	}
-
-	/*---------------------------------------------------------------------------
-	 *
-	 */
-	function get_rightbarArray($dbObj, $sqlObject, $contentId) {
-		if($this->rightbarArray == NULL)
-			return $this->load_rightbarItems($dbObj, $sqlObject, $contentId);
-			return true;
-	}
 	
 	/*---------------------------------------------------------------------------
 	 *
@@ -142,9 +150,70 @@ class wbDataArrays
 	}
 
 	/*-----------------------------------------------------------------------------
+	 * load_pageItems
+	 */
+	function load_pageItems(wbDatabase $dbObj, wbSql $sqlObject) {
+
+		global $debugMessage;
+		
+		$debugMessage = $debugMessage . '<span style="color:red">called load_pageItems()</span><br/>';
+		
+		if( ! $dbObj->query($sqlObject->sqlPageItems)) {
+			$dbObj->error = "wbDataArrays: load_pageItems: An sql error occured<br><br>" . $dbObj->error . "<br><br>" .
+					$sqlObject->sqlPageItems;
+					return false;
+		}
+		
+		if($this->galleryItemsArray == NULL)
+			$this->galleryItemsArray = array();
+		if($this->rightbarItemsArray == NULL)
+			$this->rightbarItemsArray = array();
+		if($this->articleItemsArray == NULL)
+			$this->articleItemsArray = array();
+		if($this->pageItemsArray_4 == NULL)
+			$this->pageItemsArray_4 = array();
+		
+		for($i = 0; $row = mysqli_fetch_array($dbObj->result); $i++ ) {
+			if($row['menuType'] == 1)
+				$this->addPageItem($this->galleryItemsArray, $row);
+			else if($row['menuType'] == 2) 
+				$this->addPageItem($this->rightbarItemsArray, $row);
+			else if($row['menuType'] == 3)
+				$this->addPageItem($this->articleItemsArray, $row);
+			else
+				$this->addPageItem($this->pageItemsArray_4, $row);
+		}
+	
+		return true;
+	}
+
+
+	/*-----------------------------------------------------------------------------
+	 * addPageItem
+	 */
+	function addPageItem(array & $subject, array $row) {
+		
+		$subject[] = array('ID' => $row['contentId'],
+				'itemId' => $row['itemId'],
+				'permalink' => $row['permalink'],
+				'title' => $row['title'],
+				'sequence' => $row['sequence'],
+				'target' => $row['target'],
+				'galleryImage' => $row['galleryImage'],
+				'pageType' => $row['pageType'],
+				'articleDescription' => $row['articleDescription'],
+				'articleImage' => $row['articleImage'],
+				'type' => $row['ogType']
+		);
+	}
+	
+	
+	
+	/*-----------------------------------------------------------------------------
 	 * load_galleryItems
 	 */
-	function load_galleryItems($dbObj, $sqlObject) {
+	/*
+	function load_galleryItems(wbDatabase $dbObj, wbSql $sqlObject) {
 		if( ! $dbObj->query($sqlObject->sqlGalleryItems)) {
 			$dbObj->error = "wbDataArrays: load_galleryItems: An sql error occured<br><br>" . $dbObj->error . "<br><br>" .
 					$sqlObject->sqlGalleryItems;
@@ -170,11 +239,12 @@ class wbDataArrays
 		
 		return true;
 	}
-	
+	*/
 	/*-------------------------------------------------------------------------------------
 	 * load_rightbarItems
 	 */
-	function load_rightbarItems($dbObj, $sqlObject, $contentId) {
+	/*
+	function load_rightbarItems(wbDatabase $dbObj, wbSql $sqlObject) {
 	
 		if( ! $dbObj->query($sqlObject->sqlRightbarItems )) {
 			$dbObj->error = "wbDataArrays: load_rightbarItems: An sql error occured<br><br>" . $dbObj->error . "<br><br>" .
@@ -183,7 +253,7 @@ class wbDataArrays
 		}
 	
 		for( $i=0; $row = mysqli_fetch_array($dbObj->result); $i++) {
-			$this->rightbarArray[$i] = array('ID' => $row['contentId'],
+			$this->rightbarItemsArray[$i] = array('ID' => $row['contentId'],
 					'itemId' => $row['itemId'],
 					'permalink' => $row['permalink'],
 					'title' => $row['title'],
@@ -199,11 +269,12 @@ class wbDataArrays
 	
 		return true;
 	}
-	
+	*/
 	/*-----------------------------------------------------------------------------
 	 * load_articleItems
 	 */
-	function load_articleItems($dbObj, $sqlObject) {
+	/*
+	function load_articleItems(wbDatabase $dbObj, wbSql $sqlObject) {
 		if( ! $dbObj->query($sqlObject->sqlArticlesList)) {
 			$dbObj->error = "wbDataArrays: load_articleItems: An sql error occured<br><br>" . $dbObj->error . "<br><br>" .
 					$sqlObject->sqlArticlesList;
@@ -229,7 +300,7 @@ class wbDataArrays
 	
 		return true;
 	}
-	
+	*/
 	/*-----------------------------------------------------------------------------
 	 * load_featuredArticles
 	 */
@@ -354,6 +425,8 @@ class wbDataArrays
 					$sqlObject->sqlTabItems . $contentClause;
 			return false;
 		}
+		
+		$this->tabsArray = array();
 
 		for( $i=0; $row = mysqli_fetch_array($dbObj->result); $i++) {
 			$this->tabsArray[$row['tabTitle']] = 

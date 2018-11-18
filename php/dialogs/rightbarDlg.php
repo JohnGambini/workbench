@@ -5,10 +5,12 @@
  * Copyright 2015 2016 2017 2018 by John Gambini
  *
  ---------------------------------------------------------------------------------------------*/
-function set_rightbarDlg(dbUser $userObj, dbContent $contentObj, wbDataArrays $dataArrays ) {
+function set_rightbarDlg(wbDatabase $dbObj, dbUser $userObj, dbContent $contentObj, wbSql $sqlObject, wbDataArrays & $dataArrays ) {
 	global $contentFieldNames;
+	global $debugMessage;
+	$debugMessage = $debugMessage . "set_rightbarDlg() was called.<br/>";
 
-	$rightbarArray = array(
+	$rightbarColumnsArray = array(
 			array(
 					array('<div class="icon icon-bin"></div>', 'width:4%;text-align:right;padding:0.5em 0.5em'),
 					array('seq', 'width:6%; text-align:center; padding:0.5em 0.5em'),
@@ -17,17 +19,16 @@ function set_rightbarDlg(dbUser $userObj, dbContent $contentObj, wbDataArrays $d
 	);
 
 	$i = 1;
-	foreach ( $dataArrays->rightbarArray as $key => $value ) {
-
-		$rightbarArray[$i] = array(
+	foreach ( $dataArrays->get_rightbarArray($dbObj, $sqlObject) as $key => $value ) {
+	
+		$rightbarColumnsArray[$i] = array(
 				array('<input type="checkbox" name="checkbox_' . $i . '" value="' . $value['ID'] . '"/>', 'width:4%'),
 				array('<input type="number" name="seq_' . $i . '" value="' . $value['sequence'] . '"/><input hidden="true type="number" name="menuID_' . $i . '" value="' . $value['ID'] . '"/>', 'width:6%'),
 				array($value['title'], 'width:90%;padding:0em 0em 0em 0.5em')
 		);
-
+	
 		$i++;
 	}
-
 
 	$settingsArray = array('header' => true, 'height' => '10em');
 
@@ -38,7 +39,7 @@ function set_rightbarDlg(dbUser $userObj, dbContent $contentObj, wbDataArrays $d
 <input hidden="true" type="number" name="<?php echo $contentFieldNames['menuType'] ?>" value="2"/>
 <div class="pagecomponent">
 <?php set_dlgHeader("Manage Rightbar","popupManageRightbar") ?>
-<?php set_scrollTableWidget($rightbarArray, $settingsArray) ?>
+<?php set_scrollTableWidget($rightbarColumnsArray, $settingsArray) ?>
 <table style="width:98%;margin:0.5em auto">
 <tr>
 	<td style="width:4%;height:1.5em"><em>Add</em></td>
@@ -47,7 +48,7 @@ function set_rightbarDlg(dbUser $userObj, dbContent $contentObj, wbDataArrays $d
 </tr>
 <tr>
 	<td style="width:4%"><input type="checkbox" name="addRightbar"/></td>
-	<td style="width:6%"><input type="number" name="sequence" value="<?php echo count($dataArrays->rightbarArray)+1?>"/></td>
+	<td style="width:6%"><input type="number" name="sequence" value="<?php echo $i?>"/></td>
 	<td style="width:90%"><?php set_selectWidget($dataArrays->contentArray, $contentFieldNames['content-id'])?>
 </td>
 </tr>

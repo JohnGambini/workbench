@@ -150,6 +150,7 @@ require_once( WORKBENCH_DIR . '\php\includes\\tabsList.php');
 $sqlObject = new wbSql($userObj,$contentObj);
 
 $dataArrays = new wbDataArrays();
+//$dataArrays->load_pageItems($dbObj, $sqlObject);
 
 if($userObj->ID != NULL) {
 	$dataArrays->getDialogArrays($dbObj, $contentObj, $sqlObject);

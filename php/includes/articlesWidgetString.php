@@ -4,16 +4,18 @@
 *
 * Copyright 2015 2016 2017 2018 by John Gambini
 *
----------------------------------------------------------------------------------------------*//*---------------------------------------------------------------------
+---------------------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------
 * get_articlesWidgetString()
 */
-function get_articlesWidgetString(wbDatabase $dbObj, wbSql $sqlObject, dbContent $contentObj, $itemsList ) {
+function get_articlesWidgetString(dbContent $contentObj, $itemsList ) {
 
 	$retString = '';
 	$flip = 'right';
 	$count = 0;
 	
-	//$dataArrays->get_articleItemsArray($dbObj, $sqlObject);
+	if($itemsList === NULL)
+		return;
 	
 	foreach( $itemsList as $key => $value) {
 		$linkSpec = substr($value['permalink'],0,4);

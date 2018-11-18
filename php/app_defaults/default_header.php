@@ -33,7 +33,7 @@ global $dataArrays;
 	<meta property="og:locale" content="<?php echo $contentObj->lang ?>" />
 	<meta property="og:type" content="<?php echo $contentObj->ogType ?>" />
 	<meta property="og:url" content="<?php echo SITE_NAME . SUBSITE_NAME . $contentObj->permalink ?>" />
-	<meta property="og:image" content="<?php echo replace_wb_variable($contentObj->articleImage, $dbObj, $userObj, $contentObj) ?>" />
+	<meta property="og:image" content="<?php echo replace_wb_variable($contentObj->articleImage, $dbObj, $contentObj) ?>" />
 	<meta name="description" content="<?php echo htmlspecialchars($contentObj->articleDescription)?>">
 	<meta property="og:description" content="<?php echo htmlspecialchars($contentObj->articleDescription) ?>" />
 	<meta property="og:site_name" content="<?php echo APP_NAME  ?>" />

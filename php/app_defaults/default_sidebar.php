@@ -16,7 +16,7 @@ global $userObj;
 <div id="sidebar" class="sidebar">
 <div style="margin:0em 1em">
 <?php echo get_languagesString($contentObj,$dataArrays) ?>
-<?php set_articleEditSidebarWidget($dbObj, $contentObj, $userObj,$sqlObject, $dataArrays)?>
+<?php set_articleEditSidebarWidget($dbObj, $contentObj, $userObj, $sqlObject, $dataArrays)?>
 <?php set_menuList($dbObj, $contentObj, $sqlObject, $dataArrays)?>
 </div>
 </div> <!-- close sidebar -->

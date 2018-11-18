@@ -12,8 +12,8 @@ global $contentObj;
 <div id="content" class="content">
 <?php get_contentMenu($contentObj) ?>
 <div id="mainContent" class="mainContent" style="padding: 0em 0em 0.01em 0em; height:100%;border:0px solid green">
-    <object id="acrobatObj" data="<?php echo replace_wb_variable($contentObj->articleFile, $dbObj, $userObj, $contentObj ) ?>" type="application/pdf" width="100%" height="100%">
-        alt : <a href="<?php echo replace_wb_variable($contentObj->articleFile, $dbObj, $userObj, $contentObj ) ?>">test.pdf</a>
+    <object id="acrobatObj" data="<?php echo replace_wb_variable($contentObj->articleFile, $dbObj, $contentObj ) ?>" type="application/pdf" width="100%" height="100%">
+        alt : <a href="<?php echo replace_wb_variable($contentObj->articleFile, $dbObj, $contentObj ) ?>">test.pdf</a>
     </object>
 </div>
 </div> <!-- close content -->

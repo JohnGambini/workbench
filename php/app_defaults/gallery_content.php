@@ -18,21 +18,6 @@ if($userObj->type > 1 ){
 	$dialogsObj->functions['edit-content'] = 'set_galleryEditContentDlg';
 }
 
-if(isset($dataArrays)) {
-	if( ! $dataArrays->get_galleryItemsArray($dbObj, $sqlObject)) {
-		$errorMessage = "gallery_content.php: " . $dbObj->error;
-		$contentObj->error = "";
-		$contentObj->pageType = 'error';
-		require_once( WORKBENCH_DIR . '\\php\\app_defaults\\' . 'error_content.php');
-		return;
-	}
-} else {
-	$contentObj->error = "gallery_content.php: The dataArrays object is not set.";
-	$contentObj->pageType = 'error';
-	require_once( WORKBENCH_DIR . '\\php\\app_defaults\\' . 'error_content.php');
-	return;
-}
-
 ?>
 
 <div id="contentContainer" class="contentContainer">
@@ -45,11 +30,11 @@ if(isset($dataArrays)) {
 	<div class="fontSpecVerySmall" style="max-width:80%;text-align:left;margin:0em auto"><?php echo $contentObj->articleDescription ?></div>
 <?php }?>
 
-<?php echo get_galleryWidgetString( $dbObj, $sqlObject, $contentObj, $dataArrays ); ?>
+<?php echo get_galleryWidgetString( $contentObj, $dataArrays->get_galleryItemsArray($dbObj, $sqlObject)); ?>
 
 <div class="articleTabs fontSpecSmall"><?php $tabName = set_tabsWidget($dbObj, $sqlObject, $dataArrays, $contentObj)?></div>
 <?php if(strlen($tabName) != 0) {?>	
-<div id="articleText"><?php echo replace_wb_variable($dataArrays->tabsArray[$tabName]['articleText'], $dbObj, $userObj, $contentObj, $sqlObject, $dataArrays) ?></div>
+<div id="articleText"><?php echo replace_wb_variable($dataArrays->tabsArray[$tabName]['articleText'], $dbObj, $contentObj, $sqlObject, $dataArrays) ?></div>
 <?php 	} else {?>
 <div id="articleText"></div>
 <?php	 }?>

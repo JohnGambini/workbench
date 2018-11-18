@@ -343,8 +343,11 @@ function replace_wb_variable($subject)
 			
 }
 */			
-function replace_wb_variable($subject, wbDatabase $dbObj, dbUser $userObj, dbContent $contentObj = NULL, wbSql $sqlObject = NULL, wbDataArrays $dataArrays = NULL)
+function replace_wb_variable($subject, wbDatabase $dbObj, dbContent $contentObj, wbSql $sqlObject = NULL, wbDataArrays & $dataArrays = NULL)
 {
+	global $debugMessage;
+	$debugMessage = $debugMessage . "replace_wb_variable() was called.<br/>";
+	
 	$patternArray = array(
 			'#(\[\[)\s*(web-app)\s*(\]\])#',
 			'#(\[\[)\s*(content-dir)\s*(\]\])#',
@@ -370,8 +373,8 @@ function replace_wb_variable($subject, wbDatabase $dbObj, dbUser $userObj, dbCon
 			isset($contentObj) ? $contentObj->articleDescription : "<span style='color:red'>no content object</span>",
 			isset($contentObj) ? $contentObj->title : "<span style='color:red'>no content object</span>",
 			isset($contentObj) ? $contentObj->articleFile : "<span style='color:red'>no content object</span>",
-			isset($dataArrays) ? get_galleryWidgetString($dbObj, $sqlObject, $contentObj, $dataArrays) : "<span style='color:red'>no data array object</span>",
-			isset($dataArrays) ? get_articlesWidgetString($dbObj, $sqlObject, $contentObj, $dataArrays) : "<span style='color:red'>no data array object</span>",
+			isset($dataArrays) ? get_galleryWidgetString( $contentObj, $dataArrays->get_galleryItemsArray($dbObj, $sqlObject)) : "<span style='color:red'>no data array object</span>",
+			isset($dataArrays) ? get_articlesWidgetString( $contentObj, $dataArrays->get_articleItemsArray($dbObj, $sqlObject)) : "<span style='color:red'>no data array object</span>",
 			isset($dataArrays) ? get_languagesString( $contentObj, $dataArrays) : "<span style='color:red'>no data array object</span>",
 			isset($contentObj) ? CONTENTDIR . $contentObj->ownerImage : "<span style='color:red'>no content object</span>",
 			isset($contentObj) ? $contentObj->ownerBio : "<span style='color:red'>no content object</span>"
@@ -385,11 +388,11 @@ function replace_wb_variable($subject, wbDatabase $dbObj, dbUser $userObj, dbCon
  * You can update an article if your user priveledge is greater than the content owner's
  * and your in the same group as the content's status 
  --------------------------------------------------------------------------------------*/
-function can_user_edit( dbUser $userObj, dbContent $contentObj )
+function can_user_edit( dbUser $userObj, dbContent $contentObj, $canEditOverride = 0 )
 {
 	/* for now this is only for profile, image, gallery and article pages */
 	/* this is only for the article edit link, for edit attributes see can_user_edit_attribute */
-	if($contentObj->canEdit < 1 )
+	if($contentObj->canEdit < 1 and $canEditOverride < 1 )
 		return false;
 	
 	if($contentObj->ownerId <> $userObj->ID) {

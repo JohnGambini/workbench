@@ -11,16 +11,12 @@ global $contentObj;
 global $dataArrays;
 global $isRightbarSet;
 
-$isRightbarSet = true;
-
-//see if there is content for the right column
-$dataArrays->get_rightbarArray($dbObj, $sqlObject, $contentObj->ID);
-if( count($dataArrays->rightbarArray) == 0) {
+if(count($dataArrays->get_rightbarArray($dbObj, $sqlObject)) == 0)
 	return;
-}
+
 ?>
 <div id="rightbarContainer" class="rightbar">
-<?php foreach ( $dataArrays->rightbarArray as $key => $value ) {
+<?php foreach ( $dataArrays->get_rightbarArray($dbObj, $sqlObject) as $key => $value ) {
 	$linkSpec = substr($value['permalink'],0,4);
 	$target = '_self';
 	if($linkSpec == 'http') {
@@ -42,7 +38,7 @@ if( count($dataArrays->rightbarArray) == 0) {
 	<div class="topicBlock fontSpecSmall" style="width:100%">
 	<a class="menuItem" href="<?php echo $linkSpec ?>" target="<?php echo $value['target'] ?>" >
 	<img class="menuItem" style="margin:0em 0em 1em 0em"  src="<?php echo $imageLink ?>"/>
-	<?php echo $dataArrays->rightbarArray[$key]['title'] ?></a>
+	<?php echo $value['title'] ?></a>
 	</div>
 <?php } ?>
 </div>

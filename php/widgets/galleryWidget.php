@@ -7,13 +7,11 @@
  ---------------------------------------------------------------------------------------------*//*---------------------------------------------------------------------
  * set_galleryWidget()
  */
-function set_galleryWidget(wbDatabase $dbObj, wbSql $sqlObject, dbContent $contentObj, wbDataArrays $dataArrays ) {
+function set_galleryWidget(wbDatabase $dbObj, wbSql $sqlObject, dbContent $contentObj, wbDataArrays & $dataArrays ) {
 
-	$dataArrays->get_galleryItemsArray($dbObj, $sqlObject);
-	
 ?>
 <?php //Include the gallery component 
-foreach( $dataArrays->galleryItemsArray as $key => $value) {
+foreach( $dataArrays->get_galleryItemsArray($dbObj, $sqlObject) as $key => $value) {
 	$linkSpec = substr($value['permalink'],0,4);
 	$target = '_self';
 	if($linkSpec == 'http') {

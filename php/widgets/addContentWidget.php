@@ -7,16 +7,15 @@
  ---------------------------------------------------------------------------------------------*//*---------------------------------------------------------------------
  * set_addContentWidget()
  */
-function set_addContentWidget(dbUser $userObj, dbContent $contentObj, wbDataArrays $dataArrays, array $contentFieldNames, $galleryDefaults = false ) {
+function set_addContentWidget(wbDatabase $dbObj, dbUser $userObj, dbContent $contentObj, wbSql $sqlObject, wbDataArrays & $dataArrays, array $contentFieldNames, $galleryDefaults = false ) {
+
+	$dataArrays->get_galleryItemsArray($dbObj, $sqlObject);
+	$count = count($dataArrays->get_galleryItemsArray($dbObj, $sqlObject));
 	
 ?>
-<!-- set_addContentWidget -->
-<!-- galleryDefaults = <?php echo $galleryDefaults ?> -->
-<!-- contentObj->ID = <?php echo $contentObj->ID ?> -->
-<!-- contentObj->parentId = <?php echo $contentObj->parentId ?> -->
 <input id="languageCode" hidden="true" type="text" name="languageCode" value="<?php echo $contentObj->lang ?>"/>
 <input id="guid" hidden="true" type="text" name="guid" value="<?php echo strtolower(trim(com_create_guid(),'{}')) ?>"/>
-<input id="sequence" hidden="true" type="number" name="<?php echo $contentFieldNames['sequence']?>" value="<?php echo count($dataArrays->galleryItemsArray) + 1 ?>"/>
+<input id="sequence" hidden="true" type="number" name="<?php echo $contentFieldNames['sequence']?>" value="<?php echo $count + 1 ?>"/>
 <input name="ownerId" type="number" hidden="true" value="<?php echo $userObj->ID ?>">
 <table style="padding:1em">
 <tr>
@@ -74,7 +73,7 @@ function set_addContentWidget(dbUser $userObj, dbContent $contentObj, wbDataArra
 		</div>
 		<?php if($galleryDefaults) { ?>
 		&nbsp; <?php echo 'Seq:'?>
-			<input style="width:10%" id="seq" type="number" name="<?php echo $contentFieldNames['sequence']?>" value="<?php echo (count($dataArrays->galleryItemsArray)+1)?>" />
+			<input style="width:10%" id="seq" type="number" name="<?php echo $contentFieldNames['sequence']?>" value="<?php echo $count+1 ?>" />
 		<?php } ?>	
 		</td>
 </tr>

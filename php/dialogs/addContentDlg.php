@@ -8,7 +8,7 @@
  /*------------------------------------------------------------------
  * set_addContentDlg()
  */
-function set_addContentDlg( dbUser $userObj, dbContent $contentObj, wbDataArrays $dataArrays ) {
+function set_addContentDlg( wbDatabase $dbObj, dbUser $userObj, dbContent $contentObj, wbSql $sqlObject, wbDataArrays & $dataArrays ) {
 	global $errorMessage;
 	global $contentFieldNames;
 	if( ! isset($contentFieldNames)) {
@@ -24,7 +24,7 @@ function set_addContentDlg( dbUser $userObj, dbContent $contentObj, wbDataArrays
 <div class="pagecomponent">
 	<?php set_dlgHeader('Add Content',"popupAddContent") ?>
 	<form id="newPageForm" method="post" onsubmit="fixUpSubmit('<?php echo WEBAPP ?>')" action="<?php echo WEBAPP . htmlspecialchars($contentObj->permalink)?>">
-		<?php set_addContentWidget( $userObj, $contentObj, $dataArrays, $contentFieldNames,true) ?>
+		<?php set_addContentWidget( $dbObj, $userObj, $contentObj, $sqlObject, $dataArrays, $contentFieldNames,true) ?>
 		<input style="margin:0em 0em 1em 1em" type="submit" name="addContent" value="Add Content"/>
 	</form>
 </div> <!-- close page component -->
@@ -34,7 +34,7 @@ function set_addContentDlg( dbUser $userObj, dbContent $contentObj, wbDataArrays
 /*------------------------------------------------------------------
  * set_galleryAddContentDlg()
  */
-function set_galleryAddContentDlg( dbUser $userObj, dbContent $contentObj, wbDataArrays $dataArrays) {
+function set_galleryAddContentDlg( wbDatabase $dbObj, dbUser $userObj, dbContent $contentObj, wbSql $sqlObject, wbDataArrays & $dataArrays) {
 	global $errorMessage;
 	global $contentFieldNames;
 	if( ! isset($contentFieldNames)) {
@@ -50,7 +50,7 @@ function set_galleryAddContentDlg( dbUser $userObj, dbContent $contentObj, wbDat
 <div class="pagecomponent">
 <form id="newPageForm" method="post" onsubmit="fixUpSubmit('<?php echo WEBAPP ?>')" action="<?php echo WEBAPP . htmlspecialchars($contentObj->permalink)?>">
 <?php set_dlgHeader('Add Content',"popupAddContent") ?>
-<?php set_addContentWidget( $userObj, $contentObj, $dataArrays, $contentFieldNames, true) ?>
+<?php set_addContentWidget( $dbObj, $userObj, $contentObj, $sqlObject, $dataArrays, $contentFieldNames, true) ?>
 <input style="margin:0em 0em 1em 1em" type="submit" name="addContent" value="Add Content"/>
 </form>
 </div> <!-- close page component -->

@@ -5,12 +5,14 @@
 * Copyright 2015 2016 2017 2018 by John Gambini
 *
 ---------------------------------------------------------------------------------------------*/
-function get_galleryWidgetString(wbDatabase $dbObj, wbSql $sqlObject, dbContent $contentObj, wbDataArrays $dataArrays ) {
+function get_galleryWidgetString(dbContent $contentObj, $listItems ) {
 
 	$retString = '';
-	$dataArrays->get_galleryItemsArray($dbObj, $sqlObject);
+	
+	if($listItems === NULL )
+		return;
 
-	foreach( $dataArrays->galleryItemsArray as $key => $value) {
+	foreach( $listItems as $key => $value) {
 		$linkSpec = substr($value['permalink'],0,4);
 		$target = '_self';
 		if($linkSpec == 'http') {

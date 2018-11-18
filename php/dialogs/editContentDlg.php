@@ -10,7 +10,7 @@
  * new
  *
  -------------------------------------------------------------------------------------*/
-function set_editContentDlg( dbUser $userObj, dbContent $contentObj, wbDataArrays $dataArrays ) {
+function set_editContentDlg( wbDatabase $dbObj, dbUser $userObj, dbContent $contentObj, wbSql $sqlObj, wbDataArrays & $dataArrays ) {
 	global $errorMessage;
 	global $contentFieldNames;
 	if(! isset($contentFieldNames)) {
@@ -122,7 +122,7 @@ function pageSelect(pageId) {
 * new
 *
 -------------------------------------------------------------------------------------*/
-function set_galleryEditContentDlg( dbUser $userObj, dbContent $contentObj, wbDataArrays $dataArrays) {
+function set_galleryEditContentDlg( wbDatabase $dbObj, dbUser $userObj, dbContent $contentObj, wbSql $sqlObject, wbDataArrays & $dataArrays) {
 	global $errorMessage;
 	global $contentFieldNames;
 	if(! isset($contentFieldNames)) {
@@ -142,14 +142,16 @@ function set_galleryEditContentDlg( dbUser $userObj, dbContent $contentObj, wbDa
 		)
 	);
 
-	for( $i = 1; $i <= count($dataArrays->galleryItemsArray); $i++ ) {
+	$count = 1;
+	foreach( $dataArrays->get_galleryItemsArray($dbObj, $sqlObject) as $key => $value ) {
 	
-		$galleryTableArray[$i] = array(
-				array('<input type="checkbox" name="checkbox_' . $i . '" value="' . $dataArrays->galleryItemsArray[$i-1]['itemId'] . '">', 'width:2%'),
-				array($dataArrays->galleryItemsArray[$i-1]['title'] . '<input hidden type="number" name="contentId_' . $i . '" value="' . $dataArrays->galleryItemsArray[$i-1]['ID'] . '">', 'width:40%;padding:0em 0em 0em 0.5em'),
-				array('<input style="width:4em" type="number" name="sequence_' . $i . '" value="' . $dataArrays->galleryItemsArray[$i-1]['sequence'] . '">' . '<input hidden type="number" name="itemId_' . $i . '" value="' . $dataArrays->galleryItemsArray[$i-1]['itemId'] . '">', 'width:5%;padding:0em 0em 0em 0em'),
-				array('<input type="text" name="image_' . $i . '" value="' . $dataArrays->galleryItemsArray[$i-1]['galleryImage'] . '"><input hidden type="number" name="cId_' . $i . '" value="' . $dataArrays->galleryItemsArray[$i-1]['ID'] . '">', 'width:53%;padding:0em 0em 0em 0.5em')
+		$galleryTableArray[$count] = array(
+				array('<input type="checkbox" name="checkbox_' . $count . '" value="' . $value['itemId'] . '">', 'width:2%'),
+				array($value['title'] . '<input hidden type="number" name="contentId_' . $count . '" value="' . $value['ID'] . '">', 'width:40%;padding:0em 0em 0em 0.5em'),
+				array('<input style="width:4em" type="number" name="sequence_' . $count . '" value="' . $value['sequence'] . '">' . '<input hidden type="number" name="itemId_' . $count . '" value="' . $value['itemId'] . '">', 'width:5%;padding:0em 0em 0em 0em'),
+				array('<input type="text" name="image_' . $count . '" value="' . $value['galleryImage'] . '"><input hidden type="number" name="cId_' . $count . '" value="' . $value['ID'] . '">', 'width:53%;padding:0em 0em 0em 0.5em')
 		);
+		$count++;
 	}
 	
 	$settingsArray = array('header' => true, 'height' => '20em');
@@ -177,7 +179,7 @@ function set_galleryEditContentDlg( dbUser $userObj, dbContent $contentObj, wbDa
 		<tr>
 			<td style="width:2%"><input type="checkbox" name="checkbox_add"/></td>
 			<td style="width:38%"><?php set_selectWidget($dataArrays->contentArray,$contentFieldNames['content-id'])?></td>
-			<td style="width:3em"><input style="width:3em" type="number" value="1" name="<?php echo $contentFieldNames['sequence'] ?>"/></td>
+			<td style="width:3em"><input style="width:4em" type="number" value="<?php echo $count ?>" name="<?php echo $contentFieldNames['sequence'] ?>"/></td>
 		</tr>
 		</table>
 	</div>
@@ -210,7 +212,7 @@ function set_galleryEditContentDlg( dbUser $userObj, dbContent $contentObj, wbDa
 	<tr>
 		<td style="width:2%"><input type="checkbox" name="checkbox_add"/></td>
 		<td style="width:38%"><?php set_selectWidget($dataArrays->contentArray,$contentFieldNames['content-id'])?></td>
-		<td style="width:3em"><input style="width:3em" type="number" value="1" name="<?php echo $contentFieldNames['content-id'] ?>"/></td>
+		<td style="width:3em"><input style="width:4em" type="number" value="<?php echo $count ?>" name="<?php echo $contentFieldNames['content-id'] ?>"/></td>
 	</tr>
 	</table>
 </div>

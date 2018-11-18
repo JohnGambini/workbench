@@ -1,6 +1,6 @@
 <?php
 /*--------------------------------------------------------------------------------------------
- * default_rightbar.php
+ * article_rightbar.php
 *
 * Copyright 2015 2016 2017 2018 by John Gambini
 *
@@ -42,12 +42,12 @@ if($contentId == null)
 	else
 		$linkSpec = WEBAPP . $values['permalink'] . '?p=' . $contentObj->parentId . "&gp=" .$contentObj->grandParentId;
 	
-		$imageLink = substr($values['galleryImage'],0,4);
-		if($imageLink == 'http') {
-			$imageLink = $values['galleryImage'];
-		}
-		else
-			$imageLink = $contentObj->contentDir . $values['galleryImage'];
+	$imageLink = substr($values['galleryImage'],0,4);
+	if($imageLink == 'http') {
+		$imageLink = $values['galleryImage'];
+	}
+	else
+		$imageLink = $contentObj->contentDir . $values['galleryImage'];
 	
 	if( $contentObj->permalink == $values['permalink']) { ?>
 		<div class="topicBlock fontSpecSmall" style="width:100%">
