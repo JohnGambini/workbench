@@ -18,7 +18,7 @@ class wbDataArrays
 	private $rightbarItemsArray = NULL;
 	private $articleItemsArray = NULL;
 	private $pageItemsArray_4 = NULL;
-	public $featuredArticlesArray = NULL;
+	private $featuredItemsArray = NULL;
 	public $parallaxItemsArray = NULL;
 	public $sidebarMenusArray = NULL;
 	public $rootContentArray = NULL;
@@ -62,22 +62,22 @@ class wbDataArrays
 	 */
 	function & get_galleryItemsArray(wbDatabase $dbObj, wbSql $sqlObject) {
 		global $debugMessage;
-		$debugMessage = $debugMessage . "get_galleryItemsArray() was called<br/>";
-		if($this->galleryItemsArray == NULL)
+		if(DEBUG_VERBOSE) $debugMessage = $debugMessage . "get_galleryItemsArray() was called<br/>";
+		if($this->galleryItemsArray === NULL)
 			$this->load_pageItems($dbObj, $sqlObject);
-		$debugMessage = $debugMessage . "there are " . count($this->galleryItemsArray) . " gallery items.<br/>";
+		if(DEBUG_VERBOSE) $debugMessage = $debugMessage . "there are " . count($this->galleryItemsArray) . " gallery items.<br/>";
 		return $this->galleryItemsArray;
 	}
 	
 	/*---------------------------------------------------------------------------
 	 *
 	 */
-	function & get_rightbarArray(wbDatabase $dbObj, wbSql $sqlObject) {
+	function & get_rightbarItemsArray(wbDatabase $dbObj, wbSql $sqlObject) {
 		global $debugMessage;
-		$debugMessage = $debugMessage . "get_rightbarArray() was called<br/>";
-		if($this->rightbarItemsArray == NULL)
+		if(DEBUG_VERBOSE) $debugMessage = $debugMessage . "get_rightbarItemsArray() was called<br/>";
+		if($this->rightbarItemsArray === NULL)
 			$this->load_pageItems($dbObj, $sqlObject);
-		$debugMessage = $debugMessage . "there are " . count($this->rightbarItemsArray) . " rightbar items.<br/>";
+		if(DEBUG_VERBOSE) $debugMessage = $debugMessage . "there are " . count($this->rightbarItemsArray) . " rightbar items.<br/>";
 		return $this->rightbarItemsArray;
 	}
 
@@ -86,13 +86,37 @@ class wbDataArrays
 	 */
 	function & get_articleItemsArray(wbDatabase $dbObj, wbSql $sqlObject) {
 	global $debugMessage;
-	$debugMessage = $debugMessage . "get_articleItemsArray() was called<br/>";
-	if($this->articleItemsArray == NULL)
+	if(DEBUG_VERBOSE) $debugMessage = $debugMessage . "get_articleItemsArray() was called<br/>";
+	if($this->articleItemsArray === NULL)
 		$this->load_pageItems($dbObj, $sqlObject);
-	$debugMessage = $debugMessage . "there are " . count($this->articleItemsArray) . " article items.<br/>";
+	if(DEBUG_VERBOSE) $debugMessage = $debugMessage . "there are " . count($this->articleItemsArray) . " article items.<br/>";
 	return $this->articleItemsArray;
 	}
 	
+	/*------------------------------------------------------------------------
+	 *
+	 */
+	function & get_pageItems4Array(wbDatabase $dbObj, wbSql $sqlObject) {
+		global $debugMessage;
+		if(DEBUG_VERBOSE) $debugMessage = $debugMessage . "get_pageItems4Array() was called<br/>";
+		if($this->pageItemsArray_4 === NULL)
+			$this->load_pageItems($dbObj, $sqlObject);
+		if(DEBUG_VERBOSE) $debugMessage = $debugMessage . "there are " . count($this->pageItemsArray_4) . " pageItems_4 items.<br/>";
+		return $this->pageItemsArray_4;
+	}
+	
+	/*------------------------------------------------------------------------
+	 *
+	 */
+	function & get_featuredItemsArray(dbContent $contentObj ) {
+		global $debugMessage;
+		if(DEBUG_VERBOSE) $debugMessage = $debugMessage . "get_featuredItemsArray() was called<br/>";
+		if($this->featuredItemsArray === NULL)
+			$this->load_featuredItemsArray($contentObj);
+		if(DEBUG_VERBOSE) $debugMessage = $debugMessage . "there are " . count($this->featuredItemsArray) . " featured items.<br/>";
+		return $this->featuredItemsArray;
+	}
+
 	/*------------------------------------------------------------------------
 	 *
 	 */
@@ -156,7 +180,7 @@ class wbDataArrays
 
 		global $debugMessage;
 		
-		$debugMessage = $debugMessage . '<span style="color:red">called load_pageItems()</span><br/>';
+		if(DEBUG_VERBOSE) $debugMessage = $debugMessage . '<span style="color:red">called load_pageItems()</span><br/>';
 		
 		if( ! $dbObj->query($sqlObject->sqlPageItems)) {
 			$dbObj->error = "wbDataArrays: load_pageItems: An sql error occured<br><br>" . $dbObj->error . "<br><br>" .
@@ -207,12 +231,31 @@ class wbDataArrays
 		);
 	}
 	
+	/*-----------------------------------------------------------------------------
+	 * load_featuredArticles
+	 */
+	function load_featuredItemsArray(dbContent $contentObj) {
+		global $debugMessage; 
+		if(DEBUG_VERBOSE) $debugMessage = $debugMessage . '<span style="color:red">called load_featuredItemsArray()</span><br/>';
+		$this->featuredItemsArray = array();
+		$filename = ABSDIR . "\\featured." . substr($contentObj->lang,0,2) . ".ini";
+		//die($filename);
+		if(file_exists($filename)) {
+			$this->featuredItemsArray = parse_ini_file($filename,TRUE);
+			//added indexes so this array will work with articles and gallery widgets
+			foreach($this->featuredItemsArray as $key => $value) {
+				$this->featuredItemsArray[$key]['permalink'] = $value['url'];
+				$this->featuredItemsArray[$key]['galleryImage'] = $value['image'];
+				$this->featuredItemsArray[$key]['articleDescription'] = $value['description'];
+			}
+		}
+	}
 	
 	
 	/*-----------------------------------------------------------------------------
 	 * load_galleryItems
 	 */
-	/*
+
 	function load_galleryItems(wbDatabase $dbObj, wbSql $sqlObject) {
 		if( ! $dbObj->query($sqlObject->sqlGalleryItems)) {
 			$dbObj->error = "wbDataArrays: load_galleryItems: An sql error occured<br><br>" . $dbObj->error . "<br><br>" .
@@ -239,11 +282,11 @@ class wbDataArrays
 		
 		return true;
 	}
-	*/
+
 	/*-------------------------------------------------------------------------------------
 	 * load_rightbarItems
 	 */
-	/*
+
 	function load_rightbarItems(wbDatabase $dbObj, wbSql $sqlObject) {
 	
 		if( ! $dbObj->query($sqlObject->sqlRightbarItems )) {
@@ -269,11 +312,11 @@ class wbDataArrays
 	
 		return true;
 	}
-	*/
+
 	/*-----------------------------------------------------------------------------
 	 * load_articleItems
 	 */
-	/*
+
 	function load_articleItems(wbDatabase $dbObj, wbSql $sqlObject) {
 		if( ! $dbObj->query($sqlObject->sqlArticlesList)) {
 			$dbObj->error = "wbDataArrays: load_articleItems: An sql error occured<br><br>" . $dbObj->error . "<br><br>" .
@@ -299,20 +342,6 @@ class wbDataArrays
 		}
 	
 		return true;
-	}
-	*/
-	/*-----------------------------------------------------------------------------
-	 * load_featuredArticles
-	 */
-	function load_featuredArticles(dbContent $contentObj) {
-
-		$this->featuredArticlesArray = array();
-		$filename = ABSDIR . "\\featured." . substr($contentObj->lang,0,2) . ".ini";
-		//die($filename);
-		if(file_exists($filename))
-			$this->featuredArticlesArray = parse_ini_file($filename,TRUE);
-		
-		
 	}
 	
 	/*-----------------------------------------------------------------------------
@@ -347,6 +376,7 @@ class wbDataArrays
 	/*-------------------------------------------------------------------------------------
 	 * load_sidebarMenus
 	 */
+
 	function load_sidebarMenus($dbObj, $sqlObject) {
 		if( ! $dbObj->query($sqlObject->sqlSideBarMenuList)) {
 			$dbObj->error = "wbDataArrays: load_sidebarMenus: An sql error occured<br><br>" . $dbObj->error . "<br><br>" .

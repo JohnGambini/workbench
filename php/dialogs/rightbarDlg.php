@@ -8,7 +8,8 @@
 function set_rightbarDlg(wbDatabase $dbObj, dbUser $userObj, dbContent $contentObj, wbSql $sqlObject, wbDataArrays & $dataArrays ) {
 	global $contentFieldNames;
 	global $debugMessage;
-	$debugMessage = $debugMessage . "set_rightbarDlg() was called.<br/>";
+
+	if(DEBUG_VERBOSE) $debugMessage = $debugMessage . "set_rightbarDlg() was called.<br/>";
 
 	$rightbarColumnsArray = array(
 			array(
@@ -19,7 +20,7 @@ function set_rightbarDlg(wbDatabase $dbObj, dbUser $userObj, dbContent $contentO
 	);
 
 	$i = 1;
-	foreach ( $dataArrays->get_rightbarArray($dbObj, $sqlObject) as $key => $value ) {
+	foreach ( $dataArrays->get_rightbarItemsArray($dbObj, $sqlObject) as $key => $value ) {
 	
 		$rightbarColumnsArray[$i] = array(
 				array('<input type="checkbox" name="checkbox_' . $i . '" value="' . $value['ID'] . '"/>', 'width:4%'),

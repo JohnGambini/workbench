@@ -8,7 +8,8 @@
 function set_articlesDlg(wbDatabase $dbObj, dbUser $userObj, dbContent $contentObj, wbSql $sqlObject, wbDataArrays & $dataArrays ) {
 	global $contentFieldNames;
 	global $debugMessage;
-	$debugMessage = $debugMessage . "set_articlesDlg() was called.<br/>";
+
+	if(DEBUG_VERBOSE) $debugMessage = $debugMessage . "set_articlesDlg() was called.<br/>";
 	
 	$articlesArray = array(
 			array(

@@ -11,12 +11,12 @@ global $contentObj;
 global $dataArrays;
 global $isRightbarSet;
 
-if(count($dataArrays->get_rightbarArray($dbObj, $sqlObject)) == 0)
+if(count($dataArrays->get_rightbarItemsArray($dbObj, $sqlObject)) == 0)
 	return;
 
 ?>
 <div id="rightbarContainer" class="rightbar">
-<?php foreach ( $dataArrays->get_rightbarArray($dbObj, $sqlObject) as $key => $value ) {
+<?php foreach ( $dataArrays->get_rightbarItemsArray($dbObj, $sqlObject) as $key => $value ) {
 	$linkSpec = substr($value['permalink'],0,4);
 	$target = '_self';
 	if($linkSpec == 'http') {

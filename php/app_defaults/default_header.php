@@ -209,7 +209,7 @@ global $dataArrays;
 	.articleHeader h1 { font-size: 22pt; font-weight: bold; margin: 10px 0em 10px 0em; text-align:center; width:100% }
 	h1 { font-size: 160%; font-weight: bold; margin: 0em 0em 10px 0em; }
 	h2 { font-size: 140%; font-weight: bold; margin: 0px 0em 10px 0em; }
-	h3 { font-size:105%; font-weight: bold; margin: 0px 0em 0.25em -0.5em; }
+	h3 { font-size:105%; font-weight: bold; margin: 0px 0em 0.25em -0.25em; }
 	.underline { text-decoration: underline; }
 	.indent { text-indent: 2em; }
 	.center { text-align: center; }

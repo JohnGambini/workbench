@@ -39,7 +39,7 @@ function get_articlesWidgetString(dbContent $contentObj, $itemsList ) {
 			$retString = $retString . '<div class="featuredItemMain">';
 			$retString = $retString . '<h2>' . $value['title'] . '</h2>';
 			$retString = $retString . '<a class="menuItem" href="' . $linkSpec . '">';
-			$retString = $retString . '<img  class="mainImage" src="' . CONTENTDIR . $value['galleryImage'] . '"/>';
+			$retString = $retString . '<img  class="mainImage" src="' . $imageLink . '"/>';
 			$retString = $retString . '</a>';
 			$retString = $retString . $value['articleDescription'];
 			$retString = $retString . '<p/>';
@@ -59,7 +59,7 @@ function get_articlesWidgetString(dbContent $contentObj, $itemsList ) {
 			$retString = $retString . '<div class="featuredItem">';
 			$retString = $retString . '<h2>' . $value['title'] . '</h2>';
 			$retString = $retString . '<a class="menuItem" href="' . $linkSpec . '">';
-			$retString = $retString . '<img  class="rightImage" src="' . CONTENTDIR . $value['galleryImage'] . '"/>';
+			$retString = $retString . '<img  class="rightImage" src="' . $imageLink . '"/>';
 			$retString = $retString . '</a>';
 			$retString = $retString . $value['articleDescription'];
 			$retString = $retString . '<p/>';
@@ -78,7 +78,7 @@ function get_articlesWidgetString(dbContent $contentObj, $itemsList ) {
 			$retString = $retString . '<div class="featuredItem">';
 			$retString = $retString . '<h2>' . $value['title'] . '</h2>';
 			$retString = $retString . '<a class="menuItem" href="' . $linkSpec . '">';
-			$retString = $retString . '<img  class="leftImage" src="' . CONTENTDIR . $value['galleryImage'] . '"/>';
+			$retString = $retString . '<img  class="leftImage" src="' . $imageLink . '"/>';
 			$retString = $retString . '</a>';
 			$retString = $retString . $value['articleDescription'];
 			$retString = $retString . '<p/>';

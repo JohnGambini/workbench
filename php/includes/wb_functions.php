@@ -346,38 +346,54 @@ function replace_wb_variable($subject)
 function replace_wb_variable($subject, wbDatabase $dbObj, dbContent $contentObj, wbSql $sqlObject = NULL, wbDataArrays & $dataArrays = NULL)
 {
 	global $debugMessage;
-	$debugMessage = $debugMessage . "replace_wb_variable() was called.<br/>";
+	if(DEBUG_VERBOSE) $debugMessage = $debugMessage . "replace_wb_variable() was called.<br/>";
 	
 	$patternArray = array(
-			'#(\[\[)\s*(web-app)\s*(\]\])#',
-			'#(\[\[)\s*(content-dir)\s*(\]\])#',
-			'#(\[\[)\s*(pdf-dir)\s*(\]\])#',
-			'#(\[\[)\s*(workbench-dir)\s*(\]\])#',
-			'#(\[\[)\s*(article-image)\s*(\]\])#',
-			'#(\[\[)\s*(article-description)\s*(\]\])#',
-			'#(\[\[)\s*(article-title)\s*(\]\])#',
-			'#(\[\[)\s*(article-file)\s*(\]\])#',
-			'#(\[\[)\s*(gallery-widget)\s*(\]\])#',
-			'#(\[\[)\s*(articles-widget)\s*(\]\])#',
-			'#(\[\[)\s*(languages-widget)\s*(\]\])#',
-			'#(\[\[)\s*(profile-image)\s*(\]\])#',
-			'#(\[\[)\s*(profile-bio)\s*(\]\])#'
+		'#(\[\[)\s*(web-app)\s*(\]\])#',
+		'#(\[\[)\s*(content-dir)\s*(\]\])#',
+		'#(\[\[)\s*(pdf-dir)\s*(\]\])#',
+		'#(\[\[)\s*(workbench-dir)\s*(\]\])#',
+		'#(\[\[)\s*(article-image)\s*(\]\])#',
+		'#(\[\[)\s*(article-description)\s*(\]\])#',
+		'#(\[\[)\s*(article-title)\s*(\]\])#',
+		'#(\[\[)\s*(article-file)\s*(\]\])#',
+		'#(\[\[)\s*(gallery-widget)\s*(\]\])#',
+		'#(\[\[)\s*(articles-widget)\s*(\]\])#',
+		'#(\[\[)\s*(languages-widget)\s*(\]\])#',
+		'#(\[\[)\s*(profile-image)\s*(\]\])#',
+		'#(\[\[)\s*(profile-bio)\s*(\]\])#',
+		'#(\[\[)\s*(gallery-widget\(1\))\s*(\]\])#',
+		'#(\[\[)\s*(gallery-widget\(2\))\s*(\]\])#',
+		'#(\[\[)\s*(gallery-widget\(3\))\s*(\]\])#',
+		'#(\[\[)\s*(gallery-widget\(4\))\s*(\]\])#',
+		'#(\[\[)\s*(articles-widget\(1\))\s*(\]\])#',
+		'#(\[\[)\s*(articles-widget\(2\))\s*(\]\])#',
+		'#(\[\[)\s*(articles-widget\(3\))\s*(\]\])#',
+		'#(\[\[)\s*(articles-widget\(4\))\s*(\]\])#'
 	);
 	
 	$replaceArray = array(
-			WEBAPP,
-			CONTENTDIR,
-			PDFDIR,
-			WORKBENCH_FOLDER,
-			isset($contentObj) ? $contentObj->articleImage : "<span style='color:red'>no content object</span>",
-			isset($contentObj) ? $contentObj->articleDescription : "<span style='color:red'>no content object</span>",
-			isset($contentObj) ? $contentObj->title : "<span style='color:red'>no content object</span>",
-			isset($contentObj) ? $contentObj->articleFile : "<span style='color:red'>no content object</span>",
-			isset($dataArrays) ? get_galleryWidgetString( $contentObj, $dataArrays->get_galleryItemsArray($dbObj, $sqlObject)) : "<span style='color:red'>no data array object</span>",
-			isset($dataArrays) ? get_articlesWidgetString( $contentObj, $dataArrays->get_articleItemsArray($dbObj, $sqlObject)) : "<span style='color:red'>no data array object</span>",
-			isset($dataArrays) ? get_languagesString( $contentObj, $dataArrays) : "<span style='color:red'>no data array object</span>",
-			isset($contentObj) ? CONTENTDIR . $contentObj->ownerImage : "<span style='color:red'>no content object</span>",
-			isset($contentObj) ? $contentObj->ownerBio : "<span style='color:red'>no content object</span>"
+		WEBAPP,
+		CONTENTDIR,
+		PDFDIR,
+		WORKBENCH_FOLDER,
+		isset($contentObj) ? $contentObj->articleImage : "<span style='color:red'>no content object</span>",
+		isset($contentObj) ? $contentObj->articleDescription : "<span style='color:red'>no content object</span>",
+		isset($contentObj) ? $contentObj->title : "<span style='color:red'>no content object</span>",
+		isset($contentObj) ? $contentObj->articleFile : "<span style='color:red'>no content object</span>",
+		isset($dataArrays) ? get_galleryWidgetString( $contentObj, $dataArrays->get_galleryItemsArray($dbObj, $sqlObject)) : "<span style='color:red'>no data array object</span>",
+		isset($dataArrays) ? get_articlesWidgetString( $contentObj, $dataArrays->get_articleItemsArray($dbObj, $sqlObject)) : "<span style='color:red'>no data array object</span>",
+		isset($dataArrays) ? get_languagesString( $contentObj, $dataArrays) : "<span style='color:red'>no data array object</span>",
+		isset($contentObj) ? CONTENTDIR . $contentObj->ownerImage : "<span style='color:red'>no content object</span>",
+		isset($contentObj) ? $contentObj->ownerBio : "<span style='color:red'>no content object</span>",
+		isset($dataArrays) ? get_galleryWidgetString( $contentObj, $dataArrays->get_galleryItemsArray($dbObj, $sqlObject)) : "<span style='color:red'>no data array object</span>",
+		isset($dataArrays) ? get_galleryWidgetString( $contentObj, $dataArrays->get_rightbarItemsArray($dbObj, $sqlObject)) : "<span style='color:red'>no data array object</span>",
+		isset($dataArrays) ? get_galleryWidgetString( $contentObj, $dataArrays->get_articleItemsArray($dbObj, $sqlObject)) : "<span style='color:red'>no data array object</span>",
+		isset($dataArrays) ? get_galleryWidgetString( $contentObj, $dataArrays->get_pageItems4Array($dbObj, $sqlObject)) : "<span style='color:red'>no data array object</span>",
+		isset($dataArrays) ? get_articlesWidgetString( $contentObj, $dataArrays->get_galleryItemsArray($dbObj, $sqlObject)) : "<span style='color:red'>no data array object</span>",
+		isset($dataArrays) ? get_articlesWidgetString( $contentObj, $dataArrays->get_rightbarItemsArray($dbObj, $sqlObject)) : "<span style='color:red'>no data array object</span>",
+		isset($dataArrays) ? get_articlesWidgetString( $contentObj, $dataArrays->get_articleItemsArray($dbObj, $sqlObject)) : "<span style='color:red'>no data array object</span>",
+		isset($dataArrays) ? get_articlesWidgetString( $contentObj, $dataArrays->get_pageItems4Array($dbObj, $sqlObject)) : "<span style='color:red'>no data array object</span>"
 	);
 	
 	return preg_replace($patternArray,$replaceArray,$subject);
