@@ -4,7 +4,7 @@ select * from wb_usergroups;
 select * from vw_user;
 select * from wb_pagetypes;
 select * from wb_content;
-select * from vw_contentList;
+select * from vw_contentList where contentId = 20;
 
 select * from wb_articles where contentId = 89;
 select * from wb_pagetypes;

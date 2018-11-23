@@ -7,8 +7,8 @@
  ---------------------------------------------------------------------------------------------*/
 global $dbObj;
 global $userObj;
-global $sqlObject;
 global $contentObj;
+global $sqlObject;
 global $dataArrays;
 global $dialogsObj;
 global $errorMessage;
@@ -24,7 +24,7 @@ if($userObj->type > 1 ){
 <div id="content" class="content"  onscroll="getScrollPos()">
 <?php get_contentMenu($contentObj) ?>
 <?php get_rightbar($contentObj)?>
-<div  id="mainContent" class="gallery" style="padding:0.5em 0.01em 0.5em 0.1em" >
+<div  id="mainContent" class="gallery" style="padding:1em 0.01em 1em 0.1em" >
 <div id="galleryTitle" style="width:98.5%"><?php echo $contentObj->title ?></div>
 <?php if(strlen($contentObj->articleDescription)){?>
 	<div class="fontSpecVerySmall" style="max-width:80%;text-align:left;margin:0em auto"><?php echo $contentObj->articleDescription ?></div>

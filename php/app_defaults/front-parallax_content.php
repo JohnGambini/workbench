@@ -26,7 +26,7 @@ if( $dataArrays->get_galleryItemsArray($dbObj, $sqlObject) === NULL) {
 <div id="contentContainer" class="contentContainer">
 <div id="content" class="content" onscroll="getScrollPos()">
 <?php get_contentMenu($contentObj) ?>
-<div id="mainContent" style="padding: 0em 0em 0.01em 0em">
+<div id="mainContent" style="padding: 0em 0.01em 0em 0em">
 
 <div id="<?php $contentObj->title ?>"></div>
 <div class="parallax" style="background-image: url(<?php echo replace_wb_variable($contentObj->articleImage, $dbObj, $contentObj) ?>)">
@@ -37,7 +37,7 @@ if( $dataArrays->get_galleryItemsArray($dbObj, $sqlObject) === NULL) {
 		<a class="menuItem" style="color:#EEEEEE" href="<?php echo $contentObj->authorLink?>" target="_blank"><em><?php echo $contentObj->authorFullName?></em></a>
 	</div>
 </div>
-<section style="min-height:97%">
+<section style="min-height:98%">
 	<div class="articleTabs fontSpecSmall"><?php $tabName = set_tabsWidget($dbObj, $sqlObject, $dataArrays, $contentObj)?></div>
 	<?php if(strlen($tabName) != 0) {?>	
 	<div id="articleText"><?php echo replace_wb_variable($dataArrays->tabsArray[$tabName]['articleText'], $dbObj, $contentObj, $sqlObject, $dataArrays) ?></div>

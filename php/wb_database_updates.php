@@ -1303,11 +1303,16 @@ function save_post($dbObject,$userObj)
 	" byteCount = '" . strlen($saveString) . "'";  
 	
 	if( ! $dbObject->query($sqlQuery)){
+
 		$dbObject->error = "save_post: an error occured during mysqli_query<br><br>" . 
 			$dbObject->error . "<br><br>" . $sqlQuery;
+
+		$debugMessage = $debugMessage . "save_post() returned false<br>";
+
 		return false;
 	}
 	
+	$debugMessage = $debugMessage . "save_post() returned true<br>";
 	return true;
 }	
 

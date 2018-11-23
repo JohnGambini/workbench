@@ -192,6 +192,8 @@
 	 * Lookup by contentId
 	 -----------------------------------------------------------------------------------------*/
 	public function get_content_by_id(wbDatabase $db, dbUser $userObj) {
+		global $debugMessage;
+		if(DEBUG_VERBOSE) $debugMessage = $debugMessage . "get_content_by_id() was called with contentId = " . $this->ID . "<br/>";
 
 		$this->sqlSelect = "select vw_content.ID,  vw_content.guid,  vw_content.lang, " .
 				"vw_content.defaultParentId,  vw_content.permalink,  vw_content.title, " .
@@ -199,7 +201,8 @@
 				"vw_content.creatorId,  vw_content.ownerId, vw_content.ownerType, " .
 				"vw_content.pageType,  vw_content.canEdit, vw_content.hasRightbar, " .
 				"vw_content.pageArgument, vw_content.galleryImage, " .
-				"vw_content.articleFile, " /*vw_content.articleURL, */ . " vw_content.articleImage, vw_content.articleDescription, " .
+				"vw_content.articleFile, " /*vw_content.articleURL, */ . 
+				"vw_content.articleImage, vw_content.articleDescription, " .
 				"vw_content.ogType, vw_content.authorFullName,  vw_content.authorLink, vw_content.dateCreated, vw_content.dateModified, " .
 				"wb_content.ID parentId, wb_content.defaultParentId grandParentId, " .
 				"wb_content.permalink parentPermalink, wb_content.title parentTitle, wb_content.pageType parentPageType " .
@@ -210,9 +213,7 @@
 		
 		if( ! $db->query_all($this->sqlSelect)) {
 			$this->db_error = $db->error . "<p/>";
-			if(INCLUDE_SQL_IN_ERROR_MESSAGE) {
-				$this->db_error = $this->db_error . $this->sqlSelect . "<p/>";
-			}
+			$this->db_error = $this->db_error . $this->sqlSelect . "<p/>";
 			return false;
 		}
 		
