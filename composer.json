@@ -1,2 +1,13 @@
 {
+	"name" : "workbench/workbench",
+	"type" : "package",
+	"description" : "A content management codebase",
+	"keywords" : [],
+	"homepage" : "https://plus.google.com/+JohnGambini",
+	"license" : "GPL-3.0-or-later",
+	"authors" : [{
+			"name" : "John Gambini",
+			"role" : ""
+		}
+	]
 }
