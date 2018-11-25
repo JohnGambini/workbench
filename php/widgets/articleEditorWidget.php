@@ -80,7 +80,7 @@ function saveArticle() {
 		'&tabTitle=' + document.getElementById('defaultTab').value 
 	;
 
-	wbAjax(dbParams, document.getElementById('webapp').value + '/dbUpdates.php', function(responseText,status) {
+	wbAjax(dbParams, document.getElementById('workbench_folder').value + '/ajax/dbUpdates.php', function(responseText,status) {
 
 		//document.getElementById("errorMessage").innerHTML = responseText;
         //javascript:showForm('errorDialog','content');

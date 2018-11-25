@@ -63,7 +63,7 @@ function set_tabsWidget(wbDatabase $dbObj, wbSql $sqlObject, wbDataArrays $dataA
 
    	//alert(document.getElementById('webapp').value + '/dbSelects.php');
  
-	wbAjax(dbParams, document.getElementById('webapp').value + '/dbSelects.php', function(responseText) {
+	wbAjax(dbParams, document.getElementById('workbench_folder').value + '/ajax/dbSelects.php', function(responseText) {
 
 		//document.getElementById("errorMessage").innerHTML = responseText;
         //javascript:showForm('errorDialog','content');
