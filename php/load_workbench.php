@@ -5,6 +5,9 @@
  * Copyright 2015 2016 2017 2018 by John Gambini
  *
  ---------------------------------------------------------------------------------------------*/
+/* autoload composer installed packages */
+require WORKBENCH_DIR . '\vendor\autoload.php';
+
 /*utility*/
 require_once( WORKBENCH_DIR . '\php\includes\string_utils.php');
 
