@@ -9,7 +9,10 @@
 			"name" : "John Gambini",
 			"role" : ""
 		}
-	]
+	],
+	"require": {
+        "gettext/gettext": "^4.6"
+    }	
 }
 
 
