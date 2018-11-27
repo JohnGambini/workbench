@@ -1,4 +1,7 @@
 <?php
+
+use workbench\utils\StringUtils;
+
 /*--------------------------------------------------------------------------------------------
  * pageTitle.php
  *
@@ -12,7 +15,7 @@ function set_pageTitle($contentObj) {
 	if($contentObj->parentId > 0 ) { ?>
 	<div>
 	<a class="icon icon-arrow-up2 menuItem"  style="text-decoration:none" href="<?php echo WEBAPP . $contentObj->parentPermalink . "?p=" . $contentObj->grandParentId . $linkSpec ?>">
-	<span id="pageTitle" class="fontSpecTitle" style="overflow:hidden"><?php echo str_truncate_at(htmlspecialchars($contentObj->parentPermalink),32) ?></span>
+	<span id="pageTitle" class="fontSpecTitle" style="overflow:hidden"><?php echo StringUtils::str_truncate_at(htmlspecialchars($contentObj->parentPermalink),32) ?></span>
 	</a>
 	</div>
 <?php } else { ?>

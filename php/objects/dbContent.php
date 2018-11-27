@@ -1,12 +1,15 @@
 <?php
+
+use workbench\utils\StringUtils;
+
 /*--------------------------------------------------------------------------------------------
  * dbContent.php
  *
  * Copyright 2015 2016 2017 2018 by John Gambini
  *
- ---------------------------------------------------------------------------------------------*/class dbContent extends dbObject
-{
-	//econtent attributes
+ ---------------------------------------------------------------------------------------------*/
+ class dbContent extends dbObject {
+	//content attributes
 	public $ID = NULL;
 	public $guid = NULL;
 	public $lang = NULL;
@@ -260,12 +263,12 @@
 	public function set_permalink($permalink, $subsiteName){
 
 		//strip off get map
-		$this->permalink = str_concat_at($permalink, '?');
+		$this->permalink = StringUtils::str_concat_at($permalink, '?');
 		
 		//if there's a subsite name, strip it off
 		$replace = "";
 		$one = 1;
-		$this->permalink =  str_replace_first($subsiteName,$replace,$this->permalink,$one);
+		$this->permalink =  StringUtils::str_replace_first($subsiteName,$replace,$this->permalink,$one);
 		
 		if($this->permalink == "/")
 			$this->permalink = "/en";
