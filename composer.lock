@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "798ecf1602b3a739039ed81395260cdf",
+    "content-hash": "886b2cc9f2adfa6bcea58b8a07f5c863",
     "packages": [
         {
             "name": "gettext/gettext",
@@ -128,6 +128,43 @@
                 "unicode"
             ],
             "time": "2018-11-13T22:06:07+00:00"
+        },
+        {
+            "name": "workbench/util",
+            "version": "0.4.07",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/JohnGambini/workbench-util.git",
+                "reference": "7e92ec1224847bf293be43511f80c5f3b88a24ed"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/JohnGambini/workbench-util/zipball/7e92ec1224847bf293be43511f80c5f3b88a24ed",
+                "reference": "7e92ec1224847bf293be43511f80c5f3b88a24ed",
+                "shasum": ""
+            },
+            "type": "package",
+            "autoload": {
+                "classmap": [
+                    "StringUtils.php"
+                ]
+            },
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "John Gambini",
+                    "role": ""
+                }
+            ],
+            "description": "some string handeling utility functions",
+            "homepage": "https://plus.google.com/+JohnGambini",
+            "support": {
+                "source": "https://github.com/JohnGambini/workbench-util/tree/0.4.07",
+                "issues": "https://github.com/JohnGambini/workbench-util/issues"
+            },
+            "time": "2018-11-27T02:39:28+00:00"
         }
     ],
     "packages-dev": [],

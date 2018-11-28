@@ -6,10 +6,9 @@
  *
  ---------------------------------------------------------------------------------------------*/
 /* autoload composer installed packages */
-require WORKBENCH_DIR . '\vendor\autoload.php';
+require SUBSITE_DIR . '\\vendor\\autoload.php';
 
-/*utility*/
-require_once( WORKBENCH_DIR . '\php\includes\string_utils.php');
+session_start();
 
 /*initial objects needed*/
 require_once( WORKBENCH_DIR . '\php\objects\wbDatabase.php');
