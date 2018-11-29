@@ -1,0 +1,12 @@
+
+# BEGIN work_bench
+IndexIgnore *
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /workbench/
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /workbench/index.php [L]
+</IfModule>
+# END work_bench
