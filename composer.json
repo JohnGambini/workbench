@@ -12,11 +12,16 @@
 	],
 
 	"require": {
+	"workbench/db: "0.4.05",	
         "workbench/util": "0.4.07",
         "gettext/gettext": "^4.6"
     },
     
     "repositories": {
+        "workbench/db": {
+            "type": "vcs",
+            "url": "https://github.com/JohnGambini/workbench-db.git"
+        },
         "workbench/util": {
             "type": "vcs",
             "url": "https://github.com/JohnGambini/workbench-util.git"
