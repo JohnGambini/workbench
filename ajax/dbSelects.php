@@ -21,7 +21,7 @@ function myErrorHandler($errno, $errstr, $errfile, $errline)
 	exit(json_encode(array($errorMessage,$successMessage,$debugMessage)));
 }
 
-define('ABSDIR', $_SERVER["DOCUMENT_ROOT"] . "\\notes");
+define('ABSDIR', $_SERVER["DOCUMENT_ROOT"] . $_POST['subsite']);
 
 require_once( ABSDIR . '\config\app_defs.php');
 require_once( WORKBENCH_DIR . '\php\objects\wbDatabase.php');

@@ -23,7 +23,7 @@ function set_tabsWidget(wbDatabase $dbObj, wbSql $sqlObject, wbDataArrays $dataA
 	<input id="parentIdent" hidden="true" type="number" name="parentId" value="<?php echo $contentObj->parentId ?>"/>
 	<input id="ownerId" hidden="true" type="number" name="ownerId" value="<?php echo $contentObj->ownerId ?>"/>
 	<input id="ownerType" hidden="true" type="number" name="ownerType" value="<?php echo $contentObj->ownerType ?>"/>
-	<input id="defaultTab" hidden="true" type="text" name="tabName" value="<?php echo $tabName ?>"/>
+	<input id="subsite" hidden="true" type="text" name="subsite" value="<?php echo SUBSITE_DIR ?>"/>
 
 <?php if( count($dataArrays->tabsArray) > 1 ) { ?>
 <div style="margin-left:-1em">
@@ -58,7 +58,8 @@ function set_tabsWidget(wbDatabase $dbObj, wbSql $sqlObject, wbDataArrays $dataA
 		'&contentId=' + document.getElementById('contentId').value +
 		'&contentLang=' + document.getElementById('contentLang').value +
 		'&parentId=' + document.getElementById('parentIdent').value +
-		'&tabName=' + fragment
+		'&subsite=' + document.getElementById('subsite').value +
+		'&tabName=' + fragment 
 	;
 
    	//alert(document.getElementById('webapp').value + '/dbSelects.php');
