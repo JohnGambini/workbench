@@ -6,27 +6,26 @@
 	"homepage" : "https://plus.google.com/+JohnGambini",
 	"license" : "GPL-3.0-or-later",
 	"authors" : [{
-			"name" : "John Gambini",
-			"role" : ""
+		"name" : "John Gambini",
+		"role" : ""
 		}
 	],
 
 	"require": {
-	"workbench/db": "0.4.05",	
-        "workbench/util": "0.4.07",
-        "gettext/gettext": "^4.6"
+		"workbench/db": "0.4.05",	
+	    "gettext/gettext": "^4.6"
     },
     
-    "repositories": {
-        "workbench/db": {
-            "type": "vcs",
-            "url": "https://github.com/JohnGambini/workbench-db.git"
-        },
-        "workbench/util": {
-            "type": "vcs",
-            "url": "https://github.com/JohnGambini/workbench-util.git"
-        }
-    }
+	"repositories": {
+		"workbench/db": {
+			"type": "vcs",
+			"url": "https://github.com/JohnGambini/workbench-db.git"
+		},
+		"workbench/util": {
+			"type": "vcs",
+			"url": "https://github.com/JohnGambini/workbench-util.git"
+		}
+	}
     	
 }
 
