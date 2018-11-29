@@ -12,9 +12,9 @@
 	],
 
 	"require": {
-		"workbench/db": "0.4.05",	
-	    "gettext/gettext": "^4.6"
-    },
+		"workbench/db": "0.4.06",	
+		"gettext/gettext": "^4.6"
+	},
     
 	"repositories": {
 		"workbench/db": {
