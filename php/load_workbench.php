@@ -11,15 +11,8 @@ require SUBSITE_DIR . '\\vendor\\autoload.php';
 session_start();
 
 /*initial objects needed*/
-require_once( WORKBENCH_DIR . '\php\objects\wbDatabase.php');
-require_once( WORKBENCH_DIR . '\php\objects\mysqliDatabase.php');
-require_once( WORKBENCH_DIR . '\php\objects\pdoDatabase.php');
-require_once( WORKBENCH_DIR . '\php\objects\dbObject.php');
-require_once( WORKBENCH_DIR . '\php\objects\dbUser.php');
-require_once( WORKBENCH_DIR . '\php\objects\dbContent.php');
 require_once( WORKBENCH_DIR . '\php\objects\wbSql.php');
 require_once( WORKBENCH_DIR . '\php\objects\wbDataArrays.php');
-require_once( WORKBENCH_DIR . '\php\objects\wbMenuItem.php');
 
 $userObj = new dbUser();
 $dbObj = new mysqliDatabase();
