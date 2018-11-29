@@ -17,19 +17,19 @@ function myErrorHandler($errno, $errstr, $errfile, $errline)
 {
 	$errorMessage = 'dbSelects.php: ' . $errstr . ' in ' . $errfile . ' line number: ' . $errline;
 	$successMessage = '';
-	$debugMessage = 'No debug output.';
+	//$debugMessage = 'No debug output.';
 	exit(json_encode(array($errorMessage,$successMessage,$debugMessage)));
 }
 
 define('ABSDIR', $_SERVER["DOCUMENT_ROOT"] . $_POST['subsite']);
 
-require_once( ABSDIR . '\config\app_defs.php');
-require_once( WORKBENCH_DIR . '\php\objects\wbDatabase.php');
-require_once( WORKBENCH_DIR . '\php\objects\mysqliDatabase.php');
-require_once( WORKBENCH_DIR . '\php\objects\pdoDatabase.php');
-require_once( WORKBENCH_DIR . '\php\objects\dbObject.php');
-require_once( WORKBENCH_DIR . '\php\objects\dbUser.php');
-require_once( WORKBENCH_DIR . '\php\objects\dbContent.php');
+$degubMessage = ABSDIR . '<br/>';
+
+require_once( ABSDIR . '\\config\\app_defs.php');
+
+/* autoload composer installed packages */
+require SUBSITE_DIR . '\\vendor\\autoload.php';
+
 require_once( WORKBENCH_DIR . '\php\objects\wbSql.php');
 require_once( WORKBENCH_DIR . '\php\objects\wbDataArrays.php');
 require_once( WORKBENCH_DIR . '\php\includes\wb_functions.php');

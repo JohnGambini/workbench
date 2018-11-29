@@ -70,15 +70,15 @@ function saveArticle() {
 		alert("No 'articleText' page element.");
 		return;
 	}
-	
+
     dbParams = 
 		'savePost=1' +
 		'&Id=' + document.getElementById('contentId').value +
 		'&ownerId=' + document.getElementById('ownerId').value +
 		'&ownerType=' + document.getElementById('ownerType').value +
 		'&editor=' + encodeURIComponent(editor.getValue()) +
-		'&tabTitle=' + document.getElementById('defaultTab').value 
-	;
+		'&tabTitle=' + document.getElementById('defaultTab').value +
+		'&subsite=' + document.getElementById('subsite').value;
 
 	wbAjax(dbParams, document.getElementById('workbench_folder').value + '/ajax/dbUpdates.php', function(responseText,status) {
 

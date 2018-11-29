@@ -6,7 +6,7 @@
  *
  ----------------------------------------------------------------------*/
 define('APP_NAME','Manîn A. Bocss');
-define('SITE_NAME', "http://localhost");
+define('SITE_NAME', 'http://' . $_SERVER['HTTP_HOST']);
 define('DATABASE', 'workbench_1');
 define('THEME','default');
 define('SUBSITE_NAME', '/workbench');
@@ -37,5 +37,5 @@ define('LOCALE_DIR', WORKBENCH_DIR .'/locale');
 define('DEFAULT_LOCALE', 'en_US');
 
 
-define('DEBUG_VERBOSE', true);
+define('DEBUG_VERBOSE', false);
 ?>
