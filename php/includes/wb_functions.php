@@ -343,7 +343,7 @@ function replace_wb_variable($subject)
 			
 }
 */			
-function replace_wb_variable($subject, wbDatabase $dbObj, dbContent $contentObj, wbSql $sqlObject = NULL, wbDataArrays & $dataArrays = NULL)
+function replace_wb_variable($subject, wbDatabase $dbObj, dbUser $userObj, dbContent $contentObj = NULL, wbSql $sqlObject = NULL, wbDataArrays & $dataArrays = NULL)
 {
 	global $debugMessage;
 	if(DEBUG_VERBOSE) $debugMessage = $debugMessage . "replace_wb_variable() was called.<br/>";
@@ -369,7 +369,8 @@ function replace_wb_variable($subject, wbDatabase $dbObj, dbContent $contentObj,
 		'#(\[\[)\s*(articles-widget\(1\))\s*(\]\])#',
 		'#(\[\[)\s*(articles-widget\(2\))\s*(\]\])#',
 		'#(\[\[)\s*(articles-widget\(3\))\s*(\]\])#',
-		'#(\[\[)\s*(articles-widget\(4\))\s*(\]\])#'
+		'#(\[\[)\s*(articles-widget\(4\))\s*(\]\])#',
+		'#(\[\[)\s*(article-header)\s*(\]\])#'
 	);
 	
 	$replaceArray = array(
@@ -393,7 +394,8 @@ function replace_wb_variable($subject, wbDatabase $dbObj, dbContent $contentObj,
 		isset($dataArrays) ? get_articlesWidgetString( $contentObj, $dataArrays->get_galleryItemsArray($dbObj, $sqlObject)) : "<span style='color:red'>no data array object</span>",
 		isset($dataArrays) ? get_articlesWidgetString( $contentObj, $dataArrays->get_rightbarItemsArray($dbObj, $sqlObject)) : "<span style='color:red'>no data array object</span>",
 		isset($dataArrays) ? get_articlesWidgetString( $contentObj, $dataArrays->get_articleItemsArray($dbObj, $sqlObject)) : "<span style='color:red'>no data array object</span>",
-		isset($dataArrays) ? get_articlesWidgetString( $contentObj, $dataArrays->get_pageItems4Array($dbObj, $sqlObject)) : "<span style='color:red'>no data array object</span>"
+		isset($dataArrays) ? get_articlesWidgetString( $contentObj, $dataArrays->get_pageItems4Array($dbObj, $sqlObject)) : "<span style='color:red'>no data array object</span>",
+		isset($contentObj) ? get_articleHeaderString( $userObj, $contentObj) : "<span style='color:red'>no data array object</span>"
 	);
 	
 	return preg_replace($patternArray,$replaceArray,$subject);

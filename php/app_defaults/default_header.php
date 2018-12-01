@@ -33,7 +33,7 @@ global $dataArrays;
 	<meta property="og:locale" content="<?php echo $contentObj->lang ?>" />
 	<meta property="og:type" content="<?php echo $contentObj->ogType ?>" />
 	<meta property="og:url" content="<?php echo SITE_NAME . SUBSITE_NAME . $contentObj->permalink ?>" />
-	<meta property="og:image" content="<?php echo replace_wb_variable($contentObj->articleImage, $dbObj, $contentObj) ?>" />
+	<meta property="og:image" content="<?php echo replace_wb_variable($contentObj->articleImage, $dbObj, $userObj, $contentObj) ?>" />
 	<meta name="description" content="<?php echo htmlspecialchars($contentObj->articleDescription)?>">
 	<meta property="og:description" content="<?php echo htmlspecialchars($contentObj->articleDescription) ?>" />
 	<meta property="og:site_name" content="<?php echo APP_NAME  ?>" />
@@ -162,12 +162,12 @@ global $dataArrays;
 	.siteName:hover { color: #777777; }
 	#userMenu { font-size: 14pt; }
 	#userMenu:hover { color: #AAAAAA; }
-	#galleryTitle { /*display:none;*/ font-family: times-new-roman; font-size: 18pt; width:100%; text-align:center; margin:0em 0em 0.01em 0em; }
+	#galleryTitle { /*display:none;*/ font-family: times-new-roman; font-size: 18pt; width:100%; text-align:center; margin:0em 0em 0.01em 0em;text-shadow: rgba(0,0,0,.01) 0 0 1px; }
 	#articleEditLink { margin:auto 0em; vertical-align:center; text-decoration:none; color:inherit; }
 	#articleEditLink:hover { text-decoration:underline; color:inherit; text-shadow:0px 0px #000000;	}
 	#menugroups { position: relative; opacity: 0; overflow-y: auto; transition: opacity 0.5s; }
 	#tabsList { position: relative; left: -20em; transition: left 0.5s; }
-	.topicBlock { display: inline-block; height: auto; width:24.5%; padding: 15px 2%; vertical-align:top; text-align: center; }
+	.topicBlock { display: inline-block; height: auto; width:24.5%; padding: 10px 0em 10px 2%; vertical-align:top; text-align: center; }
 	.topicBlock img { outline:1px solid #333399; color:inherit; }
 	.topicBlock img:hover { outline:1px solid #F0000F; color:inherit; }
 	.langElement { vertical-align:middle; height:30px; }
@@ -196,7 +196,7 @@ global $dataArrays;
 	.imageViewer hr { border-style:solid; border-color:#AAAAAA;	}
 	a.articleLinkItem { text-decoration:none; color:#2222BB; }
 	a.articleLinkItem:hover { text-decoration:underline; text-shadow: 0px 0px #000000;	}
-	.webArticle { background-color: inherit; color: inherit; text-shadow: inherit; margin:0em 4%; }
+	.webArticle { background-color: inherit; color: inherit; text-shadow: inherit; margin:0em 2%; }
 	.webArticle hr { border-style:solid; border-color:#AAAAAA; }
 	.newspaper { background-color: inherit; color: inherit; text-shadow: inherit; margin: 0em 4%; -webkit-column-count: 2; /* Chrome, Safari, Opera */ -moz-column-count: 2; /* Firefox */ column-count: 2; -webkit-column-width: 18em; /* Chrome, Safari, Opera */ -moz-column-width: 18em; /* Firefox */ column-width: 18em; -webkit-column-gap: 2em; /* Chrome, Safari, Opera */ -moz-column-gap: 2em; /* Firefox */ column-gap: 2em; }
 	.newspaper hr { border-style:solid; border-color:#AAAAAA; }
@@ -206,10 +206,10 @@ global $dataArrays;
 	.newspaper ol { margin: 0 auto; padding: 0 auto; }
 	.webArticle li { padding:0.25em 0em; }
 	.newspaper li { padding:0.25em 0em; }
-	.articleHeader h1 { font-size: 22pt; font-weight: bold; margin: 6px 0em; text-align:center; width:100% }
+	.articleHeader h1 { font-size: 22pt; font-weight: 400; margin: 6px 0em; text-align:center; width:100%;text-shadow: rgba(0,0,0,.01) 0 0 1px; }
 	h1 { font-size: 160%; font-weight:400; padding: 6px 0em; }
 	h2 { font-size: 135%; font-weight:400; margin: 0px 0em 10px 0em; }
-	h3 { font-size:105%; font-weight:400; margin: 0px 0em 0.25em -0.25em; }
+	h3 { font-size:105%; font-weight:bold; margin: 0px 0em 0.25em -0.25em; }
 	.underline { text-decoration: underline; }
 	.indent { text-indent: 2em; }
 	.center { text-align: center; }

@@ -34,6 +34,7 @@ require_once( WORKBENCH_DIR . '\php\includes\wb_functions.php');
 require_once( WORKBENCH_DIR . '\php\includes\galleryWidgetString.php');
 require_once( WORKBENCH_DIR . '\php\includes\articlesWidgetString.php');
 require_once( WORKBENCH_DIR . '\php\includes\languagesString.php');
+require_once( WORKBENCH_DIR . '\php\includes\articleHeaderString.php');
 
 $userObj = new dbUser();
 $dbObj = new mysqliDatabase();
@@ -53,7 +54,7 @@ require_once( WORKBENCH_DIR . '\php\wb_database_updates.php');
 if(database_updates($dbObj, $userObj) == false) {
 	$errorMessage = $errorMessage . $dbObj->error;
 	$articleData = array(
-			replace_wb_variable($_POST['editor'], $dbObj ),
+			replace_wb_variable($_POST['editor'], $dbObj, $userObj ),
 			'Last Modified: ' . date("Y-m-d h:i:sa"),
 			//unproccessed text for the client editor
 			$_POST['editor']
@@ -75,7 +76,7 @@ if(database_updates($dbObj, $userObj) == false) {
 	//throw new Exception($error);
 	
 	$articleData = array(
-			replace_wb_variable("" . $_POST['editor'], $dbObj, $contentObj, $sqlObject, $dataArrays),
+			replace_wb_variable("" . $_POST['editor'], $dbObj, $userObj, $contentObj, $sqlObject, $dataArrays),
 			'Last Modified: ' . date("Y-m-d h:i:sa"),
 			//unproccessed text for the client editor
 			"" . $_POST['editor']

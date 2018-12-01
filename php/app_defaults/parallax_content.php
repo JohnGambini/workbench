@@ -24,14 +24,14 @@ if( $dataArrays->get_galleryItemsArray($dbObj, $sqlObject) === NULL) {
 <div id="mainContent" style="padding: 0em 0em 0.01em 0em">
 
 <div id="<?php $contentObj->title ?>"></div>
-<div class="parallax" style="background-image: url(<?php echo replace_wb_variable($contentObj->articleImage, $dbObj, $contentObj) ?>)">
+<div class="parallax" style="background-image: url(<?php echo replace_wb_variable($contentObj->articleImage, $dbObj, $userObj, $contentObj) ?>)">
 	<div style="position:absolute;bottom:0;padding:2%;width:90%;text-align:right">
 		<a class="menuItem" style="color:#EEEEEE" href="<?php echo $contentObj->authorLink?>" target="_blank"><em><?php echo $contentObj->authorFullName?></em></a>
 	</div>
 </div>
 
 <?php foreach($dataArrays->get_galleryItemsArray($dbObj, $sqlObject) as $key => $values) { ?>
-<div class="parallax" style="background-image: url(<?php echo replace_wb_variable($values['articleImage'], $dbObj, $contentObj) ?>)">
+<div class="parallax" style="background-image: url(<?php echo replace_wb_variable($values['articleImage'], $dbObj, $userObj, $contentObj) ?>)">
 	<div id="<?php echo $values['title']?>"></div>
 	<div style="padding:1.5em .5em;color:white;font-size:22pt;font-weight:400;width:11em;text-align:center">
 		<a class="menuItem" href="<?php echo WEBAPP . $values['permalink'] ?>"><?php echo $values['title']?></a>

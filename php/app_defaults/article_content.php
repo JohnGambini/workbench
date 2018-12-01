@@ -21,17 +21,9 @@ global $dataArrays;
 	<p/>
 	<div class="articleTabs fontSpecSmall"><?php $tabName = set_tabsWidget($dbObj, $sqlObject, $dataArrays, $contentObj)?></div>
 	<div id="article" class="article">
-	<div class="articleHeader">
-		<div style="display:flex;align-items:center;margin:1em auto 0em auto">
-			<div style="flex:1 0 11%">&nbsp;</div>
-			<div style="flex:1 0 76%"><h1><?php echo $contentObj->title ?></h1></div>
-			<div class="fontSpecVerySmall" style="flex:1 0 12%">
-				<?php if($contentObj->ownerId == $userObj->ID or (in_array($contentObj->status,$userObj->groupsArray))) { echo $contentObj->status; } ?>
-			</div>
-		</div>
-	</div> <!-- close article header -->	
+	<?php echo get_articleHeaderString($userObj, $contentObj)?>
 	<div id="articleText"></div>
-	<!-- article footer -->
+
 	<div style="margin:0em 0em 1em 0em">
 		<!-- <div class="fontSpecVerySmall" style="text-align:center">Written by:&nbsp;<a class="menuItem" href="<?php echo WEBAPP . $userObj->permalink ?>"><?php echo $contentObj->authorFullName ?></a></div>  -->
 		<div style="display:inline-block;width:69%; text-align:left; font-size:10pt; padding:0em 2em">&nbsp;</div>

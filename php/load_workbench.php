@@ -125,6 +125,7 @@ require_once( WORKBENCH_DIR . '\php\includes\languagesString.php');
 require_once( WORKBENCH_DIR . '\php\includes\menuList.php');
 require_once( WORKBENCH_DIR . '\php\includes\galleryWidgetString.php');
 require_once( WORKBENCH_DIR . '\php\includes\articlesWidgetString.php');
+require_once( WORKBENCH_DIR . '\php\includes\articleHeaderString.php');
 
 /* Widgets */
 require_once( WORKBENCH_DIR . '\php\widgets\tabsWidget.php');

@@ -21,7 +21,7 @@ $dialogsObj->functions['change-theme'] = 'set_changeThemeFrontPage';
 <div id="mainContent" style="padding: 0em 0em 0.01em 0em">
 
 <div id="<?php echo $contentObj->title ?>"></div>
-<div class="parallax" style="background-image: url(<?php echo replace_wb_variable($contentObj->articleImage, $dbObj, $contentObj )?>)">
+<div class="parallax" style="background-image: url(<?php echo replace_wb_variable($contentObj->articleImage, $dbObj, $userObj, $contentObj )?>)">
 	<div style="position:absolute;bottom:0;padding:2%;width:90%;text-align:right">
 		<a class="linkItem" style="color:#EEEEEE" href="<?php echo $contentObj->authorLink?>" target="_blank"><em><?php echo $contentObj->authorFullName?></em></a>
 	</div>

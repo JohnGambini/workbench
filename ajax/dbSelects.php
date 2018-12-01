@@ -36,13 +36,10 @@ require_once( WORKBENCH_DIR . '\php\includes\wb_functions.php');
 require_once( WORKBENCH_DIR . '\php\includes\galleryWidgetString.php');
 require_once( WORKBENCH_DIR . '\php\includes\articlesWidgetString.php');
 require_once( WORKBENCH_DIR . '\php\includes\languagesString.php');
+require_once( WORKBENCH_DIR . '\php\includes\articleHeaderString.php');
 
 $userObj = new dbUser();
 $dbObj = new mysqliDatabase();
-
-//$errorMessage = '';
-//$successMessage = '';
-//$debugMessage = '';
 
 if( ! $dbObj->connect(DB_HOST,DB_USER,DB_PASSWORD,DATABASE,DB_CHARSET)) {
 	$errorMessage = $dbObj->error;
@@ -112,7 +109,7 @@ if( isset($_POST['getPost'])) {
 	}
 	
 	$articleData = array(
-			replace_wb_variable($dataArrays->tabsArray[$tabName]['articleText'], $dbObj, $contentObj, $sqlObject, $dataArrays),
+			replace_wb_variable($dataArrays->tabsArray[$tabName]['articleText'], $dbObj, $userObj, $contentObj, $sqlObject, $dataArrays),
 			'Last Modified: ' . $dataArrays->tabsArray[$tabName]['dateModified'],
 			//unproccessed text for the client editor
 			"" . $dataArrays->tabsArray[$tabName]['articleText']
