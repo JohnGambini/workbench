@@ -23,6 +23,7 @@ if($userObj->type > 1 ){
 <?php get_contentMenu($contentObj) ?>
 <?php get_rightbar($contentObj)?>
 <div id="mainContent" style="padding: 0em 0.01em 0em 0em">
+<p/>
 <div class="articleTabs fontSpecSmall"><?php $tabName = set_tabsWidget($dbObj, $sqlObject, $dataArrays, $contentObj)?></div>
 
 <div id="articleText"></div>

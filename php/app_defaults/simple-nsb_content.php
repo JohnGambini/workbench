@@ -17,6 +17,7 @@ global $dataArrays;
 <?php get_contentMenu($contentObj) ?>
 <?php get_rightbar($contentObj)?>
 <div id="mainContent" style="padding: 0em 1em 0.03em 1em;border-top: 1px solid grey">
+<p/>
 <div class="articleTabs fontSpecSmall"><?php set_tabsWidget($dbObj, $sqlObject, $dataArrays, $contentObj)?></div>
 
 <div id="articleText"></div>

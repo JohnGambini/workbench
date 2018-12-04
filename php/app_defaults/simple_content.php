@@ -28,6 +28,7 @@ if( $dataArrays->get_galleryItemsArray($dbObj, $sqlObject) === NULL) {
 <?php get_contentMenu($contentObj) ?>
 <?php get_rightbar($contentObj)?>
 <div id="mainContent" style="padding: 0em 0em 0.03em 0em;border-top: 1px solid grey">
+<p/>
 <div class="articleTabs fontSpecSmall"><?php set_tabsWidget($dbObj, $sqlObject, $dataArrays, $contentObj)?></div>
 
 <div id="articleText"></div>
