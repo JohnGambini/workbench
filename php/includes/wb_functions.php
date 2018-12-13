@@ -371,7 +371,7 @@ function replace_wb_variable($subject, wbDatabase $dbObj, dbUser $userObj, dbCon
 		'#(\[\[)\s*(articles-widget\(3\))\s*(\]\])#',
 		'#(\[\[)\s*(articles-widget\(4\))\s*(\]\])#',
 		'#(\[\[)\s*(article-header)\s*(\]\])#',
-		'#(\[\[)\s*(EditGroupOnly:)(.+?)(\]\])#'
+		'#(\[\[)[\s]*(EditGroupOnly:)([\s\S]*)(\]\])#'
 	);
 	
 	$replaceArray = array(
