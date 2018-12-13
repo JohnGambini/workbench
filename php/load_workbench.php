@@ -20,7 +20,6 @@ $dbObj = new mysqliDatabase();
 $errorMessage = NULL;
 $successMessage = NULL;
 $debugMessage = NULL;
-$isRightbarSet = false;
 $isArticleEditSet = 0;
 
 if( ! $dbObj->connect(DB_HOST,DB_USER,DB_PASSWORD,DATABASE,DB_CHARSET)) {
