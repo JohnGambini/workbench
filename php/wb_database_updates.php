@@ -1063,13 +1063,17 @@ function update_tabs(wbDatabase $dbObject, dbUser $userObj )
 function update_rightbar(wbDatabase $dbObject, dbUser $userObj )
 {
 	global $debugMessage;
+	global $contentFieldNames;
 
 	$debugMessage = $debugMessage . " update_rightbar was called.<br>";
 
 	$contentId = isset($_POST['contentId']) ?  $_POST['contentId'] : 0;
 	$debugMessage = $debugMessage . " contentId = " . $contentId . "<br>";
-
-
+	$menuId = isset($_POST[$contentFieldNames['menu-id']]) ? $_POST[$contentFieldNames['menu-id']] : NULL; 
+	$debugMessage = $debugMessage . " menuId = " . $menuId . "<br>";
+	$menuType = isset($_POST[$contentFieldNames['menuType']]) ? $_POST[$contentFieldNames['menuType']] : NULL;
+	$debugMessage = $debugMessage . " menuType = " . $menuType . "<br>";
+	
 	if( ! isset($_POST['recordCount'])) {
 		$dbObject->error = "update_rightbar: one or more neccessary fields were not set in post data.<br>";
 		return false;
@@ -1077,13 +1081,13 @@ function update_rightbar(wbDatabase $dbObject, dbUser $userObj )
 
 	for( $i = 1; $i <= $_POST['recordCount']; $i++) {
 		
+		$sequence = isset($_POST['seq_' . $i]) ? $_POST['seq_' . $i ] : NULL;
 		$checkboxId = isset($_POST['checkbox_' . $i]) ? $_POST['checkbox_' . $i] : NULL;
 		$menuID = isset($_POST['menuID_' . $i]) ? $_POST['menuID_' . $i] : NULL;
-		$sequence = isset($_POST['seq_' . $i]) ? $_POST['seq_' . $i ] : NULL;
 
+		$debugMessage = $debugMessage . " &nbsp;sequence = " . $sequence . "<br>";
 		$debugMessage = $debugMessage . " &nbsp;checkboxId = " . $checkboxId . "<br>";
 		$debugMessage = $debugMessage . " &nbsp;menuID = " . $menuID . "<br>";
-		$debugMessage = $debugMessage . " &nbsp;sequence = " . $sequence . "<br>";
 
 		/* update wb_articles */
 		$sqlQuery = "update wb_menuitems set sequence = '" . $sequence . "' " .
