@@ -50,7 +50,6 @@
 	function set_dialogs(wbDatabase $dbObj,  dbUser $userObj, dbContent $contentObj, wbSql $sqlObject, wbDataArrays & $dataArrays)
 	{
 		global $contentFieldNames;
-		global $isRightbarSet;
 		
 		if($userObj->ID != NULL) {
 			if(isset($this->functions['add-content']))
@@ -59,7 +58,7 @@
 				call_user_func($this->functions['edit-content'], $dbObj, $userObj, $contentObj, $sqlObject, $dataArrays);
 			if(isset($this->functions['manage-tabs']))
 				call_user_func($this->functions['manage-tabs'], $userObj, $contentObj, $dataArrays);
-			if(isset($this->functions['manage-rightbar']) and $isRightbarSet )
+			if(isset($this->functions['manage-rightbar']))
 				call_user_func($this->functions['manage-rightbar'], $dbObj, $userObj, $contentObj, $sqlObject, $dataArrays);
 			else
 				$this->functions['manage-rightbar'] = NULL;
