@@ -52,7 +52,7 @@ function set_tabsWidget(wbDatabase $dbObj, wbSql $sqlObject, wbDataArrays $dataA
 	if(fragment.length < 1)
 		fragment = document.getElementById('defaultTab').value;
 
-	fragment = fragment.replace('%20', ' ');
+	fragment = fragment.replace(/%20/g, ' ');
 	
 	dbParams = 
 		'getPost=1' +
