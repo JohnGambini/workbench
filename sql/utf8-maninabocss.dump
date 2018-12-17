@@ -1,0 +1,539 @@
+-- MySQL dump 10.13  Distrib 5.7.14, for Win64 (x86_64)
+--
+-- Host: localhost    Database: maninabocss
+-- ------------------------------------------------------
+-- Server version	5.7.14
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Temporary view structure for view `vw_content`
+--
+
+DROP TABLE IF EXISTS `vw_content`;
+/*!50001 DROP VIEW IF EXISTS `vw_content`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `vw_content` AS SELECT 
+ 1 AS `ID`,
+ 1 AS `guid`,
+ 1 AS `lang`,
+ 1 AS `defaultParentId`,
+ 1 AS `permalink`,
+ 1 AS `title`,
+ 1 AS `status`,
+ 1 AS `target`,
+ 1 AS `shortDescription`,
+ 1 AS `creatorId`,
+ 1 AS `ownerId`,
+ 1 AS `ownerType`,
+ 1 AS `ownerFullName`,
+ 1 AS `ownerLink`,
+ 1 AS `pageType`,
+ 1 AS `canEdit`,
+ 1 AS `hasRightbar`,
+ 1 AS `galleryImage`,
+ 1 AS `pageArgument`,
+ 1 AS `articleFile`,
+ 1 AS `articleImage`,
+ 1 AS `articleDescription`,
+ 1 AS `ogType`,
+ 1 AS `authorFullName`,
+ 1 AS `authorLink`,
+ 1 AS `dateCreated`,
+ 1 AS `dateModified`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `vw_contentlist`
+--
+
+DROP TABLE IF EXISTS `vw_contentlist`;
+/*!50001 DROP VIEW IF EXISTS `vw_contentlist`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `vw_contentlist` AS SELECT 
+ 1 AS `itemId`,
+ 1 AS `menuId`,
+ 1 AS `menuType`,
+ 1 AS `contentId`,
+ 1 AS `lang`,
+ 1 AS `defaultParentId`,
+ 1 AS `permalink`,
+ 1 AS `title`,
+ 1 AS `sequence`,
+ 1 AS `status`,
+ 1 AS `target`,
+ 1 AS `galleryImage`,
+ 1 AS `pageType`,
+ 1 AS `ownerId`,
+ 1 AS `authorFullName`,
+ 1 AS `authorLink`,
+ 1 AS `articleImage`,
+ 1 AS `articleDescription`,
+ 1 AS `ogType`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `vw_menulist`
+--
+
+DROP TABLE IF EXISTS `vw_menulist`;
+/*!50001 DROP VIEW IF EXISTS `vw_menulist`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `vw_menulist` AS SELECT 
+ 1 AS `menuId`,
+ 1 AS `m_lang`,
+ 1 AS `m_parentId`,
+ 1 AS `m_permalink`,
+ 1 AS `menuTitle`,
+ 1 AS `menuDescription`,
+ 1 AS `m_status`,
+ 1 AS `m_ownerId`,
+ 1 AS `m_pageType`,
+ 1 AS `m_pageArgument`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `vw_menulist2`
+--
+
+DROP TABLE IF EXISTS `vw_menulist2`;
+/*!50001 DROP VIEW IF EXISTS `vw_menulist2`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `vw_menulist2` AS SELECT 
+ 1 AS `menuId`,
+ 1 AS `m_lang`,
+ 1 AS `m_permalink`,
+ 1 AS `menuTitle`,
+ 1 AS `menuDescription`,
+ 1 AS `m_status`,
+ 1 AS `m_ownerId`,
+ 1 AS `m_pageType`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `vw_user`
+--
+
+DROP TABLE IF EXISTS `vw_user`;
+/*!50001 DROP VIEW IF EXISTS `vw_user`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `vw_user` AS SELECT 
+ 1 AS `ID`,
+ 1 AS `userBlob`,
+ 1 AS `username`,
+ 1 AS `password`,
+ 1 AS `permalink`,
+ 1 AS `fullName`,
+ 1 AS `theme`,
+ 1 AS `type`,
+ 1 AS `pageType`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Table structure for table `wb_articles`
+--
+
+DROP TABLE IF EXISTS `wb_articles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `wb_articles` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `contentId` int(11) NOT NULL,
+  `tabTitle` varchar(127) DEFAULT NULL,
+  `sequence` tinyint(4) DEFAULT NULL,
+  `articleImage` varchar(511) DEFAULT NULL,
+  `articleText` mediumtext CHARACTER SET utf8 COLLATE utf8_unicode_ci,
+  `byteCount` int(11) DEFAULT NULL,
+  `dateCreated` datetime DEFAULT CURRENT_TIMESTAMP,
+  `dateModified` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `articles_idx` (`contentId`,`tabTitle`)
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `wb_articles`
+--
+
+LOCK TABLES `wb_articles` WRITE;
+/*!40000 ALTER TABLE `wb_articles` DISABLE KEYS */;
+INSERT INTO `wb_articles` VALUES (1,1,'article',1,NULL,'\n[[article-header]]\n<div class=\"fontSpecVerySmall\" style=\"margin:0em auto;text-align:center\">[[article-description]]</div>\n<p/>\n[[gallery-widget(1)]]\n',159,'2018-11-14 00:45:01','2018-12-06 20:07:30'),(9,2,'l\'article',1,NULL,'\n[[article-header]]\n<div class=\"fontSpecVerySmall\" style=\"margin:0em auto;text-align:center\">[[article-description]]</div>\n<p/>\n[[gallery-widget(1)]]\n',159,'2018-11-14 00:58:39','2018-12-01 20:50:11'),(12,12,'article',1,NULL,'\n[[article-header]]\n<div class=\"fontSpecVerySmall\" style=\"margin:0em auto;text-align:center; white-space:pre-wrap\">[[article-description]]</div>\n<p/>\n[[gallery-widget(1)]]\n\n',183,'2018-12-01 22:28:52','2018-12-08 22:36:33'),(14,5,'article',1,NULL,'\n[[article-header]]\n<div class=\"fontSpecVerySmall\" style=\"max-width:54em; margin:0em auto; padding:0em 2%; text-align:left; white-space:pre-wrap\">[[article-description]]</div>\n<p/>\n[[gallery-widget(1)]]\n',212,'2018-12-01 22:29:31','2018-12-06 21:20:47'),(16,14,'article',1,NULL,'\n[[article-header]]\n<div class=\"fontSpecVerySmall\" style=\"margin:0em auto;text-align:center\">[[article-description]]</div>\n<p/>\n[[gallery-widget(1)]]\n[[gallery-widget(2)]]\n[[gallery-widget(3)]]\n\n',207,'2018-12-01 22:32:53','2018-12-09 23:29:50'),(18,11,'article',1,NULL,'\n[[article-header]]\n<div class=\"fontSpecVerySmall\" style=\"max-width:64em; margin:0em auto; padding:0em 4%; text-align:left; white-space:pre-wrap\">[[article-description]]</div>\n<p/>\n[[gallery-widget(1)]]\n\n',214,'2018-12-01 22:34:40','2018-12-06 21:19:20'),(20,15,'article',1,NULL,'\n[[article-header]]\n',22,'2018-12-01 22:36:30','2018-12-01 22:37:00'),(22,13,'article',1,NULL,'\n[[article-header]]\n',22,'2018-12-01 22:38:46','2018-12-01 22:39:04'),(24,6,'article',1,NULL,'[[article-header]]\n<div class=\"fontSpecVerySmall\" style=\"max-width:54em; margin:0em auto; padding:0em 2%; text-align:left; white-space:pre-wrap\">[[article-description]]</div>\n<p/>\n[[gallery-widget(1)]]\n',210,'2018-12-07 23:27:40','2018-12-07 23:27:51'),(26,17,'l\'article',1,NULL,'\n[[article-header]]\n<div class=\"fontSpecVerySmall\" style=\"max-width:54em; margin:0em auto; padding:0em 2%; text-align:center; white-space:pre-wrap\">[[article-description]]</div>\n<p/>\n[[gallery-widget(1)]]\n',214,'2018-12-07 23:28:18','2018-12-08 22:52:39'),(28,18,'l\'article',1,NULL,'\n[[article-header]]\n<div class=\"fontSpecVerySmall\" style=\"max-width:54em; margin:0em auto; padding:0em 2%; text-align:left; white-space:pre-wrap\">[[article-description]]</div>\n<p/>\n[[gallery-widget(1)]]\n',212,'2018-12-07 23:28:44','2018-12-07 23:28:54'),(30,19,'l\'article',1,NULL,'\n[[article-header]]\n<div class=\"fontSpecVerySmall\" style=\"max-width:54em; margin:0em auto; padding:0em 2%; text-align:left; white-space:pre-wrap\">[[article-description]]</div>\n<p/>\n[[gallery-widget(1)]]\n',212,'2018-12-07 23:29:19','2018-12-07 23:29:26'),(32,21,'l\'article',1,NULL,'[[article-header]]\n<div class=\"fontSpecVerySmall\" style=\"max-width:54em; margin:0em auto; padding:0em 2%; text-align:left; white-space:pre-wrap\">[[article-description]]</div>\n<p/>\n[[gallery-widget(1)]]\n',210,'2018-12-07 23:37:19','2018-12-07 23:37:26'),(34,22,'l\'article',1,NULL,'[[article-header]]\n<div class=\"fontSpecVerySmall\" style=\"max-width:54em; margin:0em auto; padding:0em 2%; text-align:left; white-space:pre-wrap\">[[article-description]]</div>\n<p/>\n[[gallery-widget(1)]]\n',210,'2018-12-07 23:37:42','2018-12-07 23:37:49'),(36,23,'l\'article',1,NULL,'[[article-header]]\n<div class=\"fontSpecVerySmall\" style=\"max-width:54em; margin:0em auto; padding:0em 2%; text-align:left; white-space:pre-wrap\">[[article-description]]</div>\n<p/>\n[[gallery-widget(1)]]\n',210,'2018-12-07 23:38:04','2018-12-07 23:38:10'),(38,20,'article',1,NULL,'[[article-header]]\n<div class=\"fontSpecVerySmall\" style=\"max-width:54em; margin:0em auto; padding:0em 2%; text-align:left; white-space:pre-wrap\">[[article-description]]</div>\n<p/>\n[[gallery-widget(1)]]\n',210,'2018-12-07 23:51:39','2018-12-07 23:51:45'),(39,25,'article',1,NULL,'[[article-header]]\n<div class=\"fontSpecVerySmall\" style=\"max-width:56em; margin:0em auto; padding:0em 2%; text-align:left; white-space:pre-wrap\">[[article-description]]</div>\n<p/>\n[[gallery-widget(1)]]\n\n',212,'2018-12-09 10:34:35','2018-12-11 20:43:24');
+/*!40000 ALTER TABLE `wb_articles` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `wb_content`
+--
+
+DROP TABLE IF EXISTS `wb_content`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `wb_content` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `guid` varchar(37) COLLATE utf8_unicode_ci NOT NULL,
+  `lang` varchar(6) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `defaultParentId` int(11) DEFAULT NULL,
+  `permalink` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `title` varchar(127) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `status` varchar(63) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `target` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `shortDescription` varchar(127) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `creatorId` int(11) DEFAULT NULL,
+  `ownerId` int(11) DEFAULT NULL,
+  `pageType` varchar(31) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `pageArgument` varchar(127) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `galleryImage` varchar(127) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `articleFile` varchar(127) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `articleImage` varchar(511) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `articleDescription` text COLLATE utf8_unicode_ci,
+  `ogType` varchar(31) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `authorFullName` varchar(127) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `authorLink` text COLLATE utf8_unicode_ci,
+  `dateCreated` datetime DEFAULT CURRENT_TIMESTAMP,
+  `dateModified` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `idx_permalink` (`permalink`)
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `wb_content`
+--
+
+LOCK TABLES `wb_content` WRITE;
+/*!40000 ALTER TABLE `wb_content` DISABLE KEYS */;
+INSERT INTO `wb_content` VALUES (1,'56f7eb4f-937a-4df3-8674-36d2c8da20e4','en',0,'/en','Home','Public','_self','Home page -english',NULL,1,'front-parallax','','/blank.png','','[[content-dir]]/man-in-box-2.png','Welcome to Manîn A Bocss.\r\n','website','','','2018-11-13 23:46:22','2018-12-06 03:46:32'),(2,'72e50feb-9546-4259-8ad3-0cced9fdba6c','fr',0,'/fr','Accueil','Public','_self','Accueil - françias',NULL,1,'front-parallax','','/blank.png','','[[content-dir]]/man-in-box.png','Bienvenue à Manîn A bocss.','website','','','2018-11-13 23:48:35','2018-12-09 03:33:44'),(3,'84cf6327-53a9-46af-ad81-4c9b6de34d1e','en',-1,'/en/84cf6327-53a9-46af-ad81-4c9b6de34d1e','Main Menu','Public','_self','Main Menu - English',NULL,1,'menu','','','',NULL,NULL,NULL,NULL,NULL,'2018-11-14 00:09:07','2018-11-14 00:09:07'),(4,'da223add-1722-43bd-94da-81950f321721','fr',-1,'/fr/da223add-1722-43bd-94da-81950f321721','Menu principal','Public','_self','Menu principal - françias',NULL,1,'menu','','','',NULL,NULL,NULL,NULL,NULL,'2018-11-14 00:09:48','2018-11-14 00:09:48'),(5,'1579ed41-9fcf-42c2-8736-14ecc1d1ba1e','en',1,'/en/data-science-and-machine-learning','Data Science and Machine Learning','Public','','Data Science and Machine Learning main page',NULL,1,'front-parallax','','/data-science-bw.png','','[[content-dir]]/data-science-bw.png','My greatest concern was what to call it. I thought of calling it \'information,\' but the word was overly used, so I decided to call it \'uncertainty.\' When I discussed it with John von Neumann, he had a better idea. Von Neumann told me, \'You should call it entropy, for two reasons. In the first place your uncertainty function has been used in statistical mechanics under that name, so it already has a name. In the second place, and more important, no one really knows what entropy really is, so in a debate you will always have the advantage.\'  \r\n\r\n--- C.E. Shannon explaining why he named his uncertainty function entropy ---','website','','','2018-11-14 00:32:47','2018-12-07 02:23:19'),(6,'eeba9bfb-b207-478e-b034-a9dc352d3771','fr',2,'/fr/data-science-and-machine-learning','La science des données et apprentissage automatique','Public','_self','La science des données et apprentissage automatique',NULL,1,'front-parallax','','/data-science-bw.png','','[[content-dir]]/data-science-bw.png','','website','','','2018-11-14 00:57:38','2018-12-09 04:04:03'),(7,'3ea5bfeb-3b4b-4d0b-b4ad-c21310890904','en',1,'/en/featured-articles','Featured Articles','Public','','Featured Articles - English',NULL,1,'featured','','/blank.png','',NULL,NULL,NULL,NULL,NULL,'2018-11-14 01:11:04','2018-11-14 01:11:04'),(8,'aa312635-fa86-491a-b514-2d4603735feb','fr',2,'/fr/featured-articles','Articles en vedette','Public','','Articles en vedette',NULL,1,'featured','','/blank.png','',NULL,NULL,NULL,NULL,NULL,'2018-11-14 01:14:17','2018-11-14 01:14:17'),(9,'55f9390f-c455-4938-8272-ce17e123d274','en',1,'/en/usr','User Profiles','Public','_self','User Profiles',NULL,1,'gallery','','/blank.png','','[[content-dir]]/user-profiles_0.png','','website','','','2018-11-14 01:48:11','2018-12-02 03:43:30'),(10,'109709dc-a2ca-41d0-ae0a-795e825a88e2','fr',2,'/fr/usr','Des profils d\'utilisateurs','Public','_self','Des profils d\'utilisateurs',NULL,1,'gallery','','/user-profiles_0.png','','[[content-dir]]/user-profiles_0.png','','website','','','2018-11-14 23:53:02','2018-12-08 04:41:40'),(11,'854ca4ea-dc3c-4c7b-a27b-8d1259894d3d','en',1,'/en/mathematics','Mathematics','Public','_self','Mathematics - English',NULL,1,'front-parallax','','/mathematics.jpg','','[[content-dir]]/mathematics.jpg','\"Mathematizing\" may well be a creative activity of man, like language or music, of primary originality, whose historical decisions defy complete objective rationalization.\r\n\r\n--- Herman Weyl ---','website','','','2018-11-17 18:04:51','2018-12-07 02:20:13'),(12,'a18f5922-f6f4-4c3d-aff7-f16279495237','en',1,'/en/computer-science','Computer Science','Public','','Computer Science',NULL,1,'front-parallax','','/computer-science.png','','[[content-dir]]/computer-science.png','Computer science is no more about computers than astronomy is about telescopes.\r\n\r\n--- Edsger Dijkstra ---\r\n','website','','','2018-12-01 20:54:36','2018-12-09 03:36:50'),(13,'ac9e711c-eb42-4b66-ac64-57bc979ffbd3','en',1,'/en/physics','Physics','Public','','Physics',NULL,1,'front-parallax','','/physics.png','','[[content-dir]]/physics.png','','website','','','2018-12-01 21:02:09','2018-12-02 03:38:23'),(14,'8969324d-a60c-432b-b306-05a812186597','en',1,'/en/diy','DIY','Public','_self','DIY',NULL,1,'front-parallax','','/diy-bw_0.png','','[[content-dir]]/diy-bw_0.png','','website','','','2018-12-01 22:00:12','2018-12-07 01:51:27'),(15,'a786246f-dbaa-4719-90b0-408efa371711','en',1,'/en/philosophy','Philosophy','Public','','Philosophy',NULL,1,'front-parallax','','/philosophy.png','','[[content-dir]]/philosophy.png','','website','','','2018-12-01 22:03:42','2018-12-02 03:35:56'),(16,'3acaa65a-d64c-4c7e-8914-be3acf3f65cb','en',1,'/en/user-admin','User Administration','Administrators','_self','User Administration',NULL,1,'user-admin','','/burning-giraffes-and-telephones.png','','[[content-dir]]/burning-giraffes-and-telephones.png','','website','Salvador Dali','','2018-12-01 22:14:24','2018-12-06 12:33:49'),(17,'d86938ba-372f-4e91-b364-642363f0bbb0','fr',2,'/fr/computer-science','La science de l\'informatique','Public','_self','La science de l\'informatique',NULL,1,'front-parallax','','/computer-science.png','','[[content-dir]]/computer-science.png','La science de l\'informatique concerne autant l\'ordinateur comme l\'astronomie, le télescope.\r\n\r\n--- Edsger Dijkstra ---\r\n','website','','','2018-12-05 13:32:54','2018-12-09 04:05:29'),(18,'4f5732b8-3db1-4e4b-ad06-c34d588fe961','fr',2,'/fr/diy','Fais le toi-même','Public','_self','Fais le toi-même',NULL,1,'front-parallax','','/diy-bw_0.png','','[[content-dir]]/diy-bw_0.png','','website','','','2018-12-05 13:35:42','2018-12-05 18:39:17'),(19,'e2e98573-2a9e-4d51-b694-a86a10b3e7f4','fr',2,'/fr/mathematics','Les mathématiques','Public','_self','Les mathématiques',NULL,1,'front-parallax','','/mathematics.jpg','','[[content-dir]]/mathematics.jpg','','website','','','2018-12-05 13:42:12','2018-12-12 02:54:16'),(20,'05bc7850-5266-4577-aab9-300eb750633c','en',1,'/en/political-science','Political Science','Public','','Political Science',NULL,1,'front-parallax','','/political-science.png','','[[content-dir]]/political-science.png','','website','','','2018-12-05 22:37:38','2018-12-06 03:41:56'),(21,'7cc881cb-74ee-44de-83d1-8cacebd92465','fr',2,'/fr/philosophy','La philosophie','Public','_self','La philosophie',NULL,1,'front-parallax','','/philosophy.png','','[[content-dir]]/philosophy.png','','website','','','2018-12-05 22:51:14','2018-12-12 02:53:26'),(22,'c492f1dd-1e18-4d30-8e9b-18ec2fe53899','fr',2,'/fr/physics','La physique','Public','','La physique',NULL,1,'front-parallax','','/physics.png','','[[content-dir]]/physics.png','','website','','','2018-12-05 22:53:52','2018-12-12 02:49:13'),(23,'bbeedbd0-e8d9-41c6-8cd0-6ddfef0b2b7e','fr',2,'/fr/political-science','Science politique','Public','','Science politique',NULL,1,'front-parallax','','/political-science.png','','[[content-dir]]/political-science.png','','website','','','2018-12-05 22:55:46','2018-12-12 02:55:04'),(24,'28167920-8511-426a-9593-c548ce1cdf19','fr',2,'/fr/user-admin','Administration des utilisateurs','administrateurs','_self','Administration des utilisateurs',NULL,1,'user-admin','','/burning-giraffes-and-telephones.png','','[[content-dir]]/burning-giraffes-and-telephones.png','','website','','','2018-12-06 07:32:16','2018-12-12 02:55:38'),(25,'9f52833f-8a25-4239-9b38-4f94648d45c1','en',12,'/en/computer-science/information-theory','Information Theory','Public','','Information Theory',NULL,1,'simple','','/blank.png','','','My greatest concern was what to call it. I thought of calling it \'information,\' but the word was overly used, so I decided to call it \'uncertainty.\' When I discussed it with John von Neumann, he had a better idea. Von Neumann told me, \'You should call it entropy, for two reasons. In the first place your uncertainty function has been used in statistical mechanics under that name, so it already has a name. In the second place, and more important, no one really knows what entropy really is, so in a debate you will always have the advantage.\'  \r\n\r\n--- C.E. Shannon explaining why he named his uncertainty function entropy ---','website','','','2018-12-09 10:33:58','2018-12-09 15:35:45');
+/*!40000 ALTER TABLE `wb_content` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `wb_grouplists`
+--
+
+DROP TABLE IF EXISTS `wb_grouplists`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `wb_grouplists` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `groupId` int(11) DEFAULT NULL,
+  `userId` int(11) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `wb_grouplists`
+--
+
+LOCK TABLES `wb_grouplists` WRITE;
+/*!40000 ALTER TABLE `wb_grouplists` DISABLE KEYS */;
+INSERT INTO `wb_grouplists` VALUES (3,1,1),(4,2,1);
+/*!40000 ALTER TABLE `wb_grouplists` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `wb_menugroups`
+--
+
+DROP TABLE IF EXISTS `wb_menugroups`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `wb_menugroups` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `parentId` int(11) DEFAULT NULL,
+  `contentId` int(11) DEFAULT NULL,
+  `trackParent` tinyint(1) DEFAULT NULL,
+  `mgseq` smallint(6) DEFAULT NULL,
+  `menuId` int(11) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `wb_menugroups`
+--
+
+LOCK TABLES `wb_menugroups` WRITE;
+/*!40000 ALTER TABLE `wb_menugroups` DISABLE KEYS */;
+INSERT INTO `wb_menugroups` VALUES (1,0,1,1,1,3),(2,0,2,1,1,4),(3,1,5,NULL,1,3),(5,1,7,NULL,1,3),(6,2,8,NULL,1,4),(9,1,9,1,1,3),(10,2,10,1,1,4),(11,1,11,NULL,1,3),(17,1,12,1,1,3),(18,1,14,1,1,3),(19,1,15,1,1,3),(20,1,13,1,1,3),(21,1,16,1,1,3),(26,1,20,1,1,3),(31,2,19,1,1,4),(32,2,18,1,1,4),(33,2,17,1,1,4),(34,2,6,1,1,4),(35,2,21,1,1,4),(36,2,22,1,1,4),(37,2,23,1,1,4),(38,2,24,1,1,4),(39,12,25,NULL,1,12);
+/*!40000 ALTER TABLE `wb_menugroups` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `wb_menuitems`
+--
+
+DROP TABLE IF EXISTS `wb_menuitems`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `wb_menuitems` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `menuId` int(11) DEFAULT NULL,
+  `menuType` tinyint(4) NOT NULL DEFAULT '1',
+  `sequence` smallint(6) DEFAULT NULL,
+  `contentId` int(11) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `wb_menuitems`
+--
+
+LOCK TABLES `wb_menuitems` WRITE;
+/*!40000 ALTER TABLE `wb_menuitems` DISABLE KEYS */;
+INSERT INTO `wb_menuitems` VALUES (2,1,1,2,5),(3,2,1,2,6),(4,3,1,2,7),(5,4,1,1,8),(7,1,1,6,11),(8,1,1,1,12),(9,1,1,8,13),(10,1,1,3,14),(11,1,1,7,15),(12,1,1,10,16),(13,2,1,1,17),(14,2,1,3,18),(15,2,1,5,19),(16,1,1,9,20),(17,2,1,5,21),(18,2,1,6,22),(19,2,1,7,23),(20,2,1,8,24),(21,12,1,1,25);
+/*!40000 ALTER TABLE `wb_menuitems` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `wb_pagetypes`
+--
+
+DROP TABLE IF EXISTS `wb_pagetypes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `wb_pagetypes` (
+  `ID` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `userSelect` tinyint(4) DEFAULT NULL,
+  `pageTypeName` varchar(63) COLLATE utf8_unicode_ci NOT NULL,
+  `seq` tinyint(4) DEFAULT NULL,
+  `isMenu` tinyint(1) DEFAULT '0',
+  `isParent` tinyint(1) DEFAULT '0',
+  `canEdit` tinyint(4) DEFAULT NULL,
+  `hasRightbar` tinyint(4) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `wb_pagetypes`
+--
+
+LOCK TABLES `wb_pagetypes` WRITE;
+/*!40000 ALTER TABLE `wb_pagetypes` DISABLE KEYS */;
+INSERT INTO `wb_pagetypes` VALUES (1,4,'menu',-1,1,0,0,0),(2,1,'default',-1,0,1,0,0),(3,1,'acrobat',4,0,0,0,0),(4,1,'article',4,1,1,1,1),(5,1,'article-old',4,0,0,1,1),(6,1,'front-page',4,1,1,0,0),(7,1,'gallery',4,1,1,0,1),(8,1,'image',4,0,0,1,0),(9,1,'profile',4,1,1,1,1),(10,4,'user-admin',4,0,0,0,0),(11,4,'edit-post',-1,0,0,0,0),(12,4,'all-posts',4,0,0,0,0),(13,1,'featured',4,0,1,0,0),(14,1,'parallax',4,1,1,0,0),(15,1,'simple',1,1,1,1,1),(16,1,'articles',4,1,1,1,0),(17,1,'simple-nsb',2,1,1,1,1),(18,1,'front-parallax',4,1,1,1,1);
+/*!40000 ALTER TABLE `wb_pagetypes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `wb_user`
+--
+
+DROP TABLE IF EXISTS `wb_user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `wb_user` (
+  `ID` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `userBlob` binary(16) DEFAULT NULL,
+  `profileId` int(11) DEFAULT NULL,
+  `username` varchar(120) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
+  `type` tinyint(1) unsigned DEFAULT '1',
+  `fullName` varchar(63) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `theme` varchar(63) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `disabled` tinyint(1) unsigned DEFAULT '0',
+  `addedBy` int(11) DEFAULT NULL,
+  `created_dt` datetime DEFAULT CURRENT_TIMESTAMP,
+  `modified_ts` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `uniq_idx` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `wb_user`
+--
+
+LOCK TABLES `wb_user` WRITE;
+/*!40000 ALTER TABLE `wb_user` DISABLE KEYS */;
+INSERT INTO `wb_user` VALUES (1,'*\ZÃÂÃÂ',1,'ntorvez','ntorvez',4,'Ninja Torvez','utere-verbis',0,1,'2017-01-29 20:12:24','2018-12-05 04:06:51');
+/*!40000 ALTER TABLE `wb_user` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER wb_user_guid
+BEFORE INSERT ON wb_user 
+FOR EACH ROW
+SET new.userBlob = unhex(replace(uuid(),'-','')) */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+
+--
+-- Table structure for table `wb_userbios`
+--
+
+DROP TABLE IF EXISTS `wb_userbios`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `wb_userbios` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `userId` int(11) DEFAULT NULL,
+  `lang` varchar(6) DEFAULT NULL,
+  `profileImage` varchar(127) DEFAULT NULL,
+  `bio` text,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `idx_bios` (`userId`,`lang`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `wb_userbios`
+--
+
+LOCK TABLES `wb_userbios` WRITE;
+/*!40000 ALTER TABLE `wb_userbios` DISABLE KEYS */;
+/*!40000 ALTER TABLE `wb_userbios` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `wb_usergroups`
+--
+
+DROP TABLE IF EXISTS `wb_usergroups`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `wb_usergroups` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(63) NOT NULL,
+  `shortDescription` varchar(127) DEFAULT NULL,
+  `lang` varchar(6) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `idx_ugroups` (`lang`,`name`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `wb_usergroups`
+--
+
+LOCK TABLES `wb_usergroups` WRITE;
+/*!40000 ALTER TABLE `wb_usergroups` DISABLE KEYS */;
+INSERT INTO `wb_usergroups` VALUES (1,'Administrators','Administrators','en'),(2,'administrateurs','administrateurs','fr');
+/*!40000 ALTER TABLE `wb_usergroups` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Final view structure for view `vw_content`
+--
+
+/*!50001 DROP VIEW IF EXISTS `vw_content`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `vw_content` AS select `wb_content`.`ID` AS `ID`,`wb_content`.`guid` AS `guid`,`wb_content`.`lang` AS `lang`,`wb_content`.`defaultParentId` AS `defaultParentId`,`wb_content`.`permalink` AS `permalink`,`wb_content`.`title` AS `title`,`wb_content`.`status` AS `status`,`wb_content`.`target` AS `target`,`wb_content`.`shortDescription` AS `shortDescription`,`wb_content`.`creatorId` AS `creatorId`,`wb_content`.`ownerId` AS `ownerId`,`vw_user`.`type` AS `ownerType`,`vw_user`.`fullName` AS `ownerFullName`,`vw_user`.`permalink` AS `ownerLink`,`wb_content`.`pageType` AS `pageType`,`wb_pagetypes`.`canEdit` AS `canEdit`,`wb_pagetypes`.`hasRightbar` AS `hasRightbar`,`wb_content`.`galleryImage` AS `galleryImage`,`wb_content`.`pageArgument` AS `pageArgument`,`wb_content`.`articleFile` AS `articleFile`,`wb_content`.`articleImage` AS `articleImage`,`wb_content`.`articleDescription` AS `articleDescription`,`wb_content`.`ogType` AS `ogType`,`wb_content`.`authorFullName` AS `authorFullName`,`wb_content`.`authorLink` AS `authorLink`,`wb_content`.`dateCreated` AS `dateCreated`,`wb_content`.`dateModified` AS `dateModified` from ((`wb_content` left join `vw_user` on((`wb_content`.`ownerId` = `vw_user`.`ID`))) join `wb_pagetypes`) where (`wb_content`.`pageType` = `wb_pagetypes`.`pageTypeName`) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `vw_contentlist`
+--
+
+/*!50001 DROP VIEW IF EXISTS `vw_contentlist`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `vw_contentlist` AS select `wb_menuitems`.`ID` AS `itemId`,`wb_menuitems`.`menuId` AS `menuId`,`wb_menuitems`.`menuType` AS `menuType`,`wb_content`.`ID` AS `contentId`,`wb_content`.`lang` AS `lang`,`wb_content`.`defaultParentId` AS `defaultParentId`,`wb_content`.`permalink` AS `permalink`,`wb_content`.`title` AS `title`,`wb_menuitems`.`sequence` AS `sequence`,`wb_content`.`status` AS `status`,`wb_content`.`target` AS `target`,`wb_content`.`galleryImage` AS `galleryImage`,`wb_content`.`pageType` AS `pageType`,`wb_content`.`ownerId` AS `ownerId`,`wb_content`.`authorFullName` AS `authorFullName`,`wb_content`.`authorLink` AS `authorLink`,`wb_content`.`articleImage` AS `articleImage`,`wb_content`.`articleDescription` AS `articleDescription`,`wb_content`.`ogType` AS `ogType` from (`wb_menuitems` join `wb_content`) where (`wb_menuitems`.`contentId` = `wb_content`.`ID`) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `vw_menulist`
+--
+
+/*!50001 DROP VIEW IF EXISTS `vw_menulist`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `vw_menulist` AS select `wb_content`.`ID` AS `menuId`,`wb_content`.`lang` AS `m_lang`,`wb_content`.`defaultParentId` AS `m_parentId`,`wb_content`.`permalink` AS `m_permalink`,`wb_content`.`title` AS `menuTitle`,`wb_content`.`shortDescription` AS `menuDescription`,`wb_content`.`status` AS `m_status`,`wb_content`.`ownerId` AS `m_ownerId`,`wb_content`.`pageType` AS `m_pageType`,`wb_content`.`pageArgument` AS `m_pageArgument` from `wb_content` where `wb_content`.`pageType` in (select `wb_pagetypes`.`pageTypeName` from `wb_pagetypes` where (`wb_pagetypes`.`isMenu` = TRUE)) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `vw_menulist2`
+--
+
+/*!50001 DROP VIEW IF EXISTS `vw_menulist2`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `vw_menulist2` AS select `wb_content`.`ID` AS `menuId`,`wb_content`.`lang` AS `m_lang`,`wb_content`.`permalink` AS `m_permalink`,`wb_content`.`title` AS `menuTitle`,`wb_content`.`shortDescription` AS `menuDescription`,`wb_content`.`status` AS `m_status`,`wb_content`.`ownerId` AS `m_ownerId`,`wb_content`.`pageType` AS `m_pageType` from `wb_content` where `wb_content`.`pageType` in (select `wb_pagetypes`.`pageTypeName` from `wb_pagetypes` where (`wb_pagetypes`.`isMenu` = TRUE)) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `vw_user`
+--
+
+/*!50001 DROP VIEW IF EXISTS `vw_user`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `vw_user` AS select `wb_user`.`ID` AS `ID`,`wb_user`.`userBlob` AS `userBlob`,`wb_user`.`username` AS `username`,`wb_user`.`password` AS `password`,`wb_content`.`permalink` AS `permalink`,`wb_user`.`fullName` AS `fullName`,`wb_user`.`theme` AS `theme`,`wb_user`.`type` AS `type`,`wb_content`.`pageType` AS `pageType` from (`wb_user` left join `wb_content` on((`wb_user`.`profileId` = `wb_content`.`ID`))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2018-12-16  1:19:53
