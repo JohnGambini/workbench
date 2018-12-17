@@ -16,12 +16,10 @@ global $dialogsObj;
 <div id="content" class="content">
 <?php get_contentMenu($contentObj) ?>
 <div id="mainContent" style="padding:0.01em 0.01em 0.02em 0.09em">
-<div style="margin:1em">
 <?php if( can_user_edit($userObj,$contentObj,1)) { set_urlInputDlg(); } ?>
-<p/>
+<?php echo get_articleHeaderString( $userObj, $contentObj) ?>
 <?php echo get_articlesWidgetString($contentObj, $dataArrays->get_featuredItemsArray($contentObj))?>
 <?php  //echo count($dataArrays->get_featuredItemsArray($contentObj));?>
-</div>
 
 </div> <!-- close mainContent -->
 </div> <!-- close content -->
