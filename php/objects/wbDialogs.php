@@ -28,7 +28,7 @@
 		if(can_user_edit_attributes($userObj,$contentObj) and ($contentObj->canEdit > 0 ))
 			$this->functions['manage-articles'] = 'set_articlesDlg';
 					
-		if(can_user_edit_attributes($userObj,$contentObj))
+		if(can_user_edit_attributes($userObj,$contentObj) and $contentObj->pageType != 'profile')
 			$this->functions['sidebar-menus'] = 'set_addMenuGroupsDlg';
 		
 		if($userObj->type > 1 )
