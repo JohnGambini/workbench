@@ -35,6 +35,7 @@ if( $dataArrays->get_galleryItemsArray($dbObj, $sqlObject) === NULL) {
 		<a class="menuItem" style="color:#EEEEEE" href="<?php echo $contentObj->authorLink?>" target="_blank"><em><?php echo $contentObj->authorFullName?></em></a>
 	</div>
 </div>
+
 <section style="min-height:100%">
 <?php get_rightbar($contentObj)?>
 <div id="mainContent" style="width:100%; padding: 0em 0.01em 0em 0em">
@@ -45,9 +46,8 @@ if( $dataArrays->get_galleryItemsArray($dbObj, $sqlObject) === NULL) {
 	<?php 	} else {?>
 	<div id="articleText"></div>
 	<?php	 }?>
-</div>
-</section>
 </div> <!-- close main content -->
+</section>
 <?php set_articleEditorWidget($userObj,$contentObj, '')?>
 </div> <!-- close content -->
 </div> <!-- close content container -->
