@@ -20,7 +20,7 @@ global $dataArrays;
 <div id="mainContent" style="padding: 0em 0em 0.03em 0em;border-top: 1px solid grey">
 	<p/>
 	<div class="articleTabs fontSpecSmall"><?php $tabName = set_tabsWidget($dbObj, $sqlObject, $dataArrays, $contentObj)?></div>
-	<div id="article" class="article">
+	<article id="article">
 	<p/>
 	<?php echo get_articleHeaderString($userObj, $contentObj)?>
 	<div id="articleText"></div>
@@ -37,7 +37,7 @@ global $dataArrays;
 	<hr style="width:50%"/>
 	<p/>
 	<!-- close article footer -->
-	</div> <!-- close article -->
+	</article> <!-- close article -->
 	<br/>
 	
 </div> <!-- close mainContent -->

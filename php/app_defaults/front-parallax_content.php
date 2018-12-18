@@ -35,17 +35,12 @@ if( $dataArrays->get_galleryItemsArray($dbObj, $sqlObject) === NULL) {
 		<a class="menuItem" style="color:#EEEEEE" href="<?php echo $contentObj->authorLink?>" target="_blank"><em><?php echo $contentObj->authorFullName?></em></a>
 	</div>
 </div>
-
-<section style="min-height:100%">
+<section>
 <?php get_rightbar($contentObj)?>
-<div id="mainContent" style="width:100%; padding: 0em 0.01em 0em 0em">
+<div id="mainContent" style="width:100%; padding: 0em 0.03em 0em 0em">
 	<p/>
 	<div class="articleTabs fontSpecSmall"><?php $tabName = set_tabsWidget($dbObj, $sqlObject, $dataArrays, $contentObj)?></div>
-	<?php if(strlen($tabName) != 0) {?>	
-	<div id="articleText"><?php echo replace_wb_variable($dataArrays->tabsArray[$tabName]['articleText'], $dbObj, $userObj, $contentObj, $sqlObject, $dataArrays) ?></div>
-	<?php 	} else {?>
 	<div id="articleText"></div>
-	<?php	 }?>
 </div> <!-- close main content -->
 </section>
 <?php set_articleEditorWidget($userObj,$contentObj, '')?>
