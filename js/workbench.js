@@ -147,8 +147,8 @@ function resizeDoc(resizeCounter)
 	
 	if(mainContent && content) {
 		mainContent.style.height = "" + (content.getBoundingClientRect().height) + "px";
+		//alert(mainContent.style.height);
 	}
-	
 
 	if(content && mainContent && (contentMenu || transparentContentMenu)) {
 
@@ -204,10 +204,12 @@ function resizeDoc(resizeCounter)
 	if(rightbarContent) {
 		if(contentMenu) {
 			rightbarContent.style.top = "" + contentMenuRect.bottom + "px";
-			rightbarContent.style.height = "" + (mainContent.scrollHeight-5 - contentMenuRect.bottom) + "px";
+			rightbarContent.style.height = "" + ((content.getBoundingClientRect().height-5) - contentMenuRect.bottom) + "px";
+			//alert(rightbarContent.style.height + ', ' + (content.getBoundingClientRect().height-5) + ", " + contentMenuRect.bottom);
 		} else {
 			
-			rightbarContent.style.height = "" + (mainContent.scrollHeight-5) + "px";
+			rightbarContent.style.height = "" + (content.getBoundingClientRect().height-5) + "px";
+			//alert(rightbarContent.style.height);
 		}
 		var displayStyle = rightbarContent.currentStyle ? rightbarContent.currentStyle.display : getComputedStyle(rightbarContent, null).display;
 		if( displayStyle == 'block'){
