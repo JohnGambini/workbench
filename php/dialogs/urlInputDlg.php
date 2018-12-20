@@ -14,11 +14,13 @@ function set_urlInputDlg() {
 ?>
 <div id="urlInput">
 	<p/>
-	<div class="wb-dialog" style="width:100%; padding:1em; vertical-align:top">
+	<div class="wb-dialog" style="width:80%; margin:0em auto; padding:1em; vertical-align:top">
 		<div class="header">Enter Url:</div>
 		<input type="text" name="urlLink" id="urlLink"/><button onclick="onUrlInputClick()">Post</button>
 	</div>
-	<p/>
+	<br/>
+	<br/>
+	<br/>
 </div>
 <script>
 function onUrlInputClick() {
