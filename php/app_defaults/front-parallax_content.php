@@ -35,7 +35,7 @@ if( $dataArrays->get_galleryItemsArray($dbObj, $sqlObject) === NULL) {
 		<a class="menuItem" style="color:#EEEEEE" href="<?php echo $contentObj->authorLink?>" target="_blank"><em><?php echo $contentObj->authorFullName?></em></a>
 	</div>
 </div>
-<section>
+<section style="min-height:97.5%">
 <?php get_rightbar($contentObj)?>
 <div id="mainContent" style="width:100%; padding: 0em 0.03em 0em 0em">
 	<p/>
