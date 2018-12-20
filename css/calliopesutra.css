@@ -79,21 +79,6 @@ ul.minimenu { list-style: none; padding: 0px; width: 100%; height:100%; vertical
 	z-index: 3; 
 }
 
-.transparentContentMenu { 
-	position:fixed; 
-	top:0; 
-	display: flex; 
-	display: -ms-flexbox; 
-	display: -webkit-flex; 
-	width:100%; 
-	align-items: center; 
-	-ms-flex-align: center; 
-	-webkit-align-items: center; 
-	-webkit-box-align: center; 
-	height:3.0em; 
-	z-index: 3; 
-}
-
 .mainContent { display:block; position: relative; width:inherit; height:inherit; top: 0; }
 .sidebarContainer { position: relative; top:0px; float:left; width: 18%; height: 100%; overflow-y: hidden; border-right: 1px solid #AAAAAA; }
 .sidebar { display: flex; flex-direction: column; position: relative; top: 0; width: 100%; height: 100%; overflow-y: auto; overflow-x: wrap; }
@@ -114,7 +99,7 @@ ul.minimenu { list-style: none; padding: 0px; width: 100%; height:100%; vertical
 }
 .gallery {}
 .parallax { width:inherit; height:100%; color:white; text-shadow: 1px 1px #004400; background-position:center; background-size:cover; background-repeat:no-repeat;background-attachment:fixed}
-.imageContent { background-color:#EEEEEE; border-radius: 8px; border: 1px solid #0000DD; min-height:75%; margin-top: 10px; margin-bottom: 0.5em; font-smoothing: antialiased; -webkit-font-smoothing: antialiased; -moz-font-smoothing: antialiased; }
+.imageContent { background-color:#EEEEEE; border-radius: 8px; border: 1px solid #0000DD; min-height:75%; margin-top: 0px; margin-bottom: 0.5em; font-smoothing: antialiased; -webkit-font-smoothing: antialiased; -moz-font-smoothing: antialiased; }
 ul.imagefooter { list-style: none; margin: 0em 2em; padding: 0px; }
 .imagefooter li { display: inline-block; text-align: left; font-style: italic; }
 .articleList { width:96.85%; background-color: inherit; color: inherit; text-shadow: inherit; margin: 0em 1%; -webkit-column-count: 2; /* Chrome, Safari, Opera */ -moz-column-count: 2; /* Firefox */ column-count: 2; -webkit-column-width: 18em; /* Chrome, Safari, Opera */ -moz-column-width: 18em; /* Firefox */ column-width: 18em; -webkit-column-gap: 0.25em; /* Chrome, Safari, Opera */ -moz-column-gap: 0.25em; /* Firefox */ column-gap: 0.25em; }
@@ -127,7 +112,7 @@ ul.imagefooter { list-style: none; margin: 0em 2em; padding: 0px; }
 .featuredItemMain .mainImage { width:50%; float:left; margin:0em 2em 1em 0em; }
 .featuredItem .leftImage { width:43%; float:left; margin:0em 2em 1em 0em	}
 .featuredItem .rightImage { width:42%; float:right; margin:0em 0em 1em 2em }
-#urlInput { position:fixed; width:76%; opacity:0.75; top:-6em; margin:0em 1% 1% 1%; padding:1em; transition:all 0.5s ease}
+#urlInput { position:fixed; width:80%; opacity:0.5; top:-6em; margin:0em auto; padding:1em; transition:all 0.5s ease }
 #urlInput:hover { top: 3em; opacity:1 }
 
 @media all and (max-width:760px) { 
