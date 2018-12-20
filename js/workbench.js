@@ -96,7 +96,6 @@ function resizeDoc(resizeCounter)
 	var sidebarContainer = document.getElementById('sidebarContainer');
 	var menuElement = document.getElementById('mainmenu');
 	var contentMenu = document.getElementById('contentMenu');
-	var transparentContentMenu = document.getElementById('transparentContentMenu');
 	var rightbarContent = document.getElementById('rightbarContainer');
 	var content = document.getElementById('content');
 	var mainContent = document.getElementById('mainContent');
@@ -142,66 +141,39 @@ function resizeDoc(resizeCounter)
 		sidebarContainer.style.top =  "" + (menuElementRect.height+1) + "px";
 	}
 
-	if( contentContainer && content )
-		content.style.height = "" + contentContainer.getBoundingClientRect().height + "px";
-	
-	if(mainContent && content) {
-		mainContent.style.height = "" + (content.getBoundingClientRect().height) + "px";
-		//alert(mainContent.style.height);
-	}
+	//if( contentContainer && content )
+	//	content.style.height = "" + contentContainer.getBoundingClientRect().height + "px";
 
-	if(content && mainContent && (contentMenu || transparentContentMenu)) {
-
-		if(contentMenu) {
-			if( resizeCounter <= 1 ) {
-				//adjust content top margin	
-				var str_1 = mainContent.style.padding.substr(0, mainContent.style.padding.indexOf(" "));
-				//alert(str_1);
-				var str = mainContent.style.padding;
-				str = str.substr(str.indexOf(' ')+1); 
-				str = "" + (parseInt(str_1,10) + 3) + "em " + str; 
-				//alert(str);
-				mainContent.style.padding = str;
-			}
-
-			//alert(content.scrollHeight + "," + contentContainer.scrollHeight + "," + parseInt(contentRect.width) + "," + contentContainerRect.width + "," + bodyRect.width);
-			if(content.scrollHeight > contentContainer.scrollHeight) {
-				if(sidebarContainer)
-					contentMenu.style.width = "" + (parseInt(contentRect.width)-scrollbarWidth) + "px";
-				else
-					contentMenu.style.width = "" + (parseInt(bodyRect.width)-scrollbarWidth) + "px";
-			} else  {
-				if(sidebarContainer)
-					contentMenu.style.width = "" + (parseInt(contentRect.width)) + "px";
-				else
-					contentMenu.style.width = "" + (parseInt(bodyRect.width)) + "px";
-			}
-			
-		} else {
-			
-			
-			if(content.scrollHeight > contentContainer.scrollHeight) {
-				if(sidebarContainer)
-					transparentContentMenu.style.width = "" + (parseInt(contentRect.width)-scrollbarWidth) + "px";
-				else
-					transparentContentMenu.style.width = "" + (parseInt(bodyRect.width)-scrollbarWidth) + "px";
-			} else  {
-				if(sidebarContainer)
-					transparentContentMenu.style.width = "" + (parseInt(contentRect.width)) + "px";
-				else
-					transparentContentMenu.style.width = "" + (parseInt(bodyRect.width)) + "px";
-			}
-			
+	if(content && mainContent && contentMenu ) {
+		/*
+		if( resizeCounter <= 1 ) {
+			//adjust content top margin	
+			var str_1 = mainContent.style.padding.substr(0, mainContent.style.padding.indexOf(" "));
+			//alert(str_1);
+			var str = mainContent.style.padding;
+			str = str.substr(str.indexOf(' ')+1); 
+			str = "" + (parseInt(str_1,10) + 3) + "em " + str; 
+			//alert(str);
+			mainContent.style.padding = str;
 		}
-		
-
-		if(contentMenu)
-			contentMenu.style.top = contentContainer.style.top;
-		if(transparentContentMenu)
-			transparentContentMenu.style.top = contentContainer.style.top;
+		*/
+		//alert(content.scrollHeight + "," + contentContainer.scrollHeight + "," + parseInt(contentRect.width) + "," + contentContainerRect.width + "," + bodyRect.width);
+		if(content.scrollHeight > contentContainer.scrollHeight) {
+			if(sidebarContainer)
+				contentMenu.style.width = "" + (parseInt(contentRect.width)-scrollbarWidth) + "px";
+			else
+				contentMenu.style.width = "" + (parseInt(bodyRect.width)-scrollbarWidth) + "px";
+		} else  {
+			if(sidebarContainer)
+				contentMenu.style.width = "" + (parseInt(contentRect.width)) + "px";
+			else
+				contentMenu.style.width = "" + (parseInt(bodyRect.width)) + "px";
+		}
+			
+		contentMenu.style.top = contentContainer.style.top;
 	}
 	
-	if(rightbarContent) {
+	if(rightbarContent && mainContent) {
 		if(contentMenu) {
 			rightbarContent.style.top = "" + contentMenuRect.bottom + "px";
 			rightbarContent.style.height = "" + ((content.getBoundingClientRect().height-5) - contentMenuRect.bottom) + "px";
@@ -221,18 +193,12 @@ function resizeDoc(resizeCounter)
 
 	}
 	
-	if(mainContent && articleEdit) {
-		//articleEdit.style.width = "" + (mainContentRect.width-scrollbarWidth-100) + "px";
-		//alert("ok");
-	}
-	
-
 	//fix up the main menu
 	var width = window.innerWidth
 	|| document.documentElement.clientWidth
 	|| document.body.clientWidth;
 	var mainmenuItem2 = document.getElementById('mainmenuItem2');
-	if(contentMenu || transparentContentMenu) {
+	if(contentMenu) {
 		if(rightbarContent && width > 760) {
 			if(mainmenuItem2 != null)
 				mainmenuItem2.style.display = 'none';
@@ -311,18 +277,6 @@ function toggleMenu(event, id, parentId, position )
 	e.stopPropagation();
 
 	//alert(formElement.style.left + " & " + formElement.style.top );
-}
-
-function setArticleIntro()
-{
-	var introDest = document.getElementById("introDest");
-	var intro = document.getElementById("intro");
-	/*if intrDest exists, this is an article page*/
-	
-	if( intro && introDest ) {
-		introDest.innerHTML = intro.innerHTML;
-		introDest.style.textAlign = intro.style.textAlign;
-	}
 }
 
 function fixUpSubmit(webApp)
