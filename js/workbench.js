@@ -206,7 +206,7 @@ function resizeDoc(resizeCounter)
 		else if(mainmenuItem2 != null)
 			mainmenuItem2.style.display = 'inline-block';
 	} else {
-		if( mainmenuItem2 && width < 760 ) { 
+		if( mainmenuItem2 && (width < 760 || sidebarContainer == null )) { 
 					mainmenuItem2.style.display = 'none';
 		} else if(mainmenuItem2 !=null && rightbarContent) {
 				mainmenuItem2.style.display = 'none';
