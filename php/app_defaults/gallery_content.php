@@ -25,7 +25,6 @@ if($userObj->type > 1 ){
 <?php get_contentMenu($contentObj) ?>
 <?php get_rightbar($contentObj)?>
 <div  id="mainContent" class="gallery" style="padding:0em 0.01em 0em 0.1em" >
-<p/>
 <?php echo get_articleHeaderString( $userObj, $contentObj )?>
 <?php echo get_galleryWidgetString( $contentObj, $dataArrays->get_galleryItemsArray($dbObj, $sqlObject)); ?>
 </div> <!-- close main content -->

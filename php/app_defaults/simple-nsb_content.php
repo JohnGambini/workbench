@@ -16,12 +16,9 @@ global $dataArrays;
 <div id="content" class="content" onscroll="getScrollPos()">
 <?php get_contentMenu($contentObj) ?>
 <?php get_rightbar($contentObj)?>
-<div id="mainContent" style="padding: 0em 1em 0.03em 1em;border-top: 1px solid grey">
-<p/>
+<div id="mainContent" style="padding: 0em 0em 0.03em 0em;border-top: 1px solid grey">
 <div class="articleTabs fontSpecSmall"><?php set_tabsWidget($dbObj, $sqlObject, $dataArrays, $contentObj)?></div>
-
 <div id="articleText"></div>
-
 </div> <!-- close mainContent -->
 <?php set_articleEditorWidget($userObj,$contentObj, '')?>
 </div> <!-- close content -->

@@ -14,8 +14,7 @@ global $sqlObject;
 <div id="contentContainer" class="contentContainer">
 <div id="content" class="content" onscroll="getScrollPos()">
 <?php get_contentMenu($contentObj) ?>
-<div id="mainContent" style="padding: 0.01em 1em 0em 1em">
-<p/>
+<div id="mainContent" style="padding: 1em 1em 0em 1em">
 <div class="articleTabs fontSpecSmall"><?php set_tabsWidget($dbObj, $sqlObject, $dataArrays, $contentObj)?></div>
 <div class="imageContent">
 <div id="articleText"></div>

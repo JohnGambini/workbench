@@ -35,10 +35,9 @@ if( $dataArrays->get_galleryItemsArray($dbObj, $sqlObject) === NULL) {
 		<a class="menuItem" style="color:#EEEEEE" href="<?php echo $contentObj->authorLink?>" target="_blank"><em><?php echo $contentObj->authorFullName?></em></a>
 	</div>
 </div>
-<section style="min-height:97.5%">
+<section style="min-height:100%">
 <?php get_rightbar($contentObj)?>
 <div id="mainContent" style="width:100%; padding: 0em 0.03em 0em 0em">
-	<p/>
 	<div class="articleTabs fontSpecSmall"><?php $tabName = set_tabsWidget($dbObj, $sqlObject, $dataArrays, $contentObj)?></div>
 	<div id="articleText"></div>
 </div> <!-- close main content -->
