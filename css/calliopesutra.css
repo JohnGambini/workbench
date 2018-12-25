@@ -111,7 +111,7 @@ ul.imagefooter { list-style: none; margin: 0em 2em; padding: 0px; }
 .featuredItemMain img:hover { border:1px solid #F0000F; color:inherit; border-radius:5px }
 .featuredItemMain .mainImage { width:50%; float:left; margin:0em 2em 1em 0em; }
 .featuredItem .leftImage { width:43%; float:left; margin:0em 2em 1em 0em	}
-.featuredItem .rightImage { width:42%; float:right; margin:0em 0em 1em 2em }
+.featuredItem .rightImage { width:43%; float:right; margin:0em 0em 1em 2em }
 #urlInput { position:fixed; width:80%; opacity:0.5; top:-6em; margin:0em auto; padding:1em; transition:all 0.5s ease }
 #urlInput:hover { top: 3em; opacity:1 }
 
@@ -137,7 +137,7 @@ ul.imagefooter { list-style: none; margin: 0em 2em; padding: 0px; }
 #articleEditLink:hover { text-decoration:underline; color:inherit; text-shadow:0px 0px #000000;	}
 #menugroups { position: relative; opacity: 0; overflow-y: auto; transition: opacity 0.5s; }
 #tabsList { position: relative; left: -20em; transition: left 0.5s; }
-.topicBlock { display: inline-block; height: auto; width:24.5%; padding: 10px 0em 10px 2%; vertical-align:top; text-align: center; }
+.topicBlock { display: inline-block; height: auto; width:24.5%; padding: 10px 0em 10px 2.5%; vertical-align:top; text-align: center; }
 .topicBlock img { outline:1px solid #333399; color:inherit; }
 .topicBlock img:hover { outline:1px solid #F0000F; color:inherit; }
 .langElement { vertical-align:middle; height:30px; }
@@ -157,7 +157,7 @@ ul.imagefooter { list-style: none; margin: 0em 2em; padding: 0px; }
 	.listBlocks { flex-direction:column }
 }
 
-article { background-color: #FFFFFF; color: #000000; text-shadow: 0px 0px #000000; margin:0em 1em 0em 1em; padding:0em 0em; }
+article { background-color: #FFFFFF; color: #000000; text-shadow: 0px 0px #000000; margin:1em; padding:0em 0em; }
 .articleHeader { background-color: inherit; color: inherit; width:100%; text-align:center; font-size:10pt; margin:0em auto; }
 .articleTab { white-space:nowrap; margin:0em 1%; padding:0em 3%; background-color:#FFFFFF; text-shadow: 0px 0px #000000; height:2em; color:#000000; border-radius:5px 5px 0px 0px; border-bottom:1px solid #CCCCCC }
 .articleTabHighlight { margin:0em 1%; padding:0em 3%; background-color:#FFFFFF; text-shadow: 0px 0px #000000; height:2em; color:#AA0000; border-radius:5px 5px 0px 0px; border-bottom:1px solid #CCCCCC }
@@ -182,7 +182,7 @@ article a.linkItem:hover {
 
 .webArticle { background-color: inherit; color: inherit; text-shadow: inherit; margin:0em 2%; }
 .webArticle hr { border-style:solid; border-color:#AAAAAA; }
-.newspaper { background-color: inherit; color: inherit; text-shadow: inherit; margin: 0em 4%; -webkit-column-count: 2; /* Chrome, Safari, Opera */ -moz-column-count: 2; /* Firefox */ column-count: 2; -webkit-column-width: 18em; /* Chrome, Safari, Opera */ -moz-column-width: 18em; /* Firefox */ column-width: 18em; -webkit-column-gap: 2em; /* Chrome, Safari, Opera */ -moz-column-gap: 2em; /* Firefox */ column-gap: 2em; }
+.newspaper { background-color: inherit; color: inherit; text-shadow: inherit; margin: 0em 3%; -webkit-column-count: 2; /* Chrome, Safari, Opera */ -moz-column-count: 2; /* Firefox */ column-count: 2; -webkit-column-width: 18em; /* Chrome, Safari, Opera */ -moz-column-width: 18em; /* Firefox */ column-width: 18em; -webkit-column-gap: 2em; /* Chrome, Safari, Opera */ -moz-column-gap: 2em; /* Firefox */ column-gap: 2em; }
 .newspaper hr { border-style:solid; border-color:#AAAAAA; }
 .webArticle ul { margin: 0 auto; padding: 0 auto; }
 .newspaper ul { margin: 0 auto; padding: 0 auto; }
