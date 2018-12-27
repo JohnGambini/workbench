@@ -79,9 +79,12 @@ function prepDoc()
 		javascript:hideForm('popupContentMenu');});
 	}
 
-	
-	document.getElementById("content").scrollTop = sessionStorage.scrollPos;
-	
+	var pageTypeElement = document.getElementById('pageType');
+	var pageType = pageTypeElement ? pageTypeElement.value : null;
+	if(pageType == 'front-parallax' && typeof sessionStorage.scrollPosParallax !== 'undefined') {
+		//alert(sessionStorage.scrollPosParallax);
+		document.getElementById("content").scrollTop = sessionStorage.scrollPosParallax;
+	}
 	//document.getElementById('selectAddPage').addEventListener('click', function() {
 	//	alert('OK');
 	//	javascript:showForm('popupAddPage');
@@ -214,8 +217,6 @@ function resizeDoc(resizeCounter)
 				mainmenuItem2.style.display = 'inline-block';
 			}
 	}
-	
-	//alert(typeof pagePreferences);
 
 	if(typeof pagePreferences !== 'undefined') {
 		pagePreferences();

@@ -160,6 +160,18 @@ function set_tabsWidget(wbDatabase $dbObj, wbSql $sqlObject, wbDataArrays $dataA
    		setHighlightedItem(fragment);
    	}
 
+   	//set the scroll position
+	var pageTypeElement = document.getElementById('pageType');
+	var pageType = pageTypeElement ? pageTypeElement.value : null;
+	if(pageType == 'article' && typeof sessionStorage.scrollPosArticle !== 'undefined') {
+		//alert(sessionStorage.scrollPosArticle);
+		//content.scrollTop = sessionStorage.scrollPosArticle;
+	}
+	else if(pageType == 'profile' && typeof sessionStorage.scrollPosProfile !== 'undefined') {
+		//alert(sessionStorage.scrollPosProfile);
+		//content.scrollTop = sessionStorage.scrollPosProfile;
+	}
+
 	return fragment;
 }
 	 

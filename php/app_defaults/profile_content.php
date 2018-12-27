@@ -40,7 +40,7 @@ window.onhashchange = function() {
 
 function getScrollPos() {
 	var scrollPos = document.getElementById('content').scrollTop;
-	sessionStorage.setItem('scrollPos',scrollPos);
+	sessionStorage.setItem('scrollPosProfile',scrollPos);
 }
 
 function pagePreferences()

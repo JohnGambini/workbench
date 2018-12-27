@@ -53,7 +53,7 @@ window.onhashchange = function() {
 function getScrollPos() {
 
 	var scrollPos = document.getElementById('content').scrollTop;
-	sessionStorage.setItem('scrollPos',scrollPos);
+	sessionStorage.setItem('scrollPosArticle',scrollPos);
 }
 
 function pagePreferences()

@@ -53,3 +53,4 @@ global $dataArrays;
 <!-- This is so javascript:wbAjax has somewhere to grab the web application directory from -->
 <input id="webapp" type="text" hidden="true" value="<?php echo WEBAPP ?>"/>
 <input id="workbench_folder" type="text" hidden="true" value="<?php echo WORKBENCH_FOLDER ?>"/>
+<input id="pageType" type="text" hidden="true" value="<?php echo $contentObj->pageType ?>"/>
