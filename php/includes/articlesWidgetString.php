@@ -9,7 +9,10 @@
 * get_articlesWidgetString()
 */
 function get_articlesWidgetString(dbContent $contentObj, $itemsList ) {
-
+	global $debugMessage;
+	
+	if(DEBUG_VERBOSE) $debugMessage = $debugMessage . '<span style="color:blue">called get_articlesWidgetString()</span><br/>';
+	
 	$retString = '';
 	$flip = 'right';
 	$count = 0;
