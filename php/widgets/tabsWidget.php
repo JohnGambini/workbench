@@ -27,7 +27,7 @@ function set_tabsWidget(wbDatabase $dbObj, wbSql $sqlObject, wbDataArrays $dataA
 	<input id="subsite" hidden="true" type="text" name="subsite" value="<?php echo SUBSITE_NAME ?>"/>
 
 <?php if( count($dataArrays->tabsArray) > 1 ) { ?>
-<div style="margin-left:-1em;padding-top:1em">
+<div style="padding-top:1em">
 <?php foreach ( $dataArrays->tabsArray as $tabTitle => $value ) {?>
 	<?php if($tabTitle == $tabName) {?>
 	<span class="articleTab" style="color:#AA0000"><a class="menuItem" href="<?php echo WEBAPP . $contentObj->permalink . "?p=" . $contentObj->parentId . "&gp=" . $contentObj->grandParentId . "#" . $tabTitle ?>"><?php echo $tabTitle ?></a></span>
@@ -36,8 +36,10 @@ function set_tabsWidget(wbDatabase $dbObj, wbSql $sqlObject, wbDataArrays $dataA
 	<?php } ?>
 		
  <?php } //close foreach ?>
-  </div>
- <?php } //close if > 1 ?>
+ </div>
+ <?php } else { ?>
+ 	<div style="height:1em;width:100%">&nbsp;</div>
+ <?php } ?>
 
 <!-- Copy this to the web page where you want the article to display
 	<div id="articleText"></div>

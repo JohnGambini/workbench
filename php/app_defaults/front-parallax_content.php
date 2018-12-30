@@ -37,7 +37,7 @@ if( $dataArrays->get_galleryItemsArray($dbObj, $sqlObject) === NULL) {
 </div>
 <section style="min-height:100%">
 <?php get_rightbar($contentObj)?>
-<div id="mainContent" style="width:100%; padding: 0em 0.03em 0em 0em">
+<div id="mainContent" style="width:100%">
 	<div class="articleTabs fontSpecSmall"><?php $tabName = set_tabsWidget($dbObj, $sqlObject, $dataArrays, $contentObj)?></div>
 	<div id="articleText"></div>
 </div> <!-- close main content -->

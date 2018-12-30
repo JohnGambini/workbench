@@ -64,7 +64,7 @@ class wbDataArrays
 		global $debugMessage;
 		if(DEBUG_VERBOSE) $debugMessage = $debugMessage . "get_galleryItemsArray() was called<br/>";
 		if($this->galleryItemsArray === NULL)
-			$this->load_pageItems($dbObj, $sqlObject);
+			$this->load_galleryItems($dbObj, $sqlObject);
 		if(DEBUG_VERBOSE) $debugMessage = $debugMessage . "there are " . count($this->galleryItemsArray) . " gallery items.<br/>";
 		return $this->galleryItemsArray;
 	}
@@ -76,7 +76,7 @@ class wbDataArrays
 		global $debugMessage;
 		if(DEBUG_VERBOSE) $debugMessage = $debugMessage . "get_rightbarItemsArray() was called<br/>";
 		if($this->rightbarItemsArray === NULL)
-			$this->load_pageItems($dbObj, $sqlObject);
+			$this->load_rightbarItems($dbObj, $sqlObject);
 		if(DEBUG_VERBOSE) $debugMessage = $debugMessage . "there are " . count($this->rightbarItemsArray) . " rightbar items.<br/>";
 		return $this->rightbarItemsArray;
 	}
@@ -88,7 +88,7 @@ class wbDataArrays
 	global $debugMessage;
 	if(DEBUG_VERBOSE) $debugMessage = $debugMessage . "get_articleItemsArray() was called<br/>";
 	if($this->articleItemsArray === NULL)
-		$this->load_pageItems($dbObj, $sqlObject);
+		$this->load_articleItems($dbObj, $sqlObject);
 	if(DEBUG_VERBOSE) $debugMessage = $debugMessage . "there are " . count($this->articleItemsArray) . " article items.<br/>";
 	return $this->articleItemsArray;
 	}
@@ -295,6 +295,8 @@ class wbDataArrays
 					return false;
 		}
 	
+		$this->rightbarItemsArray = array();
+
 		for( $i=0; $row = mysqli_fetch_array($dbObj->result); $i++) {
 			$this->rightbarItemsArray[$i] = array('ID' => $row['contentId'],
 					'itemId' => $row['itemId'],
