@@ -58,7 +58,7 @@ $contentObj->set_permalink($_SERVER['REQUEST_URI'], SUBSITE_NAME);
 $userObj->get_user_groups($dbObj);
 
 if( ! $contentObj->get_content($dbObj,$userObj)){
-	//default the ownerId to this user so that you can add content
+	//Sets the page type to error_content if content not found
 }
 //This needs to come after the database updates in case changeTheme() was called
 $contentObj->set_directories($userObj);
@@ -158,6 +158,7 @@ $dialogsObj = new wbDialogs( $userObj, $contentObj );
 /* This can go anywhere after the content is loaded and before the page is built */
 //$userObj->get_user_bio($dbObj, $contentObj->lang);
 $contentObj->get_owner_info($dbObj);
+$errorMessage += $dbObj->error;
 
 /*OK build the page */
 get_header($contentObj);
