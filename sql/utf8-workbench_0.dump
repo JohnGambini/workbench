@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.7.14, for Win64 (x86_64)
 --
--- Host: localhost    Database: maninabocs
+-- Host: localhost    Database: maninabocss
 -- ------------------------------------------------------
 -- Server version	5.7.14
 
@@ -73,6 +73,7 @@ SET character_set_client = utf8;
  1 AS `sequence`,
  1 AS `status`,
  1 AS `target`,
+ 1 AS `shortDescription`,
  1 AS `galleryImage`,
  1 AS `pageType`,
  1 AS `ownerId`,
@@ -162,7 +163,7 @@ CREATE TABLE `wb_articles` (
   `dateModified` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `articles_idx` (`contentId`,`tabTitle`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=96 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -206,7 +207,7 @@ CREATE TABLE `wb_content` (
   `dateModified` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `idx_permalink` (`permalink`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -230,7 +231,7 @@ CREATE TABLE `wb_grouplists` (
   `groupId` int(11) DEFAULT NULL,
   `userId` int(11) DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -257,7 +258,7 @@ CREATE TABLE `wb_menugroups` (
   `mgseq` smallint(6) DEFAULT NULL,
   `menuId` int(11) DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -283,7 +284,7 @@ CREATE TABLE `wb_menuitems` (
   `sequence` smallint(6) DEFAULT NULL,
   `contentId` int(11) DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -321,7 +322,6 @@ CREATE TABLE `wb_pagetypes` (
 
 LOCK TABLES `wb_pagetypes` WRITE;
 /*!40000 ALTER TABLE `wb_pagetypes` DISABLE KEYS */;
-INSERT INTO `wb_pagetypes` VALUES (1,4,'menu',-1,1,0,0,0),(2,1,'default',-1,0,1,0,0),(3,1,'acrobat',4,0,0,0,0),(4,1,'article',4,1,1,1,1),(5,1,'article-old',4,0,0,1,1),(6,1,'front-page',4,1,1,0,0),(7,1,'gallery',4,1,1,1,1),(8,1,'image',4,0,0,1,0),(9,1,'profile',4,1,1,1,1),(10,4,'user-admin',4,0,0,0,0),(11,4,'edit-post',-1,0,0,0,0),(12,4,'all-posts',4,0,0,0,0),(13,1,'featured',4,0,1,0,0),(14,1,'parallax',4,1,1,0,0),(15,1,'simple',1,1,1,1,1),(16,1,'articles',4,1,1,1,0),(17,1,'simple-nsb',2,1,1,1,1),(18,1,'front-parallax',4,1,1,0,1);
 /*!40000 ALTER TABLE `wb_pagetypes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -347,7 +347,7 @@ CREATE TABLE `wb_user` (
   `modified_ts` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `uniq_idx` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -356,7 +356,7 @@ CREATE TABLE `wb_user` (
 
 LOCK TABLES `wb_user` WRITE;
 /*!40000 ALTER TABLE `wb_user` DISABLE KEYS */;
-INSERT INTO `wb_user` VALUES (1,'*\ZÃÂÃÂ',1,'ntorvez','ntorvez',4,'Ninja Torvez','default',0,1,'2017-01-29 20:12:24','2018-10-30 14:31:11');
+INSERT INTO `wb_user` VALUES (1,'*\ZÃÂÃÂ',1,'ntorvez','ntorvez',4,'Ninja Torvez','utere-verbis',0,1,'2017-01-29 20:12:24','2018-12-25 02:06:47');
 /*!40000 ALTER TABLE `wb_user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -393,7 +393,7 @@ CREATE TABLE `wb_userbios` (
   `bio` text,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `idx_bios` (`userId`,`lang`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -419,7 +419,7 @@ CREATE TABLE `wb_usergroups` (
   `lang` varchar(6) DEFAULT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `idx_ugroups` (`lang`,`name`)
-) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -462,7 +462,7 @@ UNLOCK TABLES;
 /*!50001 SET collation_connection      = utf8_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `vw_contentlist` AS select `wb_menuitems`.`ID` AS `itemId`,`wb_menuitems`.`menuId` AS `menuId`,`wb_menuitems`.`menuType` AS `menuType`,`wb_content`.`ID` AS `contentId`,`wb_content`.`lang` AS `lang`,`wb_content`.`defaultParentId` AS `defaultParentId`,`wb_content`.`permalink` AS `permalink`,`wb_content`.`title` AS `title`,`wb_menuitems`.`sequence` AS `sequence`,`wb_content`.`status` AS `status`,`wb_content`.`target` AS `target`,`wb_content`.`galleryImage` AS `galleryImage`,`wb_content`.`pageType` AS `pageType`,`wb_content`.`ownerId` AS `ownerId`,`wb_content`.`authorFullName` AS `authorFullName`,`wb_content`.`authorLink` AS `authorLink`,`wb_content`.`articleImage` AS `articleImage`,`wb_content`.`articleDescription` AS `articleDescription`,`wb_content`.`ogType` AS `ogType` from (`wb_menuitems` join `wb_content`) where (`wb_menuitems`.`contentId` = `wb_content`.`ID`) */;
+/*!50001 VIEW `vw_contentlist` AS select `wb_menuitems`.`ID` AS `itemId`,`wb_menuitems`.`menuId` AS `menuId`,`wb_menuitems`.`menuType` AS `menuType`,`wb_content`.`ID` AS `contentId`,`wb_content`.`lang` AS `lang`,`wb_content`.`defaultParentId` AS `defaultParentId`,`wb_content`.`permalink` AS `permalink`,`wb_content`.`title` AS `title`,`wb_menuitems`.`sequence` AS `sequence`,`wb_content`.`status` AS `status`,`wb_content`.`target` AS `target`,`wb_content`.`shortDescription` AS `shortDescription`,`wb_content`.`galleryImage` AS `galleryImage`,`wb_content`.`pageType` AS `pageType`,`wb_content`.`ownerId` AS `ownerId`,`wb_content`.`authorFullName` AS `authorFullName`,`wb_content`.`authorLink` AS `authorLink`,`wb_content`.`articleImage` AS `articleImage`,`wb_content`.`articleDescription` AS `articleDescription`,`wb_content`.`ogType` AS `ogType` from (`wb_menuitems` join `wb_content`) where (`wb_menuitems`.`contentId` = `wb_content`.`ID`) */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -530,4 +530,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-11-04 22:12:12
+-- Dump completed on 2019-01-27 11:36:16
