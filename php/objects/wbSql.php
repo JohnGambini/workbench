@@ -104,7 +104,7 @@ class wbSql
 		 * combined load_galleryItems, load_rightbarItems, and load_articles functions. 
 		 */
 		$this->sqlPageItems = "select menuType, contentId, itemId, permalink, title, sequence, target, " .
-				"galleryImage, pageType, articleDescription, articleImage, ogType " .
+				"shortDescription, galleryImage, pageType, articleDescription, articleImage, ogType " .
 				"from vw_contentlist " .
 				"where menuId = '" . $contentObj->ID . "' " .
 				"and (( ownerId = '" . $userObj->ID . "' and (status = 'Private' or status = 'Draft')) or status in (" . $userObj->groups() . ") or status = 'Public' ) order by sequence";
@@ -114,7 +114,7 @@ class wbSql
 		 * menu's items. Used by the gallery page
 		 */
 		$this->sqlGalleryItems = "select menuType, contentId, itemId, permalink, title, sequence, target, " .
-				"galleryImage, pageType, articleDescription, articleImage, ogType " .
+				"shortDescription, galleryImage, pageType, articleDescription, articleImage, ogType " .
 				"from vw_contentlist " .
 				"where menuId = '" . $contentObj->ID . "' " .
 				"and menuType = '1' " .
@@ -123,7 +123,7 @@ class wbSql
 		 * select the rightbar items
 		 */
 		$this->sqlRightbarItems = "select menuType, contentId, itemId, permalink, title, sequence, target, " .
-				"galleryImage, pageType, articleDescription, articleImage, ogType " .
+				"shortDescription, galleryImage, pageType, articleDescription, articleImage, ogType " .
 				"from vw_contentlist " .
 				"where menuId = '" . $contentObj->ID . "' " .
 				"and menuType = '2' " .
@@ -133,7 +133,7 @@ class wbSql
 		 * menu's items. Used by the articles page
 		 */
 		$this->sqlArticlesList = "select menuType, contentId, itemId, permalink, title, sequence, target, " .
-				"galleryImage, pageType, articleDescription, articleImage, ogType " .
+				"shortDescription, galleryImage, pageType, articleDescription, articleImage, ogType " .
 				"from vw_contentlist " .
 				"where menuId = '" . $contentObj->ID . "' " .
 				"and menuType = '3' " .

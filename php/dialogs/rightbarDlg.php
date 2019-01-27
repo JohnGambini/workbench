@@ -25,7 +25,7 @@ function set_rightbarDlg(wbDatabase $dbObj, dbUser $userObj, dbContent $contentO
 		$rightbarColumnsArray[$i] = array(
 				array('<input type="checkbox" name="checkbox_' . $i . '" value="' . $value['itemId'] . '"/>', 'width:4%'),
 				array('<input type="number" name="seq_' . $i . '" value="' . $value['sequence'] . '"/><input hidden="true type="number" name="menuID_' . $i . '" value="' . $value['itemId'] . '"/>', 'width:6%'),
-				array($value['title'], 'width:90%;padding:0em 0em 0em 0.5em')
+				array($value['shortDescription'], 'width:90%;padding:0em 0em 0em 0.5em')
 		);
 	
 		$i++;
