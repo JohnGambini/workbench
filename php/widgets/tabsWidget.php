@@ -38,7 +38,7 @@ function set_tabsWidget(wbDatabase $dbObj, wbSql $sqlObject, wbDataArrays $dataA
  <?php } //close foreach ?>
  </div>
  <?php } else { ?>
- 	<div style="height:1em;width:100%">&nbsp;</div>
+ 	<div style="height:0.03em;width:100%">&nbsp;</div>
  <?php } ?>
 
 <!-- Copy this to the web page where you want the article to display
