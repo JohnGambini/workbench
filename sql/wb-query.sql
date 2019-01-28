@@ -34,7 +34,7 @@ SELECT wb_content.ID, guid, lang, defaultParentId, wb_content.permalink, title, 
 CREATE VIEW `vw_contentlist` AS
 select wb_menuItems.ID itemId, wb_menuitems.menuId, wb_menuitems.menuType, 
 wb_content.ID contentId, lang, defaultParentId, permalink, title, sequence, status, target, 
-galleryImage, pageType, ownerId, authorFullName, authorLink, articleImage, articleDescription, ogType 
+shortDescription, galleryImage, pageType, ownerId, authorFullName, authorLink, articleImage, articleDescription, ogType 
 from wb_menuitems, wb_content 
 where wb_menuitems.contentId = wb_content.ID 
 
