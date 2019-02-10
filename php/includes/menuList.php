@@ -30,7 +30,7 @@ if($values['menuParentId'] == -1) { ?>
 	<div><?php echo $dataArrays->sidebarMenusArray[$menuId]['menuTitle']; ?></div>
 <?php 
 } else {?>
-	<div><a class="menuItem" href="<?php echo WEBAPP . $dataArrays->sidebarMenusArray[$menuId]['menuPermalink'] . $linkSpec ?>"><?php echo $dataArrays->sidebarMenusArray[$menuId]['menuTitle'] ?></a></div>
+	<div><a class="menuItem" href="<?php echo WEBAPP . $dataArrays->sidebarMenusArray[$menuId]['menuPermalink'] ."?p=" . $contentObj->grandParentId . $linkSpec ?>"><?php echo $dataArrays->sidebarMenusArray[$menuId]['menuTitle'] ?></a></div>
 <?php } ?>
 	<ul>
 	<?php foreach($values['menuItems'] as $contentId => $contentData) {
