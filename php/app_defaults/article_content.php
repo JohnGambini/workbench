@@ -19,7 +19,7 @@ $dataArrays->get_tabsArray( $dbObj, $sqlObject, $contentObj->ID);
 <?php get_contentMenu($contentObj) ?>
 <?php get_rightbar($contentObj)?>
 <div id="mainContent" style="padding: 0em 0em 0.01em 0em;border-top: 1px solid grey">
-<?php if( count($dataArrays->tabsArray) == 1 ) { ?>
+<?php if( count($dataArrays->tabsArray) <= 1 ) { ?>
  	<div style="height:1em;width:100%">&nbsp;</div>
 <?php } ?>
 	<div class="articleTabs fontSpecSmall"><?php $tabName = set_tabsWidget($dbObj, $sqlObject, $dataArrays, $contentObj)?></div>
