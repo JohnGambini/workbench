@@ -37,9 +37,9 @@ class wbDataArrays
 		
 		$this->themesArray = array('default' => 'default');
 		$this->themesArray['utere-verbis'] = 'Utere Verbis';
-		$this->themesArray['calliopesutra-1.0'] = 'Calliope Sutra 1.0';
-		$this->themesArray['calliopesutra-2.0'] = 'Calliope Sutra 2.0';
-		$this->themesArray['calliopesutra-3.0'] = 'Calliope Sutra 3.0';
+		$this->themesArray['workbench-1.0'] = 'Workbench 1.0';
+		$this->themesArray['workbench-2.0'] = 'Workbench 2.0';
+		$this->themesArray['workbench-3.0'] = 'Workbench 3.0';
 		$this->themesArray['taylorson'] = 'Taylorson';
 		$this->themesArray['pdoTempTheme'] = 'pdoTempTheme';
 		
