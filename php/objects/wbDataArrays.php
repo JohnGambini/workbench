@@ -30,7 +30,7 @@ class wbDataArrays
 	public $themesArray = NULL;
 	public $imageArray = NULL;	//background image for front-page_content.php
 	
-	function wbDataArrays() {
+	function Init() {
 		
 		$this->targetArray = array('_self' => '_self', '_blank' => '_blank');
 		$this->langArray = array('en','fr'/*, 'de', 'it'*/);
@@ -99,8 +99,10 @@ class wbDataArrays
 	function & get_pageItems4Array(wbDatabase $dbObj, wbSql $sqlObject) {
 		global $debugMessage;
 		if(DEBUG_VERBOSE) $debugMessage = $debugMessage . "get_pageItems4Array() was called<br/>";
-		if($this->pageItemsArray_4 === NULL)
-			$this->load_pageItems($dbObj, $sqlObject);
+		if($this->pageItemsArray_4 === NULL) {
+			//$this->load_pageItems4($dbObj, $sqlObject);
+			$this->pageItemsArray_4 = array();
+		};
 		if(DEBUG_VERBOSE) $debugMessage = $debugMessage . "there are " . count($this->pageItemsArray_4) . " pageItems_4 items.<br/>";
 		return $this->pageItemsArray_4;
 	}

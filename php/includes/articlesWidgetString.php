@@ -11,7 +11,9 @@
 function get_articlesWidgetString(dbContent $contentObj, $itemsList ) {
 	global $debugMessage;
 	
-	if(DEBUG_VERBOSE) $debugMessage = $debugMessage . '<span style="color:blue">called get_articlesWidgetString()</span><br/>';
+	if(DEBUG_VERBOSE) $debugMessage .= '<span style="color:blue">called get_articlesWidgetString()</span><br/>';
+
+	if(DEBUG_VERBOSE) $debugMessage .=  debug_backtrace_string();
 	
 	$retString = '';
 	$flip = 'right';
@@ -36,6 +38,9 @@ function get_articlesWidgetString(dbContent $contentObj, $itemsList ) {
 		} else {
 			$imageLink = CONTENTDIR . $value['galleryImage'];
 		}
+		
+		//if(DEBUG_VERBOSE) $debugMessage .= "articlesWidgetString: count = " . $count . "<br/>";
+		
 
 		if($count == 0) {
 			$retString = $retString . '<a class="menuItem" href="' . $linkSpec . '">';
@@ -55,9 +60,10 @@ function get_articlesWidgetString(dbContent $contentObj, $itemsList ) {
 			$retString = $retString . '....</span></a>';
 			$retString = $retString . '</div>';
 			$retString = $retString . '</a>';
-			$retString = $retString . '<div class="articleList">';
-				
+			$retString .= '<div class="articleList">';
+
 		} else if($flip == 'right') {
+
 			$retString = $retString . '<a class="menuItem" href="' . $linkSpec . '">';
 			$retString = $retString . '<div class="featuredItem">';
 			$retString = $retString . '<h2>' . $value['title'] . '</h2>';
@@ -75,8 +81,9 @@ function get_articlesWidgetString(dbContent $contentObj, $itemsList ) {
 			$retString = $retString . '....</span></a>';
 			$retString = $retString . '</div>';
 			$retString = $retString . '</a>';
-				
-		} else { /* flip = left */
+
+		} else { // flip = left 
+
 			$retString = $retString . '<a class="menuItem" href="' . $linkSpec . '">';
 			$retString = $retString . '<div class="featuredItem">';
 			$retString = $retString . '<h2>' . $value['title'] . '</h2>';
@@ -102,7 +109,7 @@ function get_articlesWidgetString(dbContent $contentObj, $itemsList ) {
 			$flip == 'left' ? $flip = 'right' : $flip = 'left';
 	}
 	
-	$retString = $retString . '</div>';
+	$retString .= '</div>';
 
 	return $retString;
 }

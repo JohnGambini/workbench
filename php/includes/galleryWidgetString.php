@@ -6,7 +6,12 @@
 *
 ---------------------------------------------------------------------------------------------*/
 function get_galleryWidgetString(dbContent $contentObj, $listItems ) {
-
+	global $debugMessage;
+	
+	if(DEBUG_VERBOSE) $debugMessage .= '<span style="color:blue">called get_galleryWidgetString()</span><br/>';
+	
+	if(DEBUG_VERBOSE) $debugMessage .=  debug_backtrace_string();
+	
 	$retString = '';
 	
 	if($listItems === NULL )

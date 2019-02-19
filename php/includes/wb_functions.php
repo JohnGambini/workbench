@@ -346,7 +346,9 @@ function replace_wb_variable($subject)
 function replace_wb_variable($subject, wbDatabase $dbObj, dbUser $userObj, dbContent $contentObj = NULL, wbSql $sqlObject = NULL, wbDataArrays & $dataArrays = NULL)
 {
 	global $debugMessage;
-	if(DEBUG_VERBOSE) $debugMessage = $debugMessage . "replace_wb_variable() was called.<br/>";
+	if(DEBUG_VERBOSE) $debugMessage .= "replace_wb_variable() was called.<br/>";
+	
+	//isset($contentObj) ? $contentObj->articleDescription;
 	
 	$patternArray = array(
 		'#(\[\[)\s*(web-app)\s*(\]\])#',
@@ -375,32 +377,183 @@ function replace_wb_variable($subject, wbDatabase $dbObj, dbUser $userObj, dbCon
 	);
 	
 	$replaceArray = array(
-		WEBAPP,
+/*0*/	WEBAPP,
 		CONTENTDIR,
 		PDFDIR,
 		WORKBENCH_FOLDER,
-		isset($contentObj) ? $contentObj->articleImage : "<span style='color:red'>no content object</span>",
-		isset($contentObj) ? $contentObj->articleDescription : "<span style='color:red'>no content object</span>",
-		isset($contentObj) ? $contentObj->title : "<span style='color:red'>no content object</span>",
-		isset($contentObj) ? $contentObj->articleFile : "<span style='color:red'>no content object</span>",
-		isset($dataArrays) ? get_galleryWidgetString( $contentObj, $dataArrays->get_galleryItemsArray($dbObj, $sqlObject)) : "<span style='color:red'>no data array object</span>",
-		isset($dataArrays) ? get_articlesWidgetString( $contentObj, $dataArrays->get_articleItemsArray($dbObj, $sqlObject)) : "<span style='color:red'>no data array object</span>",
-		isset($dataArrays) ? get_languagesString( $contentObj, $dataArrays) : "<span style='color:red'>no data array object</span>",
-		isset($contentObj) ? CONTENTDIR . $contentObj->ownerImage : "<span style='color:red'>no content object</span>",
-		isset($contentObj) ? $contentObj->ownerBio : "<span style='color:red'>no content object</span>",
-		isset($dataArrays) ? get_galleryWidgetString( $contentObj, $dataArrays->get_galleryItemsArray($dbObj, $sqlObject)) : "<span style='color:red'>no data array object</span>",
-		isset($dataArrays) ? get_galleryWidgetString( $contentObj, $dataArrays->get_rightbarItemsArray($dbObj, $sqlObject)) : "<span style='color:red'>no data array object</span>",
-		isset($dataArrays) ? get_galleryWidgetString( $contentObj, $dataArrays->get_articleItemsArray($dbObj, $sqlObject)) : "<span style='color:red'>no data array object</span>",
-		isset($dataArrays) ? get_galleryWidgetString( $contentObj, $dataArrays->get_pageItems4Array($dbObj, $sqlObject)) : "<span style='color:red'>no data array object</span>",
-		isset($dataArrays) ? get_articlesWidgetString( $contentObj, $dataArrays->get_galleryItemsArray($dbObj, $sqlObject)) : "<span style='color:red'>no data array object</span>",
-		isset($dataArrays) ? get_articlesWidgetString( $contentObj, $dataArrays->get_rightbarItemsArray($dbObj, $sqlObject)) : "<span style='color:red'>no data array object</span>",
-		isset($dataArrays) ? get_articlesWidgetString( $contentObj, $dataArrays->get_articleItemsArray($dbObj, $sqlObject)) : "<span style='color:red'>no data array object</span>",
-		isset($dataArrays) ? get_articlesWidgetString( $contentObj, $dataArrays->get_pageItems4Array($dbObj, $sqlObject)) : "<span style='color:red'>no data array object</span>",
-		isset($contentObj) ? get_articleHeaderString( $userObj, $contentObj) : "<span style='color:red'>no data array object</span>",
-		can_user_edit($userObj, $contentObj) ? "$3" : ""
+/*4*/	isset($contentObj) ? $contentObj->articleImage : "<span style='color:red'>no content object</span>",
+/*5*/	isset($contentObj) ? $contentObj->articleDescription : "<span style='color:red'>no content object</span>",
+/*6*/	isset($contentObj) ? $contentObj->title : "<span style='color:red'>no content object</span>",
+/*7*/	isset($contentObj) ? $contentObj->articleFile : "<span style='color:red'>no content object</span>",
+/*8*/	isset($dataArrays) ? get_galleryWidgetString( $contentObj, $dataArrays->get_galleryItemsArray($dbObj, $sqlObject)) : "<span style='color:red'>no data array object</span>",
+/*9*/	isset($dataArrays) ? get_articlesWidgetString( $contentObj, $dataArrays->get_articleItemsArray($dbObj, $sqlObject)) : "<span style='color:red'>no data array object</span>",
+/*10*/	isset($dataArrays) ? get_languagesString( $contentObj, $dataArrays) : "<span style='color:red'>no data array object</span>",
+/*11*/	isset($contentObj) ? CONTENTDIR . $contentObj->ownerImage : "<span style='color:red'>no content object</span>",
+/*12*/	isset($contentObj) ? $contentObj->ownerBio : "<span style='color:red'>no content object</span>",
+/*13*/	isset($dataArrays) ? get_galleryWidgetString( $contentObj, $dataArrays->get_galleryItemsArray($dbObj, $sqlObject)) : "<span style='color:red'>no data array object</span>",
+/*14*/	isset($dataArrays) ? get_galleryWidgetString( $contentObj, $dataArrays->get_rightbarItemsArray($dbObj, $sqlObject)) : "<span style='color:red'>no data array object</span>",
+/*15*/	isset($dataArrays) ? get_galleryWidgetString( $contentObj, $dataArrays->get_articleItemsArray($dbObj, $sqlObject)) : "<span style='color:red'>no data array object</span>",
+/*16*/	isset($dataArrays) ? get_galleryWidgetString( $contentObj, $dataArrays->get_pageItems4Array($dbObj, $sqlObject)) : "<span style='color:red'>no data array object</span>",
+/*17*/	isset($dataArrays) ? get_articlesWidgetString( $contentObj, $dataArrays->get_galleryItemsArray($dbObj, $sqlObject)) : "<span style='color:red'>no data array object</span>",
+/*18*/	isset($dataArrays) ? get_articlesWidgetString( $contentObj, $dataArrays->get_rightbarItemsArray($dbObj, $sqlObject)) : "<span style='color:red'>no data array object</span>",
+/*19*/	isset($dataArrays) ? get_articlesWidgetString( $contentObj, $dataArrays->get_articleItemsArray($dbObj, $sqlObject)) : "<span style='color:red'>no data array object</span>",
+/*20*/	isset($dataArrays) ? get_articlesWidgetString( $contentObj, $dataArrays->get_pageItems4Array($dbObj, $sqlObject)) : "<span style='color:red'>no data array object</span>",
+/*21*/	isset($contentObj) ? get_articleHeaderString( $userObj, $contentObj) : "<span style='color:red'>no data array object</span>",
+/*22*/	can_user_edit($userObj, $contentObj) ? "$3" : ""
 	);
 	
-	return preg_replace($patternArray,$replaceArray,$subject);
+	//return preg_replace($patternArray,$replaceArray,$subject);
+	
+	return preg_replace_callback_array(
+			[
+				$patternArray[0] => function() {
+					return WEBAPP;
+				},
+				
+				$patternArray[1] => function() {
+					return CONTENTDIR;
+				},
+
+				$patternArray[2] => function() {
+					return PDFDIR;
+				},
+
+				$patternArray[3] => function() {
+					return WORKBENCH_FOLDER;
+				},
+
+				$patternArray[4] => function() {
+					global $contentObj;
+					return isset($contentObj) ? $contentObj->articleImage : "<span style='color:red'>no content object</span>";
+				},
+
+				$patternArray[5] => function() {
+					global $contentObj;
+					return isset($contentObj) ? $contentObj->articleDescription : "<span style='color:red'>no content object</span>";
+				},
+
+				$patternArray[6] => function() {
+					global $contentObj;
+					return isset($contentObj) ? $contentObj->title : "<span style='color:red'>no content object</span>";
+				},
+
+				$patternArray[7] => function() {
+					global $contentObj;
+					return isset($contentObj) ? $contentObj->articleFile : "<span style='color:red'>no content object</span>";					return WEBAPP;
+				},
+
+				$patternArray[8] => function() {
+					global $contentObj;
+					global $dataArrays;
+					global $dbObj;
+					global $sqlObject;
+					return isset($dataArrays) ? get_galleryWidgetString( $contentObj, $dataArrays->get_galleryItemsArray($dbObj, $sqlObject)) : "<span style='color:red'>no data array object</span>";
+				},
+
+				$patternArray[9] => function() {
+					global $contentObj;
+					global $dataArrays;
+					global $dbObj;
+					global $sqlObject;
+					return isset($dataArrays) ? get_articlesWidgetString( $contentObj, $dataArrays->get_articleItemsArray($dbObj, $sqlObject)) : "<span style='color:red'>no data array object</span>";
+				},
+
+				$patternArray[10] => function() {
+					global $contentObj;
+					global $dataArrays;
+					return isset($dataArrays) ? get_languagesString( $contentObj, $dataArrays) : "<span style='color:red'>no data array object</span>";
+				},
+
+				$patternArray[11] => function() {
+					global $contentObj;
+					return isset($contentObj) ? CONTENTDIR . $contentObj->ownerImage : "<span style='color:red'>no content object</span>";
+				},
+
+				$patternArray[12] => function() {
+					global $contentObj;
+					return isset($contentObj) ? $contentObj->ownerBio : "<span style='color:red'>no content object</span>";
+				},
+
+				$patternArray[13] => function() {
+					global $contentObj;
+					global $dataArrays;
+					global $dbObj;
+					global $sqlObject;
+					return isset($dataArrays) ? get_galleryWidgetString( $contentObj, $dataArrays->get_galleryItemsArray($dbObj, $sqlObject)) : "<span style='color:red'>no data array object</span>";
+				},
+
+				$patternArray[14] => function() {
+					global $contentObj;
+					global $dataArrays;
+					global $dbObj;
+					global $sqlObject;
+					return isset($dataArrays) ? get_galleryWidgetString( $contentObj, $dataArrays->get_rightbarItemsArray($dbObj, $sqlObject)) : "<span style='color:red'>no data array object</span>";
+				},
+
+				$patternArray[15] => function() {
+					global $contentObj;
+					global $dataArrays;
+					global $dbObj;
+					global $sqlObject;
+					return isset($dataArrays) ? get_galleryWidgetString( $contentObj, $dataArrays->get_articleItemsArray($dbObj, $sqlObject)) : "<span style='color:red'>no data array object</span>";
+				},
+
+				$patternArray[16] => function() {
+					global $contentObj;
+					global $dataArrays;
+					global $dbObj;
+					global $sqlObject;
+					return isset($dataArrays) ? get_galleryWidgetString( $contentObj, $dataArrays->get_pageItems4Array($dbObj, $sqlObject)) : "<span style='color:red'>no data array object</span>";
+				},
+
+				$patternArray[17] => function() {
+					global $contentObj;
+					global $dataArrays;
+					global $dbObj;
+					global $sqlObject;
+					return isset($dataArrays) ? get_articlesWidgetString( $contentObj, $dataArrays->get_galleryItemsArray($dbObj, $sqlObject)) : "<span style='color:red'>no data array object</span>";
+				},
+
+				$patternArray[18] => function() {
+					global $contentObj;
+					global $dataArrays;
+					global $dbObj;
+					global $sqlObject;
+					return isset($dataArrays) ? get_articlesWidgetString( $contentObj, $dataArrays->get_rightbarItemsArray($dbObj, $sqlObject)) : "<span style='color:red'>no data array object</span>";
+				},
+
+				$patternArray[19] => function() {
+					global $contentObj;
+					global $dataArrays;
+					global $dbObj;
+					global $sqlObject;
+					return isset($dataArrays) ? get_articlesWidgetString( $contentObj, $dataArrays->get_articleItemsArray($dbObj, $sqlObject)) : "<span style='color:red'>no data array object</span>";
+				},
+
+				$patternArray[20] => function() {
+					global $contentObj;
+					global $dataArrays;
+					global $dbObj;
+					global $sqlObject;
+					return isset($dataArrays) ? get_articlesWidgetString( $contentObj, $dataArrays->get_pageItems4Array($dbObj, $sqlObject)) : "<span style='color:red'>no data array object</span>";
+				},
+
+				$patternArray[21] => function() {
+					global $userObj;
+					global $contentObj;
+					return isset($contentObj) ? get_articleHeaderString( $userObj, $contentObj) : "<span style='color:red'>no data array object</span>";
+				},
+
+				$patternArray[22] => function() {
+					global $userObj;
+					global $contentObj;
+					return can_user_edit($userObj, $contentObj) ? "$3" : "";
+				}
+				
+			],
+			$subject
+		);
+		
 }
 
 /*--------------------------------------------------------------------------------------
@@ -452,4 +605,26 @@ function can_user_edit_attributes( dbUser $userObj, dbContent $contentObj )
 		}
 
 		return true;
+}
+
+/*--------------------------------------------------------------------------------------
+ --------------------------------------------------------------------------------------*/
+function debug_backtrace_string() {
+	
+	$stack = str_repeat("=", 50) ."<br/>";
+	$i = 1;
+	$trace = debug_backtrace();
+	unset($trace[0]); //Remove call to this function from stack trace
+	foreach($trace as $node) {
+		if(isset($node['file']))
+			$stack .= "#$i ".$node['file'] ."(" .$node['line']."): ";
+		if(isset($node['class'])) {
+			$stack .= $node['class'] . "->";
+		}
+		$stack .= $node['function'] . "()<br/>";
+		$i++;
+	}
+	$stack .= str_repeat("=", 50) ."<br/>";
+	
+	return $stack;
 }

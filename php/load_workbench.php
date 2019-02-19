@@ -142,9 +142,11 @@ require_once( WORKBENCH_DIR . '\php\widgets\galleryWidget.php');
 require_once( WORKBENCH_DIR . '\php\includes\\tabsList.php');
 */
 
-$sqlObject = new wbSql($userObj,$contentObj);
+$sqlObject = new wbSql();
+$sqlObject->Init($userObj,$contentObj);
 
 $dataArrays = new wbDataArrays();
+$dataArrays->Init();
 //$dataArrays->load_pageItems($dbObj, $sqlObject);
 
 if($userObj->ID != NULL) {
@@ -153,12 +155,13 @@ if($userObj->ID != NULL) {
 
 require_once( WORKBENCH_DIR . '\php\includes\wb_functions.php');
 
-$dialogsObj = new wbDialogs( $userObj, $contentObj );
+$dialogsObj = new wbDialogs();
+$dialogsObj->Init( $userObj, $contentObj );
 
 /* This can go anywhere after the content is loaded and before the page is built */
 //$userObj->get_user_bio($dbObj, $contentObj->lang);
 $contentObj->get_owner_info($dbObj);
-$errorMessage += $dbObj->error;
+$errorMessage .= $dbObj->error;
 
 /*OK build the page */
 get_header($contentObj);

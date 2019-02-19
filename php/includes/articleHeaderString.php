@@ -9,7 +9,10 @@
  * get_articleHeaderString()
  */
 function get_articleHeaderString(dbUser $userObj, dbContent $contentObj ) {
-
+	global $debugMessage;
+	
+	if(DEBUG_VERBOSE) $debugMessage = $debugMessage . '<span style="color:blue">called get_articleHeaderString()</span><br/>';
+	
 	$retString = '';
 
 	$retString .= '<div class="articleHeader">';

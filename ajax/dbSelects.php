@@ -23,7 +23,7 @@ function myErrorHandler($errno, $errstr, $errfile, $errline)
 
 define('ABSDIR', $_SERVER["DOCUMENT_ROOT"] . $_POST['subsite']);
 
-$degubMessage = ABSDIR . '<br/>';
+$debugMessage = ABSDIR . '<br/>';
 
 require_once( ABSDIR . '\\config\\app_defs.php');
 
@@ -40,6 +40,7 @@ require_once( WORKBENCH_DIR . '\php\includes\articleHeaderString.php');
 
 $userObj = new dbUser();
 $dbObj = new mysqliDatabase();
+
 
 if( ! $dbObj->connect(DB_HOST,DB_USER,DB_PASSWORD,DATABASE,DB_CHARSET)) {
 	$errorMessage = $dbObj->error;
@@ -64,13 +65,12 @@ $parentId = isset($_POST['parentId']) ? $_POST['parentId'] : NULL;
 if($parentId == NULL)
 	$errorMessage = $errorMessage . 'parentId not set in request<br/>';
 
-$debugMessage = 'contentId = ' . $contentId .
-	'<br/>parentId=' . $parentId;
-	
-/*
- $errorMessage = "This script is still being debugged";
- die(json_encode(array($errorMessage,$successMessage,$debugMessage)));
- */
+$debugMessage = $debugMessage . 'contentId = ' . $contentId . '<br/>' .
+	'parentId=' . $parentId . '<br/>';
+
+//$errorMessage = "This script is still being debugged";
+//die(json_encode(array($errorMessage,$successMessage,$debugMessage)));
+
 
 /* This has to come before the content query */
 $userObj->get_user_groups($dbObj);
@@ -84,38 +84,40 @@ if($contentObj->get_content_by_id($dbObj,$userObj) == false) {
 
 $contentObj->parentId = $parentId;
 	
-$sqlObject = new wbSql($userObj,$contentObj);
+$sqlObject = new wbSql();
+$sqlObject->Init($userObj,$contentObj);
 
 $dataArrays = new wbDataArrays();
+$dataArrays->Init();
 
 if(strlen($errorMessage))
 	exit(json_encode(array($errorMessage,$successMessage,$debugMessage)));
 
 $userObj->get_user_bio($dbObj,$contentObj->lang);	
 $contentObj->get_owner_info($dbObj);	
-	
+
 if( isset($_POST['getPost'])) {
 	
 	$tabName = isset($_POST['tabName']) ? $_POST['tabName'] : "";
 	$dataArrays->get_tabsArray($dbObj, $sqlObject, $contentId);
 	
-	$debugMessage = 'contentId = ' . $contentId .
-	'<br/>parentId=' . $parentId .
-	'<br/>tabName=' . $tabName;
+	$debugMessage =  $debugMessage . 'tabName=' . $tabName . '<br/>';
 	
-	if(strlen($tabName) == 0) {
+	if(strlen($tabName) == "") {
 		$errorMessage = "dbSelects: tabName undefined";
 		echo json_encode(array($errorMessage,$successMessage,$debugMessage));
 	}
 	
 	$articleData = array(
-			replace_wb_variable($dataArrays->tabsArray[$tabName]['articleText'], $dbObj, $userObj, $contentObj, $sqlObject, $dataArrays),
+			@replace_wb_variable($dataArrays->tabsArray[$tabName]['articleText'], $dbObj, $userObj, $contentObj, $sqlObject, $dataArrays),
 			'Last Modified: ' . $dataArrays->tabsArray[$tabName]['dateModified'],
 			//unproccessed text for the client editor
 			"" . $dataArrays->tabsArray[$tabName]['articleText']
 	);
 	
-	exit(json_encode(array($errorMessage,$successMessage,$debugMessage, $articleData )));
+	$debugMessage = $debugMessage . "exit dbSelects." . '<br/>'; 
+	
+	echo json_encode(array($errorMessage,$successMessage,$debugMessage, $articleData ));
 
 }
 
@@ -124,4 +126,3 @@ $dbObj->close();
 ?>
 
 
-?>

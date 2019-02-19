@@ -69,8 +69,10 @@ if(database_updates($dbObj, $userObj) == false) {
 		$errorMessage = "dbUpdates: " . $contentObj->db_error;
 	}
 	
-	$sqlObject = new wbSql($userObj,$contentObj);
+	$sqlObject = new wbSql();
+	$sqlObject->Init($userObj,$contentObj);
 	$dataArrays = new wbDataArrays();
+	$dataArrays->Init();
 
 	//$error = 'Always throw this error';
 	//throw new Exception($error);

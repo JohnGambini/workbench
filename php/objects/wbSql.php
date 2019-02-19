@@ -25,7 +25,7 @@ class wbSql
 	public $sqlStatusList = NULL;
 	public $sqlArrays = NULL;
 	
-	function wbSql( dbUser $userObj, dbContent $contentObj ) {
+	function Init( dbUser $userObj, dbContent $contentObj ) {
 		
 		/*-------------------------------------------------------------------------
 		 * Here's the sql for the root content menu, joined with menu_items for item sequence
