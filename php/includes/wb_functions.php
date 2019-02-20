@@ -402,8 +402,9 @@ function replace_wb_variable($subject, wbDatabase $dbObj, dbUser $userObj, dbCon
 /*22*/	can_user_edit($userObj, $contentObj) ? "$3" : ""
 	);
 	
-	//return preg_replace($patternArray,$replaceArray,$subject);
+	return preg_replace($patternArray,$replaceArray,$subject);
 	
+	/*
 	return preg_replace_callback_array(
 			[
 				$patternArray[0] => function() {
@@ -553,6 +554,7 @@ function replace_wb_variable($subject, wbDatabase $dbObj, dbUser $userObj, dbCon
 			],
 			$subject
 		);
+		*/
 		
 }
 
