@@ -547,7 +547,7 @@ function replace_wb_variable($subject, wbDatabase $dbObj, dbUser $userObj, dbCon
 				$patternArray[22] => function() {
 					global $userObj;
 					global $contentObj;
-					return can_user_edit($userObj, $contentObj) ? "$3" : "";
+					return can_user_edit($userObj, $contentObj) ? "" : "";
 				}
 				
 			],
