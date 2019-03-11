@@ -15,7 +15,7 @@ define('WORKBENCH_FOLDER', SUBSITE_NAME);
 //define('WORKBENCH_FOLDER', SITE_NAME . 'vendor/workbench/core');
 
 define( 'THEMEDIR', SUBSITE_NAME . '/themes');
-define('CONTENTDIR', SITE_NAME . SUBSITE_NAME . '/wb-content/' . DATABASE );
+define('CONTENTDIR', SITE_NAME . SUBSITE_NAME . '/wb-content/' );
 define('PDFDIR', SITE_NAME . '/pdf');
 
 //for retrieving code from file system's point of view

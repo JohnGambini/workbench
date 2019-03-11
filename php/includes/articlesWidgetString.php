@@ -60,7 +60,7 @@ function get_articlesWidgetString(dbContent $contentObj, $itemsList ) {
 			$retString = $retString . '....</span></a>';
 			$retString = $retString . '</div>';
 			$retString = $retString . '</a>';
-			$retString .= '<div class="articleList">';
+			$retString .= '<div class="articleList" style="border:1px solid rgba(255,0,0,0)">';
 
 		} else if($flip == 'right') {
 

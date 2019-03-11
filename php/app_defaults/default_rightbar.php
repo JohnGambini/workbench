@@ -10,7 +10,7 @@ global $sqlObject;
 global $contentObj;
 global $dataArrays;
 
-if(count($dataArrays->get_rightbarItemsArray($dbObj, $sqlObject)) == 0)
+if(! $dataArrays->get_rightbarItemsArray($dbObj, $sqlObject))
 	return;
 
 ?>
